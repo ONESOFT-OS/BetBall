@@ -2,7 +2,7 @@ CREATE DATABASE `BetBall`;
 use `BetBall`;
 
 CREATE TABLE `usuario` (
-    `nickname` varchar(50) PRIMARY KEY,
+    `nickname` varchar(50) UNIQUE PRIMARY KEY,
     `email` varchar(50) UNIQUE NOT NULL,
     `senha` varchar(32) NOT NULL
 ) DEFAULT CHARSET=utf8mb4;
@@ -29,8 +29,8 @@ CREATE TABLE `jogos` (
     `id_jogo` varchar(50) PRIMARY KEY,
     `nick_colaborador` varchar(50),
     `data_fim_aposta` date,
-    `data` date,
-    `status` boolean
+    `data_jogo` date,
+    `isDone` boolean
 ) DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `times` (
