@@ -14,7 +14,7 @@ export function SingIn(){
                 <Logo/>
             </header>
 
-            <form className="bg-gradient-to-bl from-green-900 via-gray-900 to-black w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
+            <form className="bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
                     <div className="flex flex-col  w-full max-w-sm gap-4  mt-12 mb-8">
                         <Heading size="lg"> Entrar</Heading>
                         <Text>Entre para acessar sua conta</Text>

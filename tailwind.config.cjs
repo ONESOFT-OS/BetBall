@@ -18,6 +18,10 @@ module.exports = {
       white: '#FFF',
       black: '#000',
 
+      slate:{
+        50: '#D9D9D9'
+      },
+      
       gray:{
        900: '#17181F',
        800: '#1E1E1E',
