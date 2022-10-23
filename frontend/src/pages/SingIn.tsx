@@ -6,6 +6,7 @@ import { Button } from "../components/Button";
 import {Lock} from 'phosphor-react'
 import { Heading } from "../components/Heading";
 import { Logo } from "../Logo";
+import {Link} from 'react-router-dom';
 
 export function SingIn(){
     return(
@@ -50,7 +51,9 @@ export function SingIn(){
 
             <footer className=" flex flex-col items-center gap-3 mt-4 ">
                 <Text  size='sm'>Não possui uma conta? 
-                <a href='' className='text-green-700 underline hover:text-white '> Crie uma agora!</a>
+                  <Link to={'/singup'} className='text-green-700 underline hover:text-white'>
+                  Crie uma agora!
+                  </Link>
                 </Text>
                 <Text asChild size='sm'>
                 <a href='' className='text-green-700 underline hover:text-white '>Esqueceu sua senha?</a>

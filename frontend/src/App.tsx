@@ -1,10 +1,10 @@
-import { SingIn } from './pages/SingIn';
+import {RoutesBase} from './routes/RoutesBase';
 import './styles/global.css';
 
 
 export function App(){
   return (
-    <SingIn/>
+    <RoutesBase/>
   )
 }
 
