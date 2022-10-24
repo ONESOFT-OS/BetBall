@@ -8,7 +8,7 @@ import { Heading } from "../components/Heading";
 import { Logo } from "../Logo";
 import {Link} from 'react-router-dom';
 
-export function SingIn(){
+export function SignIn(){
     return(
         <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
             <header className="mt-4">
@@ -51,12 +51,13 @@ export function SingIn(){
 
             <footer className=" flex flex-col items-center gap-3 mt-4 ">
                 <Text  size='sm'>Não possui uma conta? 
-                  <Link to={'/singup'} className='text-green-700 underline hover:text-white'>
+                  <Link to={'/singup'} className='text-green-700 underline hover:text-white'>   
                   Crie uma agora!
                   </Link>
                 </Text>
                 <Text asChild size='sm'>
                 <a href='' className='text-green-700 underline hover:text-white '>Esqueceu sua senha?</a>
+                  <Link to={'/forgotpassword'} className='text-green-700 underline hover:text-white'></Link>
                 </Text>
             </footer>
 

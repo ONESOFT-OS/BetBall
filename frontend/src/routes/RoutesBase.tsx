@@ -1,14 +1,17 @@
 import {Route, Routes, BrowserRouter } from 'react-router-dom';
-import { SingIn } from "../pages/SingIn";
-import { SingUp } from "../pages/SingUp";
+import { ForgotPassword } from '../pages/ForgotPassword';
+import { SignIn } from "../pages/SignIn";
+import { SignUp } from "../pages/SignUp";
 
 
 export const RoutesBase = () => {
    return(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<SingIn />} />
-            <Route path="/singup" element={<SingUp />} />
+            <Route path="/" element={<SignIn />} />
+            <Route path="/signup" element={<SignUp />} />
+            <Route path="/forgotpassword" element={<ForgotPassword />} />
+
         </Routes>
     </BrowserRouter>
    )

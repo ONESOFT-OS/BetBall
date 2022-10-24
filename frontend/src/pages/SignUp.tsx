@@ -7,7 +7,7 @@ import { Heading } from "../components/Heading";
 import { TextInput } from "../components/TextInput";
 import { Text } from "../components/Text";
 
-export function SingUp(){
+export function SignUp(){
     return(
         <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
             <header>
