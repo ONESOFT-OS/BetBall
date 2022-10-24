@@ -1,5 +1,5 @@
 
-export function SingUp(){
+export function SignUp(){
     return(
         <div>
             
