@@ -27,7 +27,7 @@ export function SingIn(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input autoComplete="off" type='email' id='email' placeholder='Digite seu e-mail'/>
+                    <TextInput.Input  type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
                     </TextInput.Root>
                 </label>
 
