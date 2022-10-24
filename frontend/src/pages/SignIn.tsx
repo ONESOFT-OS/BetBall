@@ -51,13 +51,12 @@ export function SignIn(){
 
             <footer className=" flex flex-col items-center gap-3 mt-4 ">
                 <Text  size='sm'>Não possui uma conta? 
-                  <Link to={'/singup'} className='text-green-700 underline hover:text-white'>   
+                  <Link to={"/signup"} className='text-green-700 underline hover:text-white'>   
                   Crie uma agora!
                   </Link>
                 </Text>
                 <Text asChild size='sm'>
-                <a href='' className='text-green-700 underline hover:text-white '>Esqueceu sua senha?</a>
-                  <Link to={'/forgotpassword'} className='text-green-700 underline hover:text-white'></Link>
+                <Link to={"/forgotpassword"} className='text-green-700 underline hover:text-white'>Esqueceu sua senha?</Link>
                 </Text>
             </footer>
 

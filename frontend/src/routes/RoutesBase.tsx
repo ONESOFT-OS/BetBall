@@ -8,10 +8,9 @@ export const RoutesBase = () => {
    return(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
+            <Route path="/" element={<SignIn/>} />
+            <Route path="/signup" element={<SignUp/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
-
         </Routes>
     </BrowserRouter>
    )
