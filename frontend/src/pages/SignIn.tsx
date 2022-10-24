@@ -5,7 +5,7 @@ import { Checkbox } from "../components/Checkbox";
 import { Button } from "../components/Button";
 import {Lock} from 'phosphor-react'
 import { Heading } from "../components/Heading";
-import { Logo } from "../Logo";
+import { Logo } from "../assets/Logo";
 import {Link} from 'react-router-dom';
 
 export function SignIn(){

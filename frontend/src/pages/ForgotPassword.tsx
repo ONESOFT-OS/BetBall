@@ -2,7 +2,7 @@ import { Envelope } from "phosphor-react";
 import { Button } from "../components/Button";
 import { TextInput } from "../components/TextInput";
 import { Text } from "../components/Text";
-import { Logo } from "../Logo";
+import { Logo } from "../assets/Logo";
 import { Link } from "react-router-dom";
 
 export function ForgotPassword(){
@@ -21,7 +21,7 @@ export function ForgotPassword(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input autoComplete="off" type='email' id='email' placeholder=''/>
+                    <TextInput.Input autoComplete="off" type='email' id='email' placeholder='Digite seu email'/>
                     </TextInput.Root>
                 </label>
 

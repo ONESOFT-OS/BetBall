@@ -1,5 +1,5 @@
-import { Logo } from "../Logo";
-import {ICad} from "../ICad"
+import { Logo } from "../assets/Logo";
+import {ICad} from "../assets/ICad"
 import { Checkbox } from "../components/Checkbox";
 import { Envelope, User,Lock } from "phosphor-react";
 import { Button } from "../components/Button";
