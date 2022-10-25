@@ -1,12 +1,10 @@
 use `BetBall`;
 SET character_set_client = utf8;
 INSERT INTO times (nome, id_time, brasao) VALUES
-    ('Bahia', '0' ,'src assets brasoes bahia svg');
-
-INSERT INTO times (nome, id_time, brasao) VALUES
+    ('Bahia', '0' ,'src assets brasoes bahia svg'),
     ('Flamengo', '1' ,'src assets brasoes flamengo svg'),
     ('Corinthians', '2' ,'src assets brasoes corithians svg'),
-    ('São Paulo', '3' ,'src assets brasoes saopaulo svg')
+    ('São Paulo', '3' ,'src assets brasoes saopaulo svg'),
     ('Palmeiras', '4' ,'src assets brasoes palmeiras svg'),
     ('Internacional', '5' ,'src assets brasoes internacional svg'),
     ('Fluminense', '6' ,'src assets brasoes fluminense svg'),
@@ -24,8 +22,5 @@ INSERT INTO times (nome, id_time, brasao) VALUES
     ('Avai', '18' ,'src assets brasoes avai svg'),
     ('Atletico-GO', '19' ,'src assets brasoes atletico-go svg'),
     ('Juventude', '20' ,'src assets brasoes juventude svg');
-
-
-
 
 
