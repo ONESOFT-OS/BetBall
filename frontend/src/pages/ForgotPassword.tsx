@@ -9,7 +9,9 @@ export function ForgotPassword(){
     return(
        <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
             <header className="mt-4">
-                <Logo />
+                <Link to={"/"}>   
+                    <Logo />
+                </Link>
             </header>
 
             <form className="h-2/5 bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
