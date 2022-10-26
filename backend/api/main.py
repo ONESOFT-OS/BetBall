@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 
-from backend.queries.queries import get_users_by_type
+from queries.queries import get_users_by_type
 
 
 app = FastAPI()
