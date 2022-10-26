@@ -38,4 +38,10 @@ O software corresponde a um sistema de apostas esportivas, o qual pode ser acess
 
     pip install -r requirements.txt
 </ol>
+<ol>
+    <li>4. Rodando API:</li>
+
+    uvicorn main:app --reload
+</ol>
+
 </div>
