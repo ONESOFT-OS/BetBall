@@ -1,6 +1,0 @@
-# Deploy local com uvicorn
-
-# Para startar API
-uvicorn nomedoarquivo:app --reload
-
-uvicorn main:app --reload
