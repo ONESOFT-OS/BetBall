@@ -78,7 +78,7 @@ O software corresponde a um sistema de apostas esportivas, o qual pode ser acess
 <ol>
     <li>2. Ativa o ambiente virtual:</li>
 
-    .nome-do-ambiente/Scripts/activate para ativar o ambiente
+    .nome-do-ambiente/Scripts/activate
     
 </ol>
 <ol>
