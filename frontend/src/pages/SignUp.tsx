@@ -6,12 +6,15 @@ import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { TextInput } from "../components/TextInput";
 import { Text } from "../components/Text";
+import { Link } from "react-router-dom";
 
 export function SignUp(){
     return(
         <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
             <header>
-                <Logo className="pt-3"/>
+                <Link to={"/"}>   
+                    <Logo className="pt-3"/>
+                </Link>
             </header>
 
             <div className="flex flex-row w-full px-14 gap-28 ">
