@@ -1,3 +1,9 @@
+from queries.core.db import createDBConnection, executeQuery, executeSelection
+from queries.core.env import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
+
+
+connection = createDBConnection(DB_HOST, DB_USER, '', DB_NAME)
+
 
 users = {
     1:{
@@ -20,3 +26,14 @@ users = {
 def get_users_by_type(type_):
     print(type_)
     return users
+
+
+# @param nome do time, id, e diretório da imagem.
+def add_football_club(name, club_id, image_src):
+    query = f"""
+    INSERT INTO times  VALUES
+    ('{name}', '{club_id}','{image_src}');
+    """
+    executeQuery(connection, query)
+
+

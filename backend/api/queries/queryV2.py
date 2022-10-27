@@ -43,5 +43,5 @@ INSERT INTO times  VALUES
 query2 = """SELECT * FROM times"""
 
 connection = createDBConnection("localhost", "root", '', 'betball')
-# executeQuery(connection, query)
-executeSelection( connection, query2)
+executeQuery(connection, query)
+executeSelection(connection, query2)

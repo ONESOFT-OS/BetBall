@@ -1,11 +1,37 @@
-from databases import Database
-from env import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
+import mysql.connector
+from mysql.connector import Error
 
-db_connect_string = 'mysql://%s:%s@%s/%s?charset=utf8' % (
-    DB_USER,
-    DB_PASSWORD,
-    DB_HOST,
-    DB_NAME,
-)
+def createDBConnection(host_name, user_name, user_password, db_name):
+    connection = None
+    try:
+        connection = mysql.connector.connect(
+            host=host_name,
+            user=user_name,
+            passwd=user_password,
+            database=db_name
+        )
+        print("MySQL Database connection successful")
+    except Error as err:
+        print(f"Error: '{err}'")
 
-database = Database(db_connect_string)
+    return connection
+
+def executeQuery(connection, query):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query)
+        connection.commit()
+        print("Query successful")
+    except Error as err:
+        print(f"Error: '{err}'")
+
+def executeSelection(connection,query):
+    cursor = connection.cursor()
+    try:
+        cursor.execute(query)
+        myresult = cursor.fetchall()
+        for x in myresult:
+            print(x)
+    except Error as err:
+        print(f"Error: '{err}'")
+
