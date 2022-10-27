@@ -1,2 +1,3 @@
 node_modules
 backend/api/.fast-api
+backend/api/env

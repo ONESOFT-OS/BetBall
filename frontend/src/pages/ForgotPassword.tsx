@@ -15,9 +15,9 @@ export function ForgotPassword(){
             </header>
 
             <form className="h-2/5 bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
-                <Text size="lg" className='font-semibold'>Esqueceu sua senha?</Text>
+                <Text size="lg" className='font-semibold mb-3 my-8'>Esqueceu sua senha?</Text>
 
-                <label htmlFor='email' className='flex flex-col gap-3 w-full max-w-sm'>
+                <label htmlFor='email' className='flex flex-col gap-3 w-full max-w-sm '>
                     <Text size="sm" className='font-semibold'>Digite seu endereço de e-mail</Text>
                     <TextInput.Root>
                     <TextInput.Icon>
