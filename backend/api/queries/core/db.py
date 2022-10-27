@@ -30,8 +30,7 @@ def executeSelection(connection,query):
     try:
         cursor.execute(query)
         myresult = cursor.fetchall()
-        for x in myresult:
-            print(x)
+        return myresult
     except Error as err:
         print(f"Error: '{err}'")
 
