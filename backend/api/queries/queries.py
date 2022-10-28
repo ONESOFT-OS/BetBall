@@ -30,7 +30,6 @@ def get_users_by_type(type_):
 
 # @param nome do time, id, e diretório da imagem.
 def add_football_club(name, club_id, image_src):
-    print('entrou')
     query = f"""
     INSERT INTO times  VALUES
     ('{name}', '{club_id}','{image_src}');
@@ -39,11 +38,9 @@ def add_football_club(name, club_id, image_src):
 
 
 def get_clubs():
-    print('entrou')
     query = """SELECT * FROM times"""
     clubs = executeSelection(connection, query)
     return clubs
-
 
 print(get_clubs())
 
