@@ -32,7 +32,11 @@ def get_users_by_type(type_):
 def add_football_club(name, club_id, image_src):
     query = f"""
     INSERT INTO times  VALUES
-    ('{name}', '{club_id}','{image_src}');
+    (
+        '{name}', 
+        '{club_id}',
+        '{image_src}'
+    );
     """
     executeQuery(connection, query)
 
@@ -44,6 +48,22 @@ def get_clubs():
     clubs = executeSelection(connection, query)
     clubs_dict = [tutple_to_dict('club_name', 'club_id', 'photo_link',tupla=time) for time in clubs]
     return clubs_dict
+
+
+# @param nickname, email, e senha.
+def register_user(nickname, email, password):
+    query = f"""
+    INSERT INTO usuario (nickname, email, senha) VALUES
+    (
+        '{nickname}',
+        '{email}',
+        '{password}'
+    );
+    """
+    executeQuery(connection, query)
+
+
+
 
 
 
