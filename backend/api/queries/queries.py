@@ -1,6 +1,6 @@
 from core.db import createDBConnection, executeQuery, executeSelection
 from core.env import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
-
+from utils.service import tutple_to_dict
 
 connection = createDBConnection("localhost", "root", '', 'betball')
 
@@ -37,12 +37,14 @@ def add_football_club(name, club_id, image_src):
     executeQuery(connection, query)
 
 
+# Retorna uma lista com todos os times de futebol cadastrados.
+# @return Lista de dicionário. O nome, clube e caminho da imagem.
 def get_clubs():
     query = """SELECT * FROM times"""
     clubs = executeSelection(connection, query)
-    return clubs
+    clubs_dict = [tutple_to_dict('club_name', 'club_id', 'photo_link',tupla=time) for time in clubs]
+    return clubs_dict
 
-print(get_clubs())
 
 
 
