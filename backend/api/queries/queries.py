@@ -62,9 +62,15 @@ def register_user(nickname, email, password):
     """
     executeQuery(connection, query)
 
-
-
-
+# Retorna uma lista com todos os usuários cadastrados.
+# @return Lista de dicionário. O nome, clube e caminho da imagem.
+def get_users():
+    query = """
+    SELECT nickname, email FROM usuario
+    """
+    users = executeSelection(connection, query)
+    users_dict = [tutple_to_dict('nickname','email', tupla=user) for user in users]
+    return users_dict
 
 
 
