@@ -95,7 +95,7 @@ def get_collaborators():
     collaborators = executeSelection(connection, query)
     return collaborators
 
-
+# @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
 def add_game(game_id, collaborator_nick, start_date, end_date, isDone=False):
     print('ADD GAME')
     datas = format_date(start_date)
@@ -131,5 +131,3 @@ def get_aposta():
     """
     apostas = users = executeSelection(connection, query)
     return apostas
-
-add_game(6,'ritakassiane', '09-19-2018', '10-19-2018')
