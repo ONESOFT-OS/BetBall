@@ -1,5 +1,5 @@
-from core.db import createDBConnection, executeQuery, executeSelection
-from utils.service import tutple_to_dict, format_date
+from queries.core.db import createDBConnection, executeQuery, executeSelection
+from queries.utils.service import tutple_to_dict, format_date
 
 from datetime import datetime
 
