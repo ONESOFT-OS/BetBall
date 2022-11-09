@@ -1,9 +1,9 @@
-from core.db import createDBConnection, executeQuery, executeSelection
-from core.env import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
-from utils.service import tutple_to_dict
+from queries.core.db import createDBConnection, executeQuery, executeSelection
+from queries.utils.service import tutple_to_dict, format_date
+
+from datetime import datetime
 
 connection = createDBConnection("localhost", "root", '', 'betball')
-
 
 users = {
     1:{
@@ -62,6 +62,7 @@ def register_user(nickname, email, password):
     """
     executeQuery(connection, query)
 
+
 # Retorna uma lista com todos os usuários cadastrados.
 # @return Lista de dicionário. O nome, clube e caminho da imagem.
 def get_users():
@@ -73,4 +74,60 @@ def get_users():
     return users_dict
 
 
+# @param nickname de um usuário
+def create_collaborator(nickname):
+    query = f"""
+    INSERT INTO colaborador VALUES
+    (
+        '{nickname}',
+        'False'
+    );
+    """
+    executeQuery(connection, query)
 
+
+# Retorna uma lista com todos os colaboradores cadastrados.
+# @return Lista de dicionário. O nickname.
+def get_collaborators():
+    query = """
+    SELECT nickname FROM colaborador
+    """
+    collaborators = executeSelection(connection, query)
+    return collaborators
+
+# @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
+def add_game(game_id, collaborator_nick, start_date, end_date, isDone=False):
+    print('ADD GAME')
+    datas = format_date(start_date)
+    datae = format_date(end_date)
+    query = f"""
+    INSERT INTO jogos VALUES
+    (   
+        '{game_id}',
+        '{collaborator_nick}', 
+        '{datas}',
+        '{datae}',
+        '{isDone}'
+    );
+    """
+    executeQuery(connection, query)
+
+
+# @param nickname, valor, time
+def add_aposta(nickname, valor, time):
+    print('entrou')
+    query = f"""
+    INSERT INTO aposta  VALUES
+    ('{nickname}', '{valor}','{time}');
+    """
+    executeQuery(connection, query)
+
+
+# Retorna uma lista com todas as apostas salvas.
+# Retorna o nickname, o valor da aposta e o time apostado
+def get_aposta():
+    query = """
+    SELECT * FROM aposta
+    """
+    apostas = users = executeSelection(connection, query)
+    return apostas
