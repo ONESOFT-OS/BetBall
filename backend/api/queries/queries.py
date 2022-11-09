@@ -74,6 +74,16 @@ def get_users():
     return users_dict
 
 
+def create_collaborator(nickname):
+    query = """
+    INSERT INTO colaborador VALUES
+    (
+        '{nickname}',
+        'False'
+    );
+    """
+    print('foi =)')
+
 def add_game(collaborator_nick, start_date, end_date, isDone=False):
     print('ADD GAME')
     query = f"""
@@ -107,4 +117,5 @@ def get_aposta():
     apostas = users = executeSelection(connection, query)
     return apostas
 
-add_game()
+# add_game()
+create_collaborator('ritakassiane')
