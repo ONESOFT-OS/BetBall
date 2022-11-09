@@ -74,15 +74,27 @@ def get_users():
     return users_dict
 
 
+# @param nickname de um usuário
 def create_collaborator(nickname):
-    query = """
+    query = f"""
     INSERT INTO colaborador VALUES
     (
         '{nickname}',
         'False'
     );
     """
-    print('foi =)')
+    executeQuery(connection, query)
+
+
+# Retorna uma lista com todos os colaboradores cadastrados.
+# @return Lista de dicionário. O nickname.
+def get_collaborators():
+    query = """
+    SELECT nickname FROM colaborador
+    """
+    collaborators = executeSelection(connection, query)
+    return collaborators
+
 
 def add_game(collaborator_nick, start_date, end_date, isDone=False):
     print('ADD GAME')
@@ -116,6 +128,3 @@ def get_aposta():
     """
     apostas = users = executeSelection(connection, query)
     return apostas
-
-# add_game()
-create_collaborator('ritakassiane')
