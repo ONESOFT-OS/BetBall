@@ -96,14 +96,17 @@ def get_collaborators():
     return collaborators
 
 
-def add_game(collaborator_nick, start_date, end_date, isDone=False):
+def add_game(game_id, collaborator_nick, start_date, end_date, isDone=False):
     print('ADD GAME')
+    datas = format_date(start_date)
+    datae = format_date(end_date)
     query = f"""
-    INSERT INTO jogo VALUES
-    (
+    INSERT INTO jogos VALUES
+    (   
+        '{game_id}',
         '{collaborator_nick}', 
-        '{format_date(start_date)}',
-        '{format_date(end_date)}',
+        '{datas}',
+        '{datae}',
         '{isDone}'
     );
     """
@@ -128,3 +131,5 @@ def get_aposta():
     """
     apostas = users = executeSelection(connection, query)
     return apostas
+
+add_game(6,'ritakassiane', '09-19-2018', '10-19-2018')

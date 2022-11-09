@@ -3,12 +3,14 @@
 
 from datetime import datetime
 
-datetime_str = '09/19/18'
-
-datetime_object = datetime.strptime(datetime_str, '%m/%d/%y')
-
-print(type(datetime_object))
-print(datetime_object)  # printed in default format
+# Retorna um objeto date
+# @param String no formato mes-dia-ano
+# @return Date. 
+def format_date(date_str):
+    date_object = datetime.strptime(date_str, '%m-%d-%Y').date()
+    print(type(date_object))
+    print(date_object)  # printed in default format
+    return date_object
 
 # Retorna um dicionário de uma instância escolhida.
 # @param chaves desse dicionário.
@@ -21,10 +23,4 @@ def tutple_to_dict(*atributos, tupla):
             dicionario[atributo]=tupla[index_tupla]
             index_tupla+=1
     return dicionario
-
-# Retorna um objeto date
-# @param String no formato mes/dia/ano
-# @return Date. 
-def format_date(date_string):
-    return datetime.strptime(date_string, '%m/%d/%y')
-    
+format_date('09-10-2022')
