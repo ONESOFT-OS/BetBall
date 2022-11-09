@@ -1,5 +1,7 @@
 from core.db import createDBConnection, executeQuery, executeSelection
-from utils.service import tutple_to_dict
+from utils.service import tutple_to_dict, format_date
+
+from datetime import datetime
 
 connection = createDBConnection("localhost", "root", '', 'betball')
 
@@ -60,6 +62,7 @@ def register_user(nickname, email, password):
     """
     executeQuery(connection, query)
 
+
 # Retorna uma lista com todos os usuários cadastrados.
 # @return Lista de dicionário. O nome, clube e caminho da imagem.
 def get_users():
@@ -69,6 +72,20 @@ def get_users():
     users = executeSelection(connection, query)
     users_dict = [tutple_to_dict('nickname','email', tupla=user) for user in users]
     return users_dict
+
+
+def add_game(collaborator_nick, start_date, end_date, isDone=False):
+    print('ADD GAME')
+    query = f"""
+    INSERT INTO jogo VALUES
+    (
+        '{collaborator_nick}', 
+        '{format_date(start_date)}',
+        '{format_date(end_date)}',
+        '{isDone}'
+    );
+    """
+    executeQuery(connection, query)
 
 
 # @param nickname, valor, time
@@ -90,3 +107,4 @@ def get_aposta():
     apostas = users = executeSelection(connection, query)
     return apostas
 
+add_game()
