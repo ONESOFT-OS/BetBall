@@ -1,4 +1,4 @@
-from api.queries.core.db import createDBConnection, executeQuery, executeSelection
+from api.queries.core.db import createDBConnection, executeQuery
 
 connection = createDBConnection("localhost", "root", '', 'betball')
 
