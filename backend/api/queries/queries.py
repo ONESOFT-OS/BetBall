@@ -1,5 +1,5 @@
-from queries.core.db import createDBConnection, executeQuery, executeSelection
-from queries.utils.service import tutple_to_dict
+from core.db import createDBConnection, executeQuery, executeSelection
+from utils.service import tutple_to_dict
 
 connection = createDBConnection("localhost", "root", '', 'betball')
 
@@ -71,4 +71,22 @@ def get_users():
     return users_dict
 
 
+# @param nickname, valor, time
+def add_aposta(nickname, valor, time):
+    print('entrou')
+    query = f"""
+    INSERT INTO aposta  VALUES
+    ('{nickname}', '{valor}','{time}');
+    """
+    executeQuery(connection, query)
+
+
+# Retorna uma lista com todas as apostas salvas.
+# Retorna o nickname, o valor da aposta e o time apostado
+def get_aposta():
+    query = """
+    SELECT * FROM aposta
+    """
+    apostas = users = executeSelection(connection, query)
+    return apostas
 
