@@ -1,9 +1,7 @@
-from core.db import createDBConnection, executeQuery, executeSelection
-from core.env import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
-from utils.service import tutple_to_dict
+from queries.core.db import createDBConnection, executeQuery, executeSelection
+from queries.utils.service import tutple_to_dict
 
 connection = createDBConnection("localhost", "root", '', 'betball')
-
 
 users = {
     1:{
