@@ -1,12 +1,10 @@
 from fastapi import FastAPI
-from pydantic import BaseModel
+from model.login import Login
 
 from queries.queries import get_users_by_type, get_users, get_clubs
+from queries.users import get_users
 
-class Login(BaseModel):
-    email: str
-    password: str
-
+from queries.utils.service import user_exists
 
 app = FastAPI()
 
@@ -25,7 +23,15 @@ def users():
 
 @app.post('/login')
 async def login(login: Login):
-    return login
+    if user_exists(login.email):
+        return {
+            'status': 'Autorizado'
+        }
+    else: 
+        return {
+            'Error': 'Usuário não cadastrado no sistema'
+        }
+
 
 
 
