@@ -1,6 +1,6 @@
 # Arquivo destinado a funções para manipulação de dados
 
-from queries.users import get_user_by_email
+from queries.users import get_user_by_email, login_user
 from datetime import datetime
 
 # Retorna um objeto date
@@ -32,3 +32,8 @@ format_date('09-10-2022')
 # @return Booleano. 
 def user_exists(email):
     return len(get_user_by_email(email))!=0
+
+
+def user_is_auth(email, password):
+    return len(login_user(email, password))!=0
+    

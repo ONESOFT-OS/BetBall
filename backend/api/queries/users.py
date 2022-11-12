@@ -37,9 +37,18 @@ def get_user_by_email(email):
     SELECT nickname FROM usuario
     WHERE email = '{email}'
     """
-    users = executeSelection(connection, query)
-    return users
+    user = executeSelection(connection, query)
+    return user
 
+
+def login_user(email, password):
+    query = f"""
+    SELECT nickname FROM usuario
+    WHERE email = '{email}' AND 
+    senha = '{password}' 
+    """
+    user = executeSelection(connection, query)
+    return user
 
 # Retorna uma lista com todos os usuário cadastrados.
 # @param tipo de usuário.
@@ -69,4 +78,4 @@ def get_collaborators():
     collaborators = executeSelection(connection, query)
     return collaborators
 
-print(get_user_by_email('ritakassiane@gmail.com'))
+print(login_user('ritakassiane@gmail.com', '100000'))
