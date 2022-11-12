@@ -19,7 +19,7 @@ def register_user(nickname, email, password):
         '{password}'
     );
     """
-    executeQuery(connection, query)
+    return executeQuery(connection, query)
 
 
 # Retorna uma lista com todos os usuários cadastrados.

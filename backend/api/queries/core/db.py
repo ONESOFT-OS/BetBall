@@ -22,9 +22,10 @@ def executeQuery(connection, query):
     try:
         cursor.execute(query)
         connection.commit()
-        print("Query successful")
+        return True
     except Error as err:
         print(f"Error: '{err}'")
+        return err
 
 def executeSelection(connection,query):
     cursor = connection.cursor()

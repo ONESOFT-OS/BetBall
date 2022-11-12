@@ -2,11 +2,11 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
-from model.models import Login, User
+from model.models import Login, User, Cadastro
 
 from queries.queries import get_clubs
-from queries.users import get_users, get_users_by_type
-from queries.users import login_user
+from queries.users import get_users, get_users_by_type, register_user
+from queries.utils.service import login_user
 
 app = FastAPI()
 
@@ -90,3 +90,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(status_code=200, detail="Authenticated!")
 
 
+@app.post('/cadastro')
+async def cadastro(cadastro: Cadastro):
+    return register_user(cadastro.nickname, cadastro.email, cadastro.password)

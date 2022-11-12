@@ -11,3 +11,8 @@ class User(BaseModel):
 
 class UserInDB(User):
     hashed_password: str
+
+class Cadastro(BaseModel):
+    nickname: str
+    email: str
+    password: str
