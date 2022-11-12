@@ -30,38 +30,18 @@ export function SignUp(){
     async function handleSignUp(event: FormEvent){
         event.preventDefault();
 
-        const data = {
-            nick: nick,
-            email: email,
-            password: password
-        }
-    
-        fetch('http://127.0.0.1:8000/cadastro',{
-            method: 'POST',
-            mode: 'no-cors',
-            body: data
-        }).then(function(response) {
-            return response;
-        }).then(function(response) {
-            console.log(response);
-        }).catch(function(e){
-            console.log(e);
-        });
-        
-        // // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
-        // axios({
-        //     method: 'post',
-        //     url: 'http://127.0.0.1:8000/cadastro',
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/cadastro',
             
-        //     data: {
-        //       nick: nick,
-        //       email: email,
-        //       password: password
-        //     }
-        //   }).then(function (response) {
-        //     console.log(response)
-        //   });
-
+            data: {
+              nickname: nick,
+              email: email,
+              password: password
+            }
+          }).then(function (response) {
+            console.log(response)
+          });
         
     }
 
