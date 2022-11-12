@@ -10,6 +10,7 @@ import { Link } from "react-router-dom";
 import { FormEvent, useRef, useState } from "react";
 import axios from "axios";
 
+
 export function SignUp(){
 
     const [nick, setNick]  = useState('')
@@ -28,9 +29,12 @@ export function SignUp(){
     async function handleSignUp(event: FormEvent){
         event.preventDefault();
 
+        
+        // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         axios({
             method: 'post',
-            url: '',
+            url: 'http://127.0.0.1:8000/cadastro',
+            
             data: {
               nick: nick,
               email: email,
