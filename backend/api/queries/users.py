@@ -1,8 +1,10 @@
+# from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
+
+
 from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
-
-
-# from core.db import createDBConnection, executeQuery, executeSelection, connection
 # from utils.service import tutple_to_dict, format_date
+
+from queries.utils.service import tutple_to_dict
 
 from datetime import datetime
 
@@ -23,7 +25,6 @@ def register_user(nickname, email, password):
 # Retorna uma lista com todos os usuários cadastrados.
 # @return Lista de dicionário. O nome, clube e caminho da imagem.
 def get_users():
-    from queries.utils.service import tutple_to_dict
     query = """
     SELECT nickname, email FROM usuario
     """
@@ -43,12 +44,16 @@ def get_user_by_email(email):
 
 def login_user(email, password):
     query = f"""
-    SELECT nickname FROM usuario
+    SELECT nickname, email FROM usuario
     WHERE email = '{email}' AND 
     senha = '{password}' 
     """
-    user = executeSelection(connection, query)
-    return user
+    user_return = executeSelection(connection, query)
+    if len(user_return)!=0:
+        users_dict = [tutple_to_dict('nickname','email', tupla=user) for user in user_return]
+        return users_dict[0]
+    else:
+         return None
 
 # Retorna uma lista com todos os usuário cadastrados.
 # @param tipo de usuário.
@@ -78,4 +83,4 @@ def get_collaborators():
     collaborators = executeSelection(connection, query)
     return collaborators
 
-print(login_user('ritakassiane@gmail.com', '100000'))
+print(login_user('ritakassiasane@gmail.com', '100000'))
