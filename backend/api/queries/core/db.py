@@ -1,6 +1,7 @@
 import mysql.connector
 from mysql.connector import Error
 
+
 def createDBConnection(host_name, user_name, user_password, db_name):
     connection = None
     try:
@@ -21,9 +22,10 @@ def executeQuery(connection, query):
     try:
         cursor.execute(query)
         connection.commit()
-        print("Query successful")
+        return True
     except Error as err:
         print(f"Error: '{err}'")
+        return err
 
 def executeSelection(connection,query):
     cursor = connection.cursor()
@@ -34,3 +36,4 @@ def executeSelection(connection,query):
     except Error as err:
         print(f"Error: '{err}'")
 
+connection = createDBConnection("localhost", "root", '', 'betball')

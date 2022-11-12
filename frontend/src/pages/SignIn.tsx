@@ -13,27 +13,27 @@ import { AuthContext } from "../../src/contexts/Auth/AuthContext";
 
 export function SignIn(){
 
-  const auth = useContext(AuthContext);
-  const navigate = useNavigate();
+  // const auth = useContext(AuthContext);
+  // const navigate = useNavigate();
  
-  const [email, setemail] = useState("user1@gmail.com");
-  const [password, setPassword] = useState("123456789");
-  const [count, setCount] = useState(0)
+  // const [email, setemail] = useState("user1@gmail.com");
+  // const [password, setPassword] = useState("123456789");
+  // const [count, setCount] = useState(0)
   
-  const handleSingout = async () =>{
-      await auth.signout();
-      window.location.href = window.location.href;
+  // const handleSingout = async () =>{
+  //     await auth.signout();
+  //     window.location.href = window.location.href;
   
-    }
-  const handleLogin = async () =>{
-      if(email && password) {
-          const isLogged = await auth.signin(email, password);
-          if(isLogged){
-              navigate('./');
-          }
-      }
+  //   }
+  // const handleLogin = async () =>{
+  //     if(email && password) {
+  //         const isLogged = await auth.signin(email, password);
+  //         if(isLogged){
+  //             navigate('./');
+  //         }
+  //     }
       
-  }
+  // }
 
     return(
         <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
@@ -53,7 +53,7 @@ export function SignIn(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input value={email} type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
+                    <TextInput.Input type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
                     </TextInput.Root>
                 </label>
 
@@ -63,7 +63,7 @@ export function SignIn(){
                   <TextInput.Icon>
                     <Lock/>
                   </TextInput.Icon>
-                  <TextInput.Input value={password} type='password' id='password' placeholder='********'/>
+                  <TextInput.Input  type='password' id='password' placeholder='********'/>
                 </TextInput.Root>
               </label>
 
@@ -72,10 +72,10 @@ export function SignIn(){
                 <Text size='sm' className='text-gray-200'>Matenha-me conectado</Text>
               </label>
 
-              <Button onClick={handleLogin} type='submit' className='mt-4 mb-12 w-fit'>Entrar na plataforma</Button>
+              <Button  type='submit' className='mt-4 mb-12 w-fit'>Entrar na plataforma</Button>
               
-              //botão só para testagem da remoção do token ao sair no login
-              <Button onClick={handleSingout} type='submit' className='mt-4 mb-12 w-fit'>Sair da plataforma</Button>
+              {/* //botão só para testagem da remoção do token ao sair no login
+              <Button onClick={handleSingout} type='submit' className='mt-4 mb-12 w-fit'>Sair da plataforma</Button> */}
 
             </form>
 

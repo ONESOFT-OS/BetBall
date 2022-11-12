@@ -7,20 +7,59 @@ import { Heading } from "../components/Heading";
 import { TextInput } from "../components/TextInput";
 import { Text } from "../components/Text";
 import { Link } from "react-router-dom";
+import { FormEvent, useRef, useState } from "react";
+import axios from "axios";
+
 
 export function SignUp(){
+
+    const [nick, setNick]  = useState('')
+    const [email, setEmail]  = useState('')
+    const [password, setPassword]  = useState('')
+    const [ischecked, setchecked] = useState(true)
+
+    function check(){
+        const teste = document.getElementById('remember')
+        if(teste?.ariaChecked === 'true') 
+            setchecked(true)
+        else
+            setchecked(false)
+    }
+    
+    async function handleSignUp(event: FormEvent){
+        event.preventDefault();
+
+        
+        // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/cadastro',
+            
+            data: {
+              nick: nick,
+              email: email,
+              password: password
+            }
+          }).then(function (response) {
+            console.log(response)
+          });
+
+        
+    }
+
+    
     return(
-        <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
+        <div className="w-full h-full bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
             <header>
                 <Link to={"/"}>   
                     <Logo className="pt-3"/>
                 </Link>
             </header>
 
-            <div className="flex flex-row w-full px-14 gap-28 ">
+            <div className="flex flex-row w-full px-14 gap-28 pb-10 ">
                 <ICad className=" h-[500px] w-[500px]"/>
 
-                <form className="bg-slate-50 bg-opacity-5 w-full max-w-md flex flex-col items-center justify-center rounded-2xl gap-1 ">
+                <form onSubmit={handleSignUp} className="bg-slate-50 bg-opacity-5 w-full max-w-md  h-screen flex flex-col items-center justify-center rounded-2xl gap-1 ">
                     <div className="flex flex-col  w-full max-w-sm gap-4  mt-12 mb-8">
                         <Heading size="lg"> Cadastre-se</Heading>
                         <Text>Crie uma conta para acessar</Text>
@@ -32,7 +71,7 @@ export function SignUp(){
                     <TextInput.Icon>
                         <User/>
                     </TextInput.Icon>
-                    <TextInput.Input  type='text' id='nick' placeholder='Digite seu Nickname'/>
+                    <TextInput.Input  type='text' id='nick' placeholder='Digite seu Nickname' value={nick} onChange={(e) => setNick(e.target.value)}/>
                     </TextInput.Root>
                 </label>
 
@@ -42,7 +81,7 @@ export function SignUp(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input  type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
+                    <TextInput.Input  type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail' value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </TextInput.Root>
                 </label>
 
@@ -52,16 +91,18 @@ export function SignUp(){
                   <TextInput.Icon>
                     <Lock/>
                   </TextInput.Icon>
-                  <TextInput.Input type='password' id='password' placeholder='********'/>
+                  <TextInput.Input type='password' id='password' placeholder='********' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </TextInput.Root>
               </label>
 
               <label htmlFor='remember' className='flex flex-cow items-center w-full  max-w-sm gap-4 mt-2'>
-                <Checkbox id='remember' className="w-10 h-6 p-[2px] bg-green-700 rounded"/>
+                <Checkbox  id='remember' className="w-10 h-6 p-[2px] bg-green-700 rounded"/>
                 <Text size='sm' className='text-white'>Ao se cadastrar no BetBall, você concorda com nossos termos de serviço e confirma ter 18 anos ou mais.</Text>
+                
               </label>
+              <div>{!ischecked && <Text className=" text-green-500 "> Checagem obrigatória</Text>}</div>
 
-              <Button type='submit' className='mt-4 mb-12 w-fit'>Entrar na plataforma</Button>
+              <Button onClick={check} type='submit' className='mt-4 mb-12 w-fit' >Entrar na plataforma</Button>
             </form>
             </div>
             

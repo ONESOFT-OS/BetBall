@@ -26,7 +26,7 @@ CREATE TABLE `colaborador` (
 ) DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `jogos` (
-    `id_jogo` varchar(50) PRIMARY KEY,
+    `id_jogo` varchar(50) PRIMARY KEY AUTO_INCREMENT,
     `nick_colaborador` varchar(50),
     `data_fim_aposta` date,
     `data_jogo` date,
