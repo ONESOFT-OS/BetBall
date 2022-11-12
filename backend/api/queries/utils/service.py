@@ -1,6 +1,5 @@
 # Arquivo destinado a funções para manipulação de dados
 
-from queries.users import get_user_by_email, login_user
 from datetime import datetime
 
 # Retorna um objeto date
@@ -25,15 +24,4 @@ def tutple_to_dict(*atributos, tupla):
             index_tupla+=1
     return dicionario
 format_date('09-10-2022')
-
-
-# Retorna um booleano correspondente a existência do usuário.
-# @param email do usuário.
-# @return Booleano. 
-def user_exists(email):
-    return len(get_user_by_email(email))!=0
-
-
-def user_is_auth(email, password):
-    return len(login_user(email, password))!=0
     

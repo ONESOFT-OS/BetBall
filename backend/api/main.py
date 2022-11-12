@@ -4,7 +4,7 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from model.models import Login, User, Cadastro
 
 from queries.queries import get_clubs
-from queries.users import get_users, get_users_by_type, register_user
+from queries.users import get_users, get_users_by_type
 from queries.utils.service import login_user
 
 app = FastAPI()
@@ -20,7 +20,20 @@ def fake_decode_token(token):
 
 async def get_current_user(token: str = Depends(oauth2_scheme)):
     user = fake_decode_token(token)
+    if not user:
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication credentials",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
     return user
+
+
+async def get_current_active_user(current_user: User = Depends(get_current_user)):
+    if current_user.disabled:
+        raise HTTPException(status_code=400, detail="Inactive user")
+    return current_user
+
 
 
 @app.get('/users')
@@ -40,22 +53,25 @@ async def users():
     return users[id]
 
 
-@app.post('/login')
-async def login(login: Login):
-    if login_user(login.email, login.password):
-        return {
-            'status': 'Autorizado'
-        }
-    else: 
-        return {
-            'Error': 'Usuário não cadastrado no sistema'
-        }
-
 # @app.post('/login')
-# async def login(form_data: OAuth2PasswordRequestForm = Depends()):
-#     user_dict = login_user(form_data.email, login.password)
-#     if not user_dict:
-#         raise HTTPException(status_code=400, detail="Usuário ou senha incorreto")
+# async def login(login: Login):
+#     if login_user(login.email, login.password):
+#         return {
+#             'status': 'Autorizado'
+#         }
+#     else: 
+#         return {
+#             'Error': 'Usuário não cadastrado no sistema'
+#         }
+
+@app.post('/token')
+async def login(form_data: OAuth2PasswordRequestForm = Depends()):
+    print(f'ca:{form_data.username}')
+    user_dict = login_user(form_data.username, form_data.password)
+    if not user_dict:
+        raise HTTPException(status_code=400, detail="Usuário ou senha incorreto")
+    else: 
+        raise HTTPException(status_code=200, detail="Authenticated!")
 
 
 @app.post('/cadastro')
