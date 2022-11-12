@@ -6,6 +6,7 @@ from model.models import Login, User, Cadastro
 
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type, register_user
+
 from queries.utils.service import login_user
 
 app = FastAPI()
