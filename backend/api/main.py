@@ -3,7 +3,7 @@ from pydantic import BaseModel
 
 from queries.queries import get_users_by_type, get_users, get_clubs
 
-class User(BaseModel):
+class Login(BaseModel):
     email: str
     password: str
 
@@ -24,10 +24,9 @@ def users():
 
 
 @app.post('/login')
-async def login(user: User):
-    return user
+async def login(login: Login):
+    return login
 
 
 
-app = FastAPI()
 

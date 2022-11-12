@@ -1,53 +1,8 @@
-from queries.core.db import createDBConnection, executeQuery, executeSelection
+from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
 from queries.utils.service import tutple_to_dict, format_date
 
 from datetime import datetime
 
-connection = createDBConnection("localhost", "root", '', 'betball')
-
-users = {
-    1:{
-    'nickname': '@rodrigo.s.damasceno',
-    "email": "rodrigo.s.damasceno@gmail.com"
-    },
-    2:{
-    'nickname': '@ritakassiane',
-    "email": "ritakassiane@gmail.com"
-    },
-    3:{
-    'nickname': '@pauloqueiroz',
-    "email": "pauloqueiroz@gmail.com"
-    },
-}
-
-# Retorna uma lista com todos os usuário cadastrados.
-# @param tipo de usuário.
-# @return Dicionário. O nickname e email de cada usuário.
-def get_users_by_type(type_):
-    print(type_)
-    return users
-
-
-# @param nome do time, id, e diretório da imagem.
-def add_football_club(name, club_id, image_src):
-    query = f"""
-    INSERT INTO times  VALUES
-    (
-        '{name}', 
-        '{club_id}',
-        '{image_src}'
-    );
-    """
-    executeQuery(connection, query)
-
-
-# Retorna uma lista com todos os times de futebol cadastrados.
-# @return Lista de dicionário. O nome, clube e caminho da imagem.
-def get_clubs():
-    query = """SELECT * FROM times"""
-    clubs = executeSelection(connection, query)
-    clubs_dict = [tutple_to_dict('club_name', 'club_id', 'photo_link',tupla=time) for time in clubs]
-    return clubs_dict
 
 
 # @param nickname, email, e senha.
@@ -74,6 +29,14 @@ def get_users():
     return users_dict
 
 
+# Retorna uma lista com todos os usuário cadastrados.
+# @param tipo de usuário.
+# @return Dicionário. O nickname e email de cada usuário.
+def get_users_by_type(type_):
+    print(type_)
+    return users
+
+
 # @param nickname de um usuário
 def create_collaborator(nickname):
     query = f"""
@@ -94,6 +57,29 @@ def get_collaborators():
     """
     collaborators = executeSelection(connection, query)
     return collaborators
+
+
+# @param nome do time, id, e diretório da imagem.
+def add_football_club(name, club_id, image_src):
+    query = f"""
+    INSERT INTO times  VALUES
+    (
+        '{name}', 
+        '{club_id}',
+        '{image_src}'
+    );
+    """
+    executeQuery(connection, query)
+
+
+# Retorna uma lista com todos os times de futebol cadastrados.
+# @return Lista de dicionário. O nome, clube e caminho da imagem.
+def get_clubs():
+    query = """SELECT * FROM times"""
+    clubs = executeSelection(connection, query)
+    clubs_dict = [tutple_to_dict('club_name', 'club_id', 'photo_link',tupla=time) for time in clubs]
+    return clubs_dict
+
 
 # @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
 def add_game(game_id, collaborator_nick, start_date, end_date, isDone=False):
