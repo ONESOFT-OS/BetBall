@@ -7,9 +7,10 @@ import {Lock} from 'phosphor-react'
 import { Heading } from "../components/Heading";
 import { Logo } from "../assets/Logo";
 import {Link} from 'react-router-dom';
-import { useContext, useState } from "react";
+import { FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../src/contexts/Auth/AuthContext";
+import axios from "axios";
 
 export function SignIn(){
 
@@ -35,13 +36,33 @@ export function SignIn(){
       
   // }
 
+  const [email, setEmail]  = useState('')
+  const [password, setPassword]  = useState('')
+
+  async function handleSignIp(event: FormEvent){
+    event.preventDefault();
+
+    axios({
+        method: 'post',
+        url: 'http://127.0.0.1:8000/token',
+        
+        data: {
+          username: email,
+          password: password
+        }
+      }).then(function (response) {
+        console.log(response)
+      });
+    
+}
+
     return(
         <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
             <header className="mt-4">
                 <Logo/>
             </header>
 
-            <form className="bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
+            <form onSubmit={handleSignIp} className="bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
                     <div className="flex flex-col  w-full max-w-sm gap-4  mt-12 mb-8">
                         <Heading size="lg"> Entrar</Heading>
                         <Text>Entre para acessar sua conta</Text>
@@ -53,7 +74,7 @@ export function SignIn(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
+                    <TextInput.Input value={email} onChange={(e) => setEmail(e.target.value)} type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
                     </TextInput.Root>
                 </label>
 
@@ -63,7 +84,7 @@ export function SignIn(){
                   <TextInput.Icon>
                     <Lock/>
                   </TextInput.Icon>
-                  <TextInput.Input  type='password' id='password' placeholder='********'/>
+                  <TextInput.Input value={password} onChange={(e) => setPassword(e.target.value)} type='password' id='password' placeholder='********'/>
                 </TextInput.Root>
               </label>
 
