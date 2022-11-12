@@ -25,25 +25,23 @@ export function SignUp(){
         else
             setchecked(false)
     }
+
     
     async function handleSignUp(event: FormEvent){
         event.preventDefault();
 
-        
-        // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*';
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/cadastro',
             
             data: {
-              nick: nick,
+              nickname: nick,
               email: email,
               password: password
             }
           }).then(function (response) {
             console.log(response)
           });
-
         
     }
 

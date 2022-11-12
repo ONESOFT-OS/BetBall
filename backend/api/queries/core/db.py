@@ -24,7 +24,6 @@ def executeQuery(connection, query):
         connection.commit()
         return True
     except Error as err:
-        print(f"Error: '{err}'")
         return err
 
 def executeSelection(connection,query):
@@ -34,6 +33,6 @@ def executeSelection(connection,query):
         myresult = cursor.fetchall()
         return myresult
     except Error as err:
-        print(f"Error: '{err}'")
+        return err
 
 connection = createDBConnection("localhost", "root", '', 'betball')

@@ -6,8 +6,11 @@ from model.models import Login, User, Cadastro
 
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type, register_user
+<<<<<<< HEAD
 
 from queries.utils.service import login_user
+=======
+>>>>>>> 114df5f2f2697a1f594af3b3e5d170968aad94e6
 
 app = FastAPI()
 
@@ -18,7 +21,8 @@ origins = [
     "https://localhost.tiangolo.com",
     "http://localhost",
     "http://localhost:8080",
-    "http://localhost:5173"
+    "http://localhost:5173",
+    "http://127.0.0.1:5173"
 ]
 
 app.add_middleware(
@@ -93,4 +97,5 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @app.post('/cadastro')
 async def cadastro(cadastro: Cadastro):
+    print(cadastro.nickname)
     return register_user(cadastro.nickname, cadastro.email, cadastro.password)
