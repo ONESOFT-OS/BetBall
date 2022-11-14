@@ -36,7 +36,7 @@ export function SignIn(){
       
   // }
 
-  const [email, setEmail]  = useState('')
+  const [username, setEmail]  = useState('')
   const [password, setPassword]  = useState('')
 
   async function handleSignIp(event: FormEvent){
@@ -47,9 +47,10 @@ export function SignIn(){
         url: 'http://127.0.0.1:8000/token',
         
         data: {
-          username: email,
+          username: username,
           password: password
         }
+        
       }).then(function (response) {
         console.log(response)
       });
@@ -74,7 +75,7 @@ export function SignIn(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input value={email} onChange={(e) => setEmail(e.target.value)} type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
+                    <TextInput.Input value={username} onChange={(e) => setEmail(e.target.value)} type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'/>
                     </TextInput.Root>
                 </label>
 
