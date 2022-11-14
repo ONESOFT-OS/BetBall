@@ -69,7 +69,7 @@ export function SignUp(){
                     <TextInput.Icon>
                         <User/>
                     </TextInput.Icon>
-                    <TextInput.Input  type='text' id='nick' placeholder='Digite seu Nickname' value={nick} onChange={(e) => setNick(e.target.value)}/>
+                    <TextInput.Input required type='text' id='nick' placeholder='Digite seu Nickname' value={nick} onChange={(e) => setNick(e.target.value)}/>
                     </TextInput.Root>
                 </label>
 
@@ -79,7 +79,7 @@ export function SignUp(){
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
-                    <TextInput.Input  type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail' value={email} onChange={(e) => setEmail(e.target.value)}/>
+                    <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail' value={email} onChange={(e) => setEmail(e.target.value)}/>
                     </TextInput.Root>
                 </label>
 
@@ -89,7 +89,7 @@ export function SignUp(){
                   <TextInput.Icon>
                     <Lock/>
                   </TextInput.Icon>
-                  <TextInput.Input type='password' id='password' placeholder='********' value={password} onChange={(e) => setPassword(e.target.value)}/>
+                  <TextInput.Input required minLength={8} type='password' id='password' placeholder='********' value={password} onChange={(e) => setPassword(e.target.value)}/>
                 </TextInput.Root>
               </label>
 
