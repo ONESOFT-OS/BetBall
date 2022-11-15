@@ -6,7 +6,7 @@ import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { TextInput } from "../components/TextInput";
 import { Text } from "../components/Text";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { FormEvent, useRef, useState } from "react";
 import axios from "axios";
 
@@ -17,10 +17,12 @@ export function SignUp(){
     const [email, setEmail]  = useState('')
     const [password, setPassword]  = useState('')
     const [ischecked, setchecked] = useState(true)
+    const [isSignup, setSignUp] = useState(false)
+    const [isValid, setValid] = useState(true)
 
     function check(){
-        const teste = document.getElementById('remember')
-        if(teste?.ariaChecked === 'true') 
+        const checkbox = document.getElementById('remember');
+        if(checkbox?.ariaChecked === 'true') 
             setchecked(true)
         else
             setchecked(false)
@@ -30,24 +32,36 @@ export function SignUp(){
     async function handleSignUp(event: FormEvent){
         event.preventDefault();
 
-        axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/cadastro',
-            
-            data: {
-              nickname: nick,
-              email: email,
-              password: password
-            }
-          }).then(function (response) {
-            console.log(response)
-          });
-        
+        if(ischecked){          
+          axios({
+              method: 'post',
+              url: 'http://127.0.0.1:8000/cadastro',
+              
+              data: {
+                nickname: nick,
+                email: email,
+                password: password
+              }
+            }).then(function (response) {
+              if(response.data === true){
+                setSignUp(true)
+                setValid(true)
+              }
+              else{
+                setValid(false)
+                setSignUp(false)
+              }
+            });
+        }
     }
 
     
     return(
+
         <div className="w-full h-full bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
+          {isSignup && (
+            <Navigate to="/" replace={true} />
+          )}
             <header>
                 <Link to={"/"}>   
                     <Logo className="pt-3"/>
@@ -65,17 +79,17 @@ export function SignUp(){
 
                 <label htmlFor='text' className='flex flex-col gap-3 w-full max-w-sm'>
                     <Text size="sm" className='font-semibold'>Nickname</Text>
-                    <TextInput.Root>
+                    <TextInput.Root valid={isValid}>
                     <TextInput.Icon>
                         <User/>
                     </TextInput.Icon>
-                    <TextInput.Input required type='text' id='nick' placeholder='Digite seu Nickname' value={nick} onChange={(e) => setNick(e.target.value)}/>
+                    <TextInput.Input autoComplete="off" name="nick" required type='text' id='nick' placeholder='Digite seu Nickname'  value={nick} onChange={(e) => setNick(e.target.value)}/>
                     </TextInput.Root>
                 </label>
 
                 <label htmlFor='email' className='flex flex-col gap-3 w-full max-w-sm'>
                     <Text size="sm" className='font-semibold'>Endereço de e-mail</Text>
-                    <TextInput.Root>
+                    <TextInput.Root valid={isValid}>
                     <TextInput.Icon>
                         <Envelope/>
                     </TextInput.Icon>
@@ -84,8 +98,8 @@ export function SignUp(){
                 </label>
 
               <label htmlFor='password' className='flex flex-col gap-3 w-full max-w-sm'>
-                <Text size="sm" className='font-semibold'>Sua senha</Text>
-                <TextInput.Root>
+                <Text size="sm" className='font-semibold ' >Sua senha</Text>
+                <TextInput.Root valid={true} >
                   <TextInput.Icon>
                     <Lock/>
                   </TextInput.Icon>
@@ -98,7 +112,8 @@ export function SignUp(){
                 <Text size='sm' className='text-white'>Ao se cadastrar no BetBall, você concorda com nossos termos de serviço e confirma ter 18 anos ou mais.</Text>
                 
               </label>
-              <div>{!ischecked && <Text className=" text-green-500 "> Checagem obrigatória</Text>}</div>
+              <div>{!ischecked && <Text className=" text-green-500 "> Checagem obrigatória</Text>
+              }</div>
 
               <Button onClick={check} type='submit' className='mt-4 mb-12 w-fit' >Entrar na plataforma</Button>
             </form>

@@ -1,7 +1,7 @@
 # from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
 
 
-from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
+from queries.core.db import  executeQuery, executeSelection, connection
 # from utils.service import tutple_to_dict, format_date
 
 from queries.utils.service import tutple_to_dict

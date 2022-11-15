@@ -1,5 +1,3 @@
-
-from select import select
 from core.db import createDBConnection, executeQuery, executeSelection
 from core.env import DB_USER, DB_PASSWORD, DB_HOST, DB_NAME
 

@@ -35,4 +35,4 @@ def executeSelection(connection,query):
     except Error as err:
         return err
 
-connection = createDBConnection("localhost", "root", '', 'betball')
+connection = createDBConnection("localhost", "root", "", "betball")
