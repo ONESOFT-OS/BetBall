@@ -5,8 +5,9 @@ from fastapi.middleware.cors import CORSMiddleware
 from model.models import Login, User, Cadastro
 
 from queries.queries import get_clubs
-from queries.users import get_users, get_users_by_type, register_user
+from queries.users import get_users, get_users_by_type
 from queries.users import login_user
+from queries.cadastro import register_user, register_apostador
 
 app = FastAPI()
 
@@ -91,7 +92,10 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
         raise HTTPException(status_code=200, detail="Authenticated!")
 
 
-@app.post('/cadastro')
+@app.post('/cadastro/apostador')
 async def cadastro(cadastro: Cadastro):
-    print(cadastro.nickname)
-    return register_user(cadastro.nickname, cadastro.email, cadastro.password)
+    result = register_user(cadastro.nickname, cadastro.email, cadastro.password)
+    if result == True:
+         return register_apostador(cadastro.nickname)
+    else:
+        return result

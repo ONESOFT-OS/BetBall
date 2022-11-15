@@ -35,7 +35,7 @@ export function SignUp(){
         if(ischecked){          
           axios({
               method: 'post',
-              url: 'http://127.0.0.1:8000/cadastro',
+              url: 'http://127.0.0.1:8000/cadastro/apostador',
               
               data: {
                 nickname: nick,
@@ -79,11 +79,11 @@ export function SignUp(){
 
                 <label htmlFor='text' className='flex flex-col gap-3 w-full max-w-sm'>
                     <Text size="sm" className='font-semibold'>Nickname</Text>
-                    <TextInput.Root valid={isValid}>
+                    <TextInput.Root valid={isValid} >
                     <TextInput.Icon>
                         <User/>
                     </TextInput.Icon>
-                    <TextInput.Input autoComplete="off" name="nick" required type='text' id='nick' placeholder='Digite seu Nickname'  value={nick} onChange={(e) => setNick(e.target.value)}/>
+                    <TextInput.Input autoComplete="off" required type='text' id='nick' placeholder='Digite seu Nickname'  value={nick} onChange={(e) => setNick(e.target.value)}  />
                     </TextInput.Root>
                 </label>
 

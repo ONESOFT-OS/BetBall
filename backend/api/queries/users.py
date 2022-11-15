@@ -9,19 +9,6 @@ from queries.utils.service import tutple_to_dict
 from datetime import datetime
 
 
-# @param nickname, email, e senha.
-def register_user(nickname, email, password):
-    query = f"""
-    INSERT INTO usuario (nickname, email, senha) VALUES
-    (
-        '{nickname}',
-        '{email}',
-        '{password}'
-    );
-    """
-    return executeQuery(connection, query)
-
-
 # Retorna uma lista com todos os usuários cadastrados.
 # @return Lista de dicionário. O nome, clube e caminho da imagem.
 def get_users():
