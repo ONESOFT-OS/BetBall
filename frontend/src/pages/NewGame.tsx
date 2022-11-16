@@ -37,30 +37,6 @@ export function NewGame() {
 
     const { team } = useTeam();
 
-    const [rightTeam, setRightTeam] = useState(team[0]);
-    const [leftTeam, setLeftTeam] = useState(team[1]);
-
-
-    const handleTeamUpdate = (event : any) => {
-        var newTeam : ITeam = {
-            idTeam : "",
-            name : "",
-            icon : "",
-        };
-        for (let index = 0; index < team.length; index++) {
-            newTeam = team[index];
-            if (newTeam.idTeam == event.target.value){
-                break;
-            }
-        }
-
-        if (event.target.id == "leftTeamSelect"){
-            setLeftTeam(newTeam);
-        } else {
-            setRightTeam(newTeam);
-        }
-    };
-
     const sendNewGame = (event : any) => {
         event.preventDefault();
         console.log(game);
@@ -104,6 +80,7 @@ export function NewGame() {
                                         ...game,
                                         idTime1 : event.target.value
                                     })}>
+                            <option value="">--Selecione um time--</option>
                             {team.map((team) => <option value={team.idTeam}> {team.name} </option>)}
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
