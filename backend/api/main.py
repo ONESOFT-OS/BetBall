@@ -9,6 +9,7 @@ from queries.users import get_users, get_users_by_type
 from queries.users import login_user
 from queries.cadastro import register_user, register_apostador
 
+from providers.hash_provider import generate_hash
 app = FastAPI()
 
 oauth2_scheme = OAuth2PasswordBearer(tokenUrl="token")
@@ -83,7 +84,9 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @app.post('/cadastro/apostador')
 async def cadastro(cadastro: Cadastro):
-    result = register_user(cadastro.nickname, cadastro.email, cadastro.password)
+    password = generate_hash(cadastro.password)
+    print(password)
+    result = register_user(cadastro.nickname, cadastro.email, password)
     if result == True:
          return register_apostador(cadastro.nickname)
     else:
