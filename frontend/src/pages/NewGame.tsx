@@ -65,7 +65,7 @@ export function NewGame() {
                         </div>
                     </div>
                     <div className="flex justify-center pt-12">
-                        <Button type='submit' onClick={sendNewGame} className='mt-4 min-w-fit max-w-xs'>Salvar</Button>
+                        <Button type='submit'  className='mt-4 min-w-fit max-w-xs'>Salvar</Button>
                     </div>
                 </form>
             </div>
