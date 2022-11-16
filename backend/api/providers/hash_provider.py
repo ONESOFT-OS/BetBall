@@ -13,11 +13,3 @@ def generate_hash(password):
 # @return Boolean. 
 def verify_hash(password, _hash):
     return pwd_context.verify(password, _hash)
-
-_hash = generate_hash('password')
-print(_hash)
-
-print("Verificando")
-
-verificando = verify_hash('password', _hash)
-print(verificando)
