@@ -12,6 +12,19 @@ def register_user(nickname, email, password):
     """
     return executeQuery(connection, query)
 
+
+# @param nickname de um usuário
+def register_collaborator(nickname):
+    query = f"""
+    INSERT INTO colaborador VALUES
+    (
+        '{nickname}',
+        'False'
+    );
+    """
+    executeQuery(connection, query)
+
+
 def register_apostador(nickname):
     query = f"""
         INSERT INTO apostador (nickname, credito) VALUES

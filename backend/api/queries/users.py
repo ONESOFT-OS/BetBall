@@ -1,12 +1,5 @@
-# from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
-
-
 from queries.core.db import  executeQuery, executeSelection, connection
-# from utils.service import tutple_to_dict, format_date
-
 from queries.utils.service import tutple_to_dict
-
-from datetime import datetime
 
 
 # Retorna uma lista com todos os usuários cadastrados.
@@ -42,23 +35,12 @@ def login_user(email, password):
     else:
          return None
 
+
 # Retorna uma lista com todos os usuário cadastrados.
 # @param tipo de usuário.
 # @return Dicionário. O nickname e email de cada usuário.
 def get_users_by_type(type_):
     pass
-
-
-# @param nickname de um usuário
-def create_collaborator(nickname):
-    query = f"""
-    INSERT INTO colaborador VALUES
-    (
-        '{nickname}',
-        'False'
-    );
-    """
-    executeQuery(connection, query)
 
 
 # Retorna uma lista com todos os colaboradores cadastrados.
@@ -69,5 +51,3 @@ def get_collaborators():
     """
     collaborators = executeSelection(connection, query)
     return collaborators
-
-print(login_user('ritakassiasane@gmail.com', '100000'))
