@@ -41,20 +41,19 @@ export function SignIn(){
 
   async function handleSignIp(event: FormEvent){
     event.preventDefault();
+    
+    var bodyFormData = new FormData();
+    bodyFormData.append('username', username);
+    bodyFormData.append('password', password);
 
     axios({
         method: 'post',
         url: 'http://127.0.0.1:8000/token',
-        
-        data: {
-          username: username,
-          password: password
-        }
-        
+        data: bodyFormData,
+        headers: { "Content-Type": "multipart/form-data" },
       }).then(function (response) {
         console.log(response)
       });
-    
 }
 
     return(
