@@ -19,7 +19,15 @@ def get_user_by_email(email):
     WHERE email = '{email}'
     """
     user = executeSelection(connection, query)
+    print(user)
     return user
+
+
+def user_exists(email):
+    if len(get_user_by_email(email))==0:
+        return False    
+    else:
+        return True
 
 
 def login_user(email, password):
