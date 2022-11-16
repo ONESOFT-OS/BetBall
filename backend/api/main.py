@@ -71,17 +71,6 @@ async def users():
     return users[id]
 
 
-# @app.post('/login')
-# async def login(login: Login):
-#     if login_user(login.email, login.password):
-#         return {
-#             'status': 'Autorizado'
-#         }
-#     else: 
-#         return {
-#             'Error': 'Usuário não cadastrado no sistema'
-#         }
-
 @app.post('/token')
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     print(f'ca:{form_data.username}')
