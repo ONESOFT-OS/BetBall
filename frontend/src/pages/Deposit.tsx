@@ -1,6 +1,8 @@
+import { SelectIcon } from "@radix-ui/react-select";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
+import { Select } from "../components/Select";
 import { Text } from "../components/Text";
 
 export function Deposit(){
@@ -17,8 +19,8 @@ export function Deposit(){
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/'}>Sacar</Link></Text>
                 </div>
 
-                <div>
-                    
+                <div className="flex h-12 w-60 mt-10 ml-12">
+                    <Select />
                 </div>
             </div>
         </div>
