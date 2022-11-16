@@ -11,6 +11,7 @@ module.exports = {
       lg: 20,
       xl: 24,
       '2xl': 32,
+      '4xl': 48,
     },
 
     colors:{

@@ -3,6 +3,7 @@ import { ForgotPassword } from '../pages/ForgotPassword';
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
 import { NewGame } from "../pages/NewGame";
+import { Deposit } from '../pages/Deposit';
 
 export const RoutesBase = () => {
    return(
@@ -12,6 +13,7 @@ export const RoutesBase = () => {
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newgame" element={<NewGame />} />
+            <Route path="/deposit" element={<Deposit/>}/>
         </Routes>
      </BrowserRouter>
    )

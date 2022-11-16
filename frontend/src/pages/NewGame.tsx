@@ -30,7 +30,7 @@ export function NewGame() {
                 <form className="mx-16 my-16 flex flex-col justify-evenly">
                     <div className="flex justify-between">
                         <Heading classname="text-5xl">Novo Jogo</Heading>
-                        <button className="bg-black bg-opacity-50 text-white ring-2 ring-green-700 hover:bg-opacity-20 hover:bg-green-700 rounded-full px-[19px]" type="button">X</button>
+                        <Button mode="closer" className=" px-[19px]">X</Button>
                     </div>
                     <div className="flex justify-center pt-3">
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
