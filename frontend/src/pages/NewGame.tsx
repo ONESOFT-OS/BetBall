@@ -12,9 +12,17 @@ export interface Game{
     idTime2 : string;
 }
 
-export function getURL(team : ITeam){
-    //incompleta
-    return;
+export function getURL(team : ITeam[], id : string){
+    var url : string = "";
+
+    for (let index = 0; index < team.length; index++) {
+        const element = team[index];
+        if (element.idTeam == id) {
+            url = element.icon;
+            break;
+        }
+    }
+    return url;
 }
 
 export function NewGame() {
@@ -55,7 +63,7 @@ export function NewGame() {
 
     const sendNewGame = (event : any) => {
         event.preventDefault();
-        console.log(event.target);
+        console.log(game);
     }
 
     return(
@@ -74,7 +82,7 @@ export function NewGame() {
                     <div className="flex justify-center pt-3">
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
                             <img className="scale-75" 
-                                 src={leftTeam.icon}/>
+                                 src={getURL(team, game.idTime1)}/>
                         </div>
                         <div className="items-center flex flex-col justify-center">
                             <p className="text-white mx-4">
@@ -83,7 +91,7 @@ export function NewGame() {
                         </div>
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
                             <img className="scale-75" 
-                                 src={rightTeam.icon}/>
+                                 src={getURL(team, game.idTime2)}/>
                         </div>
                     </div>
 
@@ -91,13 +99,21 @@ export function NewGame() {
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96" 
                                 name="TimeEsquerda" 
                                 id="leftTeamSelect" 
-                                onChange={handleTeamUpdate}>
+                                onChange={(event) => 
+                                    setGame({
+                                        ...game,
+                                        idTime1 : event.target.value
+                                    })}>
                             {team.map((team) => <option value={team.idTeam}> {team.name} </option>)}
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
                                 name="TimeDireita" 
                                 id="rightTeamSelect" 
-                                onChange={handleTeamUpdate}>
+                                onChange={(event) => 
+                                    setGame({
+                                        ...game,
+                                        idTime2 : event.target.value
+                                    })}>
                             {team.map((team) => <option value={team.idTeam}> {team.name} </option>)}
                         </select>
                     </div>
