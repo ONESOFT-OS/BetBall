@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
 import { Select } from "../components/Select";
+import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 
 export function Deposit(){
@@ -20,7 +21,8 @@ export function Deposit(){
                 </div>
 
                 <div className="flex h-12 w-60 mt-10 ml-12">
-                    <Select />
+                    {/* <Select /> */}
+                    <SelectM/>
                 </div>
             </div>
         </div>
