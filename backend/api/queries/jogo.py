@@ -3,21 +3,47 @@ from queries.utils.service import format_date
 
 
 # @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
-def add_game(game_id, collaborator_nick, start_date, end_date, isDone=False):
+def add_game(collaborator_nick, end_date, isDone=False, id_team1, id_team2):
     print('ADD GAME')
-    datas = format_date(start_date)
-    datae = format_date(end_date)
-    query = f"""
-    INSERT INTO jogos VALUES
+    date = format_date(end_date)
+    queryNewGame = f"""
+    INSERT INTO jogos (nick_colaborador, data_fim_aposta, isDone) VALUES
     (
-        '{game_id}',
         '{collaborator_nick}',
-        '{datas}',
-        '{datae}',
+        '{date}',
         '{isDone}'
     );
     """
-    executeQuery(connection, query)
+    executeQuery(connection, queryNewGame)
+
+    queryGetNewGame = f"""
+    SELECT MAX (id_jogo)
+    FROM jogos
+    """
+    newGame = executeSelection(connection, queryGetNewGame)
+    id_NewGame = newGame.index(0)[0]
+
+    queryNewParticipation = f"""
+    INSERT INTO participacao (id_time, id_jogo) VALUES
+    (
+        '{id_team1}',
+        '{id_NewGame}',
+    );
+    """
+    executeQuery(connection, queryNewParticipation)
+
+    queryNewParticipation = f"""
+    INSERT INTO participacao (id_time, id_jogo) VALUES
+    (
+        '{id_team2}',
+        '{id_NewGame}',
+    );
+    """
+    executeQuery(connection, queryNewParticipation)
+
+
+
+
 
 def list_game_by_id(game_id):
     query = f"""
