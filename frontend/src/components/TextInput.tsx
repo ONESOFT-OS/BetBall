@@ -7,14 +7,15 @@ import { InputHTMLAttributes, ReactNode } from "react";
 export interface TextInputRootProps{
     children: ReactNode;
     valid?: boolean;
+    className?: string;
 }
 
-function TextInputRoot({valid = true, children}: TextInputRootProps){
+function TextInputRoot({valid = true, children, className}: TextInputRootProps){
     return(
         <div className={clsx(" flex items-center gap-3 h-12 py-4 px-3 rounded bg-gray-800 w-full  text-white text-xs placeholder:text-gray-900",
         {   "focus-within:ring-2 ring-green-500": valid === true,
             "border-2 border-red-800 ": valid === false,
-        })}>
+        }, className)}>
             {children}
         </div>
     )

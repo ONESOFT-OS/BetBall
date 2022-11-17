@@ -13,7 +13,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     borderRadius: 4,
     position: 'relative',
-    backgroundColor: "#78BA22",
+    backgroundColor: "#1E1E1E",
     border: '1px solid #ced4da',
     fontSize: 16,
     padding: '10px 26px 10px 12px',
@@ -53,7 +53,7 @@ export function SelectM(props:SelectProps) {
 
   return (
     <div>
-      <FormControl sx={{ m: 1, minWidth: 130  }}>
+      <FormControl sx={{ m: 1, minWidth: 250  }}>
         <InputLabel id="demo-simple-select-autowidth-label" >{props.defaultText}</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
