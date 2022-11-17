@@ -34,7 +34,7 @@ export function Select(props: SelectProps) {
                   key={`${f}-${i}`}
                   value={f.toLowerCase()}
                   className={cx(
-                    "relative flex items-center px-8 py-2 rounded-md text-sm text-gray-700 dark:text-gray-300 font-medium focus:bg-gray-100 dark:focus:bg-gray-900",
+                    "relative flex items-center px-8 py-2 rounded-md text-sm text-white font-medium focus:bg-gray-500 dark:focus:bg-gray-900",
                     "radix-disabled:opacity-50",
                     "focus:outline-none select-none"
                   )}
