@@ -16,6 +16,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     backgroundColor: "#1E1E1E",
     border: '1px solid #ced4da',
     fontSize: 16,
+    color: '#FFF',
     padding: '10px 26px 10px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
     // Use the system font instead of the default Roboto font.
@@ -34,7 +35,7 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
     '&:focus': {
       borderRadius: 4,
       borderColor: '#FFF',
-      boxShadow: '0 0 0 0.2rem rgba(0,123,255,.25)',
+      boxShadow: '0 0 0 0.2rem rgba(0,123,100,.25)',
     },
   },
 }));
@@ -54,7 +55,7 @@ export function SelectM(props:SelectProps) {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 250  }}>
-        <InputLabel id="demo-simple-select-autowidth-label" >{props.defaultText}</InputLabel>
+        <InputLabel id="demo-simple-select-autowidth-label" color='success' >{props.defaultText}</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
@@ -63,7 +64,6 @@ export function SelectM(props:SelectProps) {
           autoWidth
           label="Age"
           input={<BootstrapInput />}
-          
         >
           {props.children}
         </Select>

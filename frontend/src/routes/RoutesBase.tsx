@@ -6,6 +6,7 @@ import { NewGame } from "../pages/NewGame";
 import { Deposit } from '../pages/Deposit';
 import { Historic } from '../pages/Historic';
 import {Bet} from "../pages/Bet";
+import { Withdraw } from '../pages/Withdraw';
 
 export const RoutesBase = () => {
    return(
@@ -18,6 +19,7 @@ export const RoutesBase = () => {
             <Route path="/deposit" element={<Deposit/>}/>
             <Route path="/historic" element={<Historic/>}/>
             <Route path="/bet" element={<Bet/>}/>
+            <Route path="/withdraw" element={<Withdraw/>}/>
         </Routes>
      </BrowserRouter>
    )
