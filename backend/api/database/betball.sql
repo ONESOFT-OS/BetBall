@@ -28,8 +28,7 @@ CREATE TABLE `colaborador` (
 CREATE TABLE `jogos` (
     `id_jogo` varchar(50) PRIMARY KEY AUTO_INCREMENT,
     `nick_colaborador` varchar(50),
-    `data_fim_aposta` date,
-    `data_jogo` date,
+    `data_fim_aposta` datetime,
     `isDone` boolean
 ) DEFAULT CHARSET=utf8mb4;
 
@@ -40,8 +39,8 @@ CREATE TABLE `times` (
 ) DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `participacao` (
-    `id_time` varchar(50),
-    `id_jogo` varchar(50),
+    `id_time` varchar(50) PRIMARY KEY,
+    `id_jogo` varchar(50) PRIMARY KEY,
     `gols` int DEFAULT 0
 ) DEFAULT CHARSET=utf8mb4;
 
