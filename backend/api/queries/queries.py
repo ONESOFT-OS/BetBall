@@ -29,9 +29,9 @@ def get_clubs():
 
 # Retorna uma lista com todas as apostas salvas.
 # Retorna o nickname, o valor da aposta e o time apostado
-def get_aposta():
+def get_apostas():
     query = """
     SELECT * FROM aposta
     """
-    apostas = users = executeSelection(connection, query)
+    apostas = executeSelection(connection, query)
     return apostas

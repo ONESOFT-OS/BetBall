@@ -17,11 +17,14 @@ def add_game(game_id, collaborator_nick, start_date, end_date, isDone=False):
         '{isDone}'
     );
     """
-    executeQuery(connection, query)
+    if executeQuery(connection, query):
+        return True
+    else:
+        return False
+
 
 def list_game_by_id(game_id):
     query = f"""
         SELECT * FROM jogos WHERE id_jogo = '{game_id}'
     """
-
     executeQuery(connection, query)
