@@ -113,7 +113,7 @@ const CreateUser = () => {
             </TextInput.Root>
           </label>
 
-          <label htmlFor="userType" className="flex flex-col gap-3 w-full-w-sm">
+          <label htmlFor="userType" className="flex flex-col gap-3 w-full max-w-sm">
             <Text size={"sm"} className={"font-semibold"}>
               Tipo de Usuário
             </Text>
