@@ -84,9 +84,9 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
 
 @app.post('/cadastro/apostador')
 async def cadastro(cadastro: Cadastro):
-    password = generate_hash(cadastro.password)
-    print(password)
-    result = register_user(cadastro.nickname, cadastro.email, password)
+    # password = generate_hash(cadastro.password)
+    # print(password)
+    result = register_user(cadastro.nickname, cadastro.email, cadastro.password)
     if result == True:
          return register_apostador(cadastro.nickname)
     else:
