@@ -3,6 +3,8 @@ import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Text } from "../components/Text";
 import { ITeam, useTeam } from "../hooks/useTeam";
+import axios from "axios";
+import { Key } from "phosphor-react";
 
 export interface Game{
     nickColaborador : string;
@@ -39,7 +41,18 @@ export function NewGame() {
 
     const sendNewGame = (event : any) => {
         event.preventDefault();
-        console.log(game);
+        /*
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/cadastro/apostador',
+            
+            data: {
+              nickname: nick,
+              email: email,
+              password: password
+            }
+          })
+        */
     }
 
     return(
@@ -80,8 +93,8 @@ export function NewGame() {
                                         ...game,
                                         idTime1 : event.target.value
                                     })}>
-                            <option value="">--Selecione um time--</option>
-                            {team.map((team) => <option value={team.idTeam}> {team.name} </option>)}
+                            <option value="" key={""}>--Selecione Time--</option>
+                            {team.map((team) => <option value={team.idTeam} key={team.idTeam}> {team.name} </option>)}
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
                                 name="TimeDireita" 
@@ -91,7 +104,8 @@ export function NewGame() {
                                         ...game,
                                         idTime2 : event.target.value
                                     })}>
-                            {team.map((team) => <option value={team.idTeam}> {team.name} </option>)}
+                            <option value="" key={""}>--Selecione Time--</option>
+                            {team.map((team) => <option value={team.idTeam} key={team.idTeam}> {team.name} </option>)}
                         </select>
                     </div>
 
