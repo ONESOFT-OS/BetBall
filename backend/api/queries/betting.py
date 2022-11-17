@@ -17,9 +17,9 @@ def find_by_game_id(_id):
     """
     executeQuery(connection, query)
 
+
 def indexAll():
     query = f""" SELECT * FROM apostas; """
-
     executeQuery(connection, query)
 
 
@@ -34,10 +34,9 @@ def update(nickname, id_jogo, credito_apost, valor_aposta, valor_ganho):
     )
     WHERE id_jogo =  '{id_jogo}'
     """
-
     executeQuery(connection, query)
+
 
 def delete(self, id_jogo):
     query = f""" DELETE FROM apostas WHERE id_jogo = '{id_jogo}' """
-
     executeQuery(connection, query)
