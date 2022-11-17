@@ -6,7 +6,7 @@ import { InputHTMLAttributes, ReactNode } from "react";
 
 export interface TextInputRootProps{
     children: ReactNode;
-    valid?: boolean
+    valid?: boolean;
 }
 
 function TextInputRoot({valid = true, children}: TextInputRootProps){
