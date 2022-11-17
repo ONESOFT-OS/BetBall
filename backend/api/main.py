@@ -2,12 +2,12 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
-from model.models import Login, User, Cadastro, Game
+from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin
 
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
-from queries.register import register_user, register_apostador
+from queries.register import register_user, register_apostador, register_admin, register_collaborator
 from queries.game import add_game
 
 from random import randint
@@ -50,7 +50,7 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = login_user(form_data.username, form_data.password)
     if not user_dict:
         raise HTTPException(status_code=400, detail="Usuário ou senha incorreto")
-    else: 
+    else:
         raise HTTPException(status_code=200, detail="Authenticated!")
 
 
@@ -70,6 +70,17 @@ async def register_game(game: Game):
             "nickname": game.collaborator_nickname,
         }
         raise HTTPException(status_code=200, detail=f"{data}")
-    else: 
+    else:
         raise HTTPException(status_code=400, detail="O Jogo ja existe")
 
+
+@app.post('/register/user')
+async def registerUser(user: CadastroColaboratorAdmin):
+    result = register_user(user.nickname, user.email, user.password)
+
+    if(user.isAdmin == 1):
+        result = register_admin(user.nickname)
+    else:
+        result = register_collaborator(user.nickname)
+
+    return result

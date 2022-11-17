@@ -19,7 +19,7 @@ def register_collaborator(nickname):
     INSERT INTO colaborador VALUES
     (
         '{nickname}',
-        'False'
+        0
     );
     """
     executeQuery(connection, query)
@@ -32,5 +32,15 @@ def register_apostador(nickname):
             '{nickname}',
             '{0}'
         )
+    """
+    return executeQuery(connection, query)
+
+def register_admin(nickname):
+    query = f"""
+    INSERT INTO colaborador VALUES
+    (
+        '{nickname}',
+        1
+    );
     """
     return executeQuery(connection, query)

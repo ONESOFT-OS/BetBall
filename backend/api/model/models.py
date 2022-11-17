@@ -17,8 +17,13 @@ class Cadastro(BaseModel):
     email: str
     password: str
 
+class CadastroColaboratorAdmin(BaseModel):
+    nickname: str
+    email: str
+    password: str
+    isAdmin: int
+
 class Game(BaseModel):
     collaborator_nickname: str
     start_datetime: str
     end_datetime: str
-

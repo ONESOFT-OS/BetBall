@@ -7,6 +7,8 @@ import { Deposit } from '../pages/Deposit';
 import { Historic } from '../pages/Historic';
 import {Bet} from "../pages/Bet";
 import { Withdraw } from '../pages/Withdraw';
+import { CreateUser } from '../pages/CreateUser';
+
 
 export const RoutesBase = () => {
    return(
@@ -20,8 +22,8 @@ export const RoutesBase = () => {
             <Route path="/historic" element={<Historic/>}/>
             <Route path="/bet" element={<Bet/>}/>
             <Route path="/withdraw" element={<Withdraw/>}/>
+            <Route path="/user/create" element={<CreateUser/>} />
         </Routes>
      </BrowserRouter>
    )
 }
-
