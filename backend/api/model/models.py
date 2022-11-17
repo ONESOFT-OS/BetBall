@@ -19,5 +19,6 @@ class Cadastro(BaseModel):
 
 class Game(BaseModel):
     collaborator_nickname: str
+    start_datetime: str
     end_datetime: str
-    is_done: bool
+
