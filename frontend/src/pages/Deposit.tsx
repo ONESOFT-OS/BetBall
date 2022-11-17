@@ -1,8 +1,9 @@
+import { MenuItem } from "@mui/material";
 import { SelectIcon } from "@radix-ui/react-select";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
-import { Select } from "../components/Select";
+import { SelectR } from "../components/SelectR";
 import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 
@@ -21,8 +22,12 @@ export function Deposit(){
                 </div>
 
                 <div className="flex h-12 w-60 mt-10 ml-12">
-                    {/* <Select /> */}
-                    <SelectM/>
+                    {/* <SelectR /> */}
+                    <SelectM>
+                        <MenuItem value={1}>Pix</MenuItem>
+                        <MenuItem value={2}>Cartão de Crédito</MenuItem>
+                        <MenuItem value={3}>Transferência bancária</MenuItem>
+                    </SelectM>
                 </div>
             </div>
         </div>

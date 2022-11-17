@@ -8,9 +8,9 @@ import cx from  "classnames";
 import React from "react";
 import {Button} from "./Button";
 
-export interface SelectProps extends SelectPrimitive.SelectProps{}
+export interface SelectRProps extends SelectPrimitive.SelectProps{}
 
-export function Select(props: SelectProps) {
+export function SelectR(props: SelectRProps) {
   return (
     <SelectPrimitive.Root  defaultValue="Teste"  >
       <SelectPrimitive.Trigger asChild aria-label="Pagamento" >
