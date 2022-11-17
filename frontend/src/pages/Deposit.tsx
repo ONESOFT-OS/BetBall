@@ -23,7 +23,7 @@ export function Deposit(){
 
                 <div className="flex h-12 w-60 mt-10 ml-12">
                     {/* <SelectR /> */}
-                    <SelectM>
+                    <SelectM defaultText="Pagamento">
                         <MenuItem value={1}>Pix</MenuItem>
                         <MenuItem value={2}>Cartão de Crédito</MenuItem>
                         <MenuItem value={3}>Transferência bancária</MenuItem>

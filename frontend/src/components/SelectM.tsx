@@ -39,11 +39,12 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export interface SelecProps{
+export interface SelectProps{
   children: ReactNode
+  defaultText: string
 }
 
-export function SelectM(props:SelecProps) {
+export function SelectM(props:SelectProps) {
   const [age, setAge] = React.useState('');
 
   const handleChange = (event: SelectChangeEvent) => {
@@ -53,7 +54,7 @@ export function SelectM(props:SelecProps) {
   return (
     <div>
       <FormControl sx={{ m: 1, minWidth: 130  }}>
-        <InputLabel id="demo-simple-select-autowidth-label" >Pagamento</InputLabel>
+        <InputLabel id="demo-simple-select-autowidth-label" >{props.defaultText}</InputLabel>
         <Select
           labelId="demo-simple-select-autowidth-label"
           id="demo-simple-select-autowidth"
