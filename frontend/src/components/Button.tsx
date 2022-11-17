@@ -17,7 +17,7 @@ export function Button({ mode = 'default', children, asChild, className, ...prop
 
        {'py-3 px-4 bg-green-700 rounded-xl text-sm w-full transition-colors hover:bg-green-900 focus:ring-2 ring-white': mode === 'default', 
 
-        'bg-black bg-opacity-50  ring-2 ring-green-700 hover:bg-opacity-20 hover:bg-green-700 rounded-full': mode === 'closer'}
+        'bg-black bg-opacity-50  ring-2 ring-green-700 hover:bg-opacity-20 hover:bg-green-700 rounded-full px-4 py-2': mode === 'closer'}
 
         ,className
         )}

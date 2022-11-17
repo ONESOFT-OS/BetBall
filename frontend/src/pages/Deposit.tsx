@@ -13,7 +13,7 @@ export function Deposit(){
                 <div className="bg-black w-[1000px] h-[500px] min-h-max min-w-max flex flex-col rounded-2xl opacity-70">
                 <header className="flex flex-row justify-between pt-12 px-10">
                     <Heading size="xlg"> Carteira</Heading>
-                    <Button mode="closer" className="px-4">X</Button>
+                    <Button mode="closer">X</Button>
                 </header>
 
                 <div className="flex flex-row pt-2 px-12 space-x-8">

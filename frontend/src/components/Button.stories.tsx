@@ -6,10 +6,24 @@ export default{
     component: Button,
     args: {
         children: 'Create account',
+        mode: 'default',
     },
-    argTypes:{}
+    argTypes:{
+        children: {
+            table:{
+                disable:true
+            }
+        },
+    }
     
 }as Meta<ButtonProps>
 
 export const Default: StoryObj<ButtonProps> = {}
+
+export const Closer: StoryObj<ButtonProps> = {
+    args:{
+        children: 'X',
+        mode:'closer',
+    }
+}
 
