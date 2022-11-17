@@ -19,6 +19,7 @@ import {
     Tbody,
     Td,
     useBreakpointValue,
+    ChakraProvider,
   } from "@chakra-ui/react";
   import { useEffect} from "react";
   import ModalComp from "../components/ModalComp";
@@ -66,6 +67,7 @@ export function Bet() {
 
 
     return(
+      <ChakraProvider>
     <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
     <div className="bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col justify-center rounded-2xl gap-3">
         <Flex
@@ -134,7 +136,7 @@ export function Bet() {
           setDataEdit={setDataEdit}
         />
       )}</Flex></div></div> 
-    
+      </ChakraProvider>
   );
 };
        

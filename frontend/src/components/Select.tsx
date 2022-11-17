@@ -12,25 +12,25 @@ export interface SelectProps extends SelectPrimitive.SelectProps{}
 
 export function Select(props: SelectProps) {
   return (
-    <SelectPrimitive.Root defaultValue="Pix"  >
-      <SelectPrimitive.Trigger asChild aria-label="Food" >
+    <SelectPrimitive.Root  defaultValue="Teste"  >
+      <SelectPrimitive.Trigger asChild aria-label="Pagamento" >
         <Button>
           <SelectPrimitive.Value />
-          <SelectPrimitive.Icon className="ml-2 flex flex-row ">
-            <ChevronDownIcon  />
+          <SelectPrimitive.Icon className="ml-2  flex flex-row justify-end  ">
+            <ChevronDownIcon />
           </SelectPrimitive.Icon>
         </Button>
       </SelectPrimitive.Trigger>
       <SelectPrimitive.Content>
-        <SelectPrimitive.ScrollUpButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
+        <SelectPrimitive.ScrollUpButton className="flex items-center justify-center text-gray-800 dark:text-gray-500">
           <ChevronUpIcon />
         </SelectPrimitive.ScrollUpButton>
         <SelectPrimitive.Viewport className="bg-white dark:bg-gray-800 p-2 rounded-lg shadow-lg">
           <SelectPrimitive.Group>
-            {["Pix", "Cartão de Crédito", ].map(
+            {["Pix", "Cartão de Crédito", "Teste" ].map(
               (f, i) => (
-                <SelectPrimitive.Item
-                  disabled={f === "Grapes"}
+                <SelectPrimitive.Item 
+                  disabled={f === "Boleto"}
                   key={`${f}-${i}`}
                   value={f.toLowerCase()}
                   className={cx(
@@ -48,7 +48,7 @@ export function Select(props: SelectProps) {
             )}
           </SelectPrimitive.Group>
         </SelectPrimitive.Viewport>
-        <SelectPrimitive.ScrollDownButton className="flex items-center justify-center text-gray-700 dark:text-gray-300">
+        <SelectPrimitive.ScrollDownButton className="flex items-center justify-center text-gray-800 dark:text-gray-500">
           <ChevronDownIcon />
         </SelectPrimitive.ScrollDownButton>
       </SelectPrimitive.Content>
