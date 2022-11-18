@@ -3,7 +3,7 @@ import {clsx} from "clsx";
 import { ReactNode } from "react";
 
 export interface TextProps{
-    size?: 'sm' | 'md' |'lg';
+    size?: 'sm' | 'md' |'lg' | '2lg';
     children: ReactNode;
     asChild?: boolean;
     className?: string;
@@ -19,6 +19,7 @@ export function Text({size = 'md', children, asChild, className}: TextProps){
             'text-xs' : size === 'sm',
             'text-sm' : size === 'md',
             'text-md' : size === 'lg',
+            'text-xl': size === '2lg',
         },
         className,
         )}

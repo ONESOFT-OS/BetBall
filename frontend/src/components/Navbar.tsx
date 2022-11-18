@@ -6,8 +6,7 @@ import {Text} from "./Text"
 
 export function NavBar(){
     return(
-    <div>
-       <nav className="flex justify-between items-center w-screen h-[5rem] pl-20 pr-20"> 
+       <nav className="flex justify-between items-center w-full h-[5rem] pl-20 pr-20 mt-6"> 
                <Logo/>
               <ul className=" w-[20rem] flex flex-row justify-between">
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link to={'/'}>Home</Link></Text></li>
@@ -17,7 +16,6 @@ export function NavBar(){
               </ul>
               <Button type='submit' className='w-fit m'>Logout</Button>
        </nav>
-    </div>
         
     )
 }
