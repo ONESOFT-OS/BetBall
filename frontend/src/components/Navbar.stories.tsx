@@ -1,7 +1,7 @@
 import {Meta, StoryObj} from '@storybook/react';
 import { Logo } from '../assets/Logo';
 import { Button } from './Button';
-import { NavBar } from "./NavBar";
+import { NavBar } from "./Navbar";
 
 
 

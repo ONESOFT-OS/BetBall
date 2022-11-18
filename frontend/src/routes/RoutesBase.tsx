@@ -21,7 +21,7 @@ export const RoutesBase = () => {
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newgame" element={<NewGame />} />
             <Route path="/deposit" element={<Deposit/>}/>
-            <Route path="/historic" element={<Historic/>}/>
+            <Route path="/perfil/historic" element={<Historic/>}/>
             <Route path="/bet" element={<Bet/>}/>
             <Route path="/withdraw" element={<Withdraw/>}/>
             <Route path="/user/create" element={<CreateUser/>} />

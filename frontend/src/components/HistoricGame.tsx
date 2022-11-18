@@ -7,7 +7,6 @@ interface  HistoricGameProps{
   valueBet: number;
   statusBet: string;
   date: string;
-  valueWallet: number;
 }
 
 
@@ -26,12 +25,11 @@ export const HistoricGame : React.FC <HistoricGameProps> = (props) => {
   }
 
   return (
-    <div className={clsx('flex justify-around items-center h-20 text-white bg-black/50 mb-2')}> 
-        <p>{props.teamHome} 2<br/>{props.teamOut} 0</p>
-        <p>R$ {props.valueBet}</p> 
-        <p className={clsx(color(props.statusBet))}>{props.statusBet}</p>
-        <p>{props.date}</p>
-        <p>R$ {props.valueWallet}</p>
+    <div className={clsx('flex justify-between items-center w-full h-20 text-white bg-black/50 mb-2 text-center')}> 
+        <p className="w-[7rem]">{props.teamHome} 2<br/>{props.teamOut} 0</p>
+        <p className="w-[7rem]">R$ {props.valueBet}</p> 
+        <p className={clsx(color(props.statusBet) + ' w-[7rem]')} >{props.statusBet}</p>
+        <p className="w-[7rem]">{props.date}</p>
     </div>
   );
 }
