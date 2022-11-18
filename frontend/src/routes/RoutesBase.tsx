@@ -8,13 +8,15 @@ import {Bet} from "../pages/Bet";
 import { CreateUser } from '../pages/CreateUser';
 import {PerfilDeposit } from '../pages/PerfilDeposit';
 import { PerfilWithdraw } from '../pages/PerfilWithdraw';
+import { Home } from '../pages/Home';
 
 
 export const RoutesBase = () => {
    return(
     <BrowserRouter>
         <Routes>
-            <Route path="/" element={<SignIn/>} />
+            <Route path="/" element={<Home/>} />
+            <Route path="/signin" element={<SignIn/>} />
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newgame" element={<NewGame />} />
