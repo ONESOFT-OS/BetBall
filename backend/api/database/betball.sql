@@ -4,7 +4,7 @@ use `BetBall`;
 CREATE TABLE `usuario` (
     `nickname` varchar(50) UNIQUE PRIMARY KEY,
     `email` varchar(50) UNIQUE NOT NULL,
-    `senha` varchar(32) NOT NULL
+    `senha` varchar(100) NOT NULL
 ) DEFAULT CHARSET=utf8mb4;
 
 CREATE TABLE `aposta` (
