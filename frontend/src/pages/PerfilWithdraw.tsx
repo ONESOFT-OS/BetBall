@@ -9,7 +9,7 @@ import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
 
-export function PerfilDeposit(){
+export function PerfilWithdraw(){
     
     const [valor, setValor]  = useState('')
     const saldo = 100
@@ -34,7 +34,7 @@ export function PerfilDeposit(){
 
                 <div className="flex flex-row pt-2 px-12 space-x-8">
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Configurações</Link></Text>
-                    <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/deposit'}>Carteira</Link></Text>
+                    <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/withdraw'}>Carteira</Link></Text>
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Histórico</Link></Text>
                 </div>
 
@@ -67,15 +67,16 @@ export function PerfilDeposit(){
 
                     <div className="flex flex-col items-center gap-12 mr-32">
                         <div className="flex flex-row pt-2 px-12 space-x-8">
-                            <Text size="lg"   className="text-green-500 underline font-bold " >
+                            <Text size="lg"   className="font-semibold hover:text-green-500 " >
                                 <Link to={'/perfil/deposit'}>Adicionar</Link>
                             </Text>
-                            <Text size="lg"   className="font-semibold hover:text-green-500" >
+                            <Text size="lg"   className="font-bold text-green-500 underline" >
                                 <Link to={'/perfil/withdraw'}>Sacar</Link>
                             </Text>
                         </div>
                         <div className="flex flex-col  items-center h-12 w-60 ">
-                            <Text className="ml-2">Forma de pagamento</Text>
+                            {/* <SelectR /> */}
+                            <Text className="ml-2">Forma de saque</Text>
                             <SelectM defaultText="Método" >
                                 <MenuItem value={1}>Pix</MenuItem>
                                 <MenuItem value={2}>Cartão de Crédito</MenuItem>
@@ -84,13 +85,13 @@ export function PerfilDeposit(){
                         </div>
 
                         <label className='flex flex-col items-center w-full max-w-[260px]  gap-2 '>
-                            <Text>Valor do depósito</Text>
+                            <Text>Valor do saque</Text>
                             <TextInput.Root className="h-5" >
                                 <TextInput.Input  type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
                         <Button className="w-fit ">Confirmar</Button>
-                </div>
+                    </div>
                 </div>
 
             </div>
