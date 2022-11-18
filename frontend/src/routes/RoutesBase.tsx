@@ -3,10 +3,8 @@ import { ForgotPassword } from '../pages/ForgotPassword';
 import { SignIn } from "../pages/SignIn";
 import { SignUp } from "../pages/SignUp";
 import { NewGame } from "../pages/NewGame";
-import { Deposit } from '../pages/Deposit';
 import { Historic } from '../pages/Historic';
 import {Bet} from "../pages/Bet";
-import { Withdraw } from '../pages/Withdraw';
 import { CreateUser } from '../pages/CreateUser';
 import {PerfilDeposit } from '../pages/PerfilDeposit';
 import { PerfilWithdraw } from '../pages/PerfilWithdraw';
@@ -20,10 +18,8 @@ export const RoutesBase = () => {
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newgame" element={<NewGame />} />
-            <Route path="/deposit" element={<Deposit/>}/>
-            <Route path="/perfil/historic" element={<Historic/>}/>
+            <Route path="/historic" element={<Historic/>}/>
             <Route path="/bet" element={<Bet/>}/>
-            <Route path="/withdraw" element={<Withdraw/>}/>
             <Route path="/user/create" element={<CreateUser/>} />
             <Route path="/perfil/deposit" element={<PerfilDeposit/>} />
             <Route path="/perfil/withdraw" element={<PerfilWithdraw/>} />

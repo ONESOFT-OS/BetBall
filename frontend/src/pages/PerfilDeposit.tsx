@@ -89,7 +89,7 @@ export function PerfilDeposit(){
                                 <TextInput.Input  type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
-                        <Button className="w-fit ">Confirmar</Button>
+                        <Button className="w-fit">Confirmar</Button>
                 </div>
                 </div>
 
