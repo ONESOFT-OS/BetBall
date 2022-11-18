@@ -62,7 +62,7 @@ export function SignUp(){
           {isSignup && (
             <Navigate to="/" replace={true} />
           )}
-            <header>
+            <header className="mt-4 ml-44">
                 <Link to={"/"}>   
                     <Logo className="pt-3"/>
                 </Link>
