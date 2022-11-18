@@ -14,7 +14,7 @@ export function NavBar(){
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link to={'/'}>Jogos</Link></Text></li>
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link to={'/'}>Sobre</Link></Text></li>
               </ul>
-              <Button type='submit' className='w-fit m'>Logout</Button>
+              <Button type='submit' className='w-fit m bg-transparent ring-2 ring-green-500'>Logout</Button>
        </nav>
         
     )
