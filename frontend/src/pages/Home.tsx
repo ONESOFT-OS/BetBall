@@ -1,4 +1,3 @@
-import { Heading } from "../components/Heading";
 import { NavBar } from "../components/NavBar";
 
 export function Home(){
