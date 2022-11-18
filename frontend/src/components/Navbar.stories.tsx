@@ -1,7 +1,7 @@
 import {Meta, StoryObj} from '@storybook/react';
 import { Logo } from '../assets/Logo';
 import { Button } from './Button';
-import { NavBar } from "./Navbar";
+import { NavBar } from "./NavBar";
 
 
 
@@ -12,7 +12,7 @@ export default{
         (Story)=>{
             return(
                 <div>
-        <nav className="flex justify-between items-center w-screen bg-black text-white h-[5rem] flex pl-20 pr-20"> 
+        <nav className="flex justify-between items-center w-screen bg-black text-white h-[5rem]  pl-20 pr-20"> 
                <Logo/>
               <ul className=" w-[20rem] flex flex-row justify-between">
                 <li><a href="http://" target="_blank">Home</a> </li> 

@@ -1,5 +1,5 @@
 import { HistoricGame } from "../components/HistoricGame";
-import { NavBar } from "../components/Navbar";
+import { NavBar } from "../components/NavBar";
 
 
 export function Historic() {
