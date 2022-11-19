@@ -7,12 +7,13 @@ import { NavBar } from "./NavBar";
 
 export default{
     title: 'Components/NavBar',
-    component: NavBar,
+    // Componente NavBar não é gerado no storybook pelo conflito do Link não esta em um elemento Route
+    // component: NavBar,
     decorators:[
         (Story)=>{
             return(
                 <div>
-        <nav className="flex justify-between items-center w-screen bg-black text-white h-[5rem]  pl-20 pr-20"> 
+        <nav className="flex justify-between items-center w-screen bg-black text-white h-[5rem]  pl-20 pr-20 gap-2"> 
                <Logo/>
               <ul className=" w-[20rem] flex flex-row justify-between">
                 <li><a href="http://" target="_blank">Home</a> </li> 
