@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
-import { NavBar } from "../components/Navbar";
+import { NavBar } from "../components/NavBar";
 import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
@@ -35,7 +35,7 @@ export function PerfilDeposit(){
                 <div className="flex flex-row pt-2 px-12 space-x-8">
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Configurações</Link></Text>
                     <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/deposit'}>Carteira</Link></Text>
-                    <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Histórico</Link></Text>
+                    <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/historic'}>Histórico</Link></Text>
                 </div>
 
 
