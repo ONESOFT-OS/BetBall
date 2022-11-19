@@ -42,9 +42,9 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
     executeQuery(connection, queryNewParticipation)
 
 
-# Retorna as informações de um jogo cadastrado
+# Retorna as informações de uma match cadastrada
 # @return Dicionário. Id do jogo, times jogando, placar atual.
-def get_poster_by_id(game_id):
+def get_match_by_id(game_id):
     data = {
             "game_id":game_id,
             "teams": {
@@ -65,12 +65,12 @@ def get_poster_by_id(game_id):
     query = f"""
     SELECT * FROM participacao WHERE id_jogo = '{ game_id }'
     """
-    partidas = executeSelection(connection, query)
-    partida_list_dict = [tutple_to_dict('team_id', 'game_id', 'goals', tupla=partida) for partida in partidas]
+    matchs = executeSelection(connection, query)
+    match_list_dict = [tutple_to_dict('team_id', 'game_id', 'goals', tupla=match) for match in matchs]
 
-    for partida in partida_list_dict:
-        club = get_club_by_id(partida['team_id'])
-        club['goals'] = partida['goals']
+    for match in match_list_dict:
+        club = get_club_by_id(match['team_id'])
+        club['goals'] = match['goals']
         data['teams'].add(club)
     return data
 

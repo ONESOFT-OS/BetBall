@@ -27,3 +27,6 @@ class Game(BaseModel):
     collaborator_nickname: str
     start_datetime: str
     end_datetime: str
+
+class Match(BaseModel):
+    game_id: str
