@@ -35,3 +35,15 @@ def get_apostas():
     """
     apostas = executeSelection(connection, query)
     return apostas
+
+
+# Retorna um dicionario com as informações de um time cadastrado.
+# @return Dicionário. Nome, id, diretório da imagem.
+def get_club_by_id(club_id):
+    query = f"""
+    SELECT * FROM times WHERE id_time = '{ club_id }'
+    """
+    club = executeSelection(connection, query)
+    club_dict = tutple_to_dict('team_name', 'team_id', 'image_src', tupla=club[0])
+    return club_dict
+    
