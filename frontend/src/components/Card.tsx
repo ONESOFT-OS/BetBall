@@ -1,7 +1,12 @@
 import { CurrencyCircleDollar } from "phosphor-react"
 import { Progress } from "./Progress"
 
-export function Card (){
+export interface CardProps{
+    outTeam:string
+    homeTeam:string   
+}
+
+export function Card (props:CardProps){
     return(
         <div className="flex flex-row items-center justify-center p-20 w-full h-[100vh] bg-gray-900 bg-[url('../assets/Gradient.svg')]">
             <div className="card min-w-[350px] bg-dark-500 rounded-[10px] p-10">
