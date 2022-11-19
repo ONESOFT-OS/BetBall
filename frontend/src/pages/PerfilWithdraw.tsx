@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { Heading } from "../components/Heading";
-import { NavBar } from "../components/Navbar";
+import { NavBar } from "../components/NavBar";
 import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
