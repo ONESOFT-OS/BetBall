@@ -62,7 +62,7 @@ export function SelectM(props:SelectProps) {
           value={age}
           onChange={handleChange}
           autoWidth
-          label="Age"
+          label="Método"
           input={<BootstrapInput />}
         >
           {props.children}
