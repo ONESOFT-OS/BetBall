@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { HistoricGame } from "../components/HistoricGame";
-import  {NavBar} from "../components/NavBar";
+import  {NavBar} from "../components/Navbar"
 import { Text } from "../components/Text";
 import { User } from "phosphor-react";
 
@@ -19,7 +19,7 @@ export function PerfilHistoric() {
                 </header>
 
                 <div className="flex flex-row pt-2 px-12 space-x-8">
-                    <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'perfil/configuracao'}>Configurações</Link></Text>
+                    <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/settings'}>Configurações</Link></Text>
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/withdraw'}>Carteira</Link></Text>
                     <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/historic'}>Histórico</Link></Text>
                 </div>
