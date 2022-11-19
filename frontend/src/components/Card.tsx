@@ -8,7 +8,7 @@ export interface CardProps{
 
 export function Card (props:CardProps){
     return(
-        <div className="flex flex-row items-center justify-center p-20 w-full h-[100vh] bg-gray-900 bg-[url('../assets/Gradient.svg')]">
+        <div className="flex flex-row items-center justify-center p-1 w-full h-[100vh] bg-black">
             <div className="card min-w-[350px] bg-dark-500 rounded-[10px] p-10">
                 <div className="card-header flex flex-row justify-between pt-3 pb-10">
                     <div className="game-status bg-green-500 p-[5px] rounded-[5px] px-5 py-1">
@@ -28,14 +28,14 @@ export function Card (props:CardProps){
                     <div className="progress-bar">
                         <p className="text-white font-bold text-[14px]">20' 13"</p>            
                         <div className="progress pt-1 pb-3">
-                            <Progress percentage={65} classname="h-[3px]"/>
+                            <Progress percentage={65} classname="h-[2px]"/>
                         </div>      
                         <p className="text-glass-800 font-semibold text-[12px]">Tempo de aposta</p>      
                     </div>
                     <div className="game-poster flex flex-col">
                         <div className="team flex flex-row justify-between pt-3">
                             <div className="team-name">
-                                <p className="text-white font-semibold text-[20px]">Real Madrid</p>
+                                <p className="text-white font-semibold text-[20px]">{ props.outTeam }</p>
                             </div>
                             <div className="team-goals">
                                 <p className="text-white font-semibold text-[20px]">3</p>
@@ -43,7 +43,7 @@ export function Card (props:CardProps){
                         </div>
                         <div className="team flex flex-row justify-between pt-1">
                             <div className="team-name">
-                                <p className="text-white font-semibold text-[20px]">Barcelona</p>
+                                <p className="text-white font-semibold text-[20px]">{ props.homeTeam }</p>
                             </div>
                             <div className="team-goals">
                                 <p className="text-white font-semibold text-[20px]">1</p>
