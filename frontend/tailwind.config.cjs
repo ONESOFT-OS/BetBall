@@ -26,7 +26,7 @@ module.exports = {
       gray:{
        900: '#17181F',
        800: '#1E1E1E',
-       500: '#636364'
+       500: '#636364',
       },
 
       green:{
@@ -37,8 +37,13 @@ module.exports = {
 
       red:{
         800: '#991b1b'
+      },
+
+      glass: {
+        800: '#FFFFFF50',
+        500: '#FFFFFF20'
+
       }
-      
     },
 
     extend: {
