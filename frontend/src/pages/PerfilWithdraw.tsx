@@ -33,7 +33,7 @@ export function PerfilWithdraw(){
                 </header>
 
                 <div className="flex flex-row pt-2 px-12 space-x-8">
-                    <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Configurações</Link></Text>
+                    <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/settings'}>Configurações</Link></Text>
                     <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/withdraw'}>Carteira</Link></Text>
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/historic'}>Histórico</Link></Text>
                 </div>
