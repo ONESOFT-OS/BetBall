@@ -33,4 +33,3 @@ def get_club_by_id(club_id):
     club = executeSelection(connection, query)
     club_dict = tutple_to_dict('team_name', 'team_id', 'image_src', tupla=club[0])
     return club_dict
-    

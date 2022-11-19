@@ -1,6 +1,6 @@
 from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
 from queries.utils.service import format_date, tutple_to_dict
-
+from queries.team import get_club_by_id
 
 # @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
 def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
@@ -41,31 +41,39 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
     """
     executeQuery(connection, queryNewParticipation)
 
-{
-    "game_id":"",
-    "out_team": 
-        {
-            "name": "",
-            "current_goals": 0,
-            "image_src": ""
-        },
-    "home_team":
-        {
-            "name": "",
-            "current_goals": 0,
-            "image_src": ""
-        }
-}
 
 # Retorna as informações de um jogo cadastrado
 # @return Dicionário. Id do jogo, times jogando, placar atual.
 def get_poster_by_id(game_id):
+    data = {
+            "game_id":game_id,
+            "teams": {
+                    {
+                        "name": "",
+                        "current_goals": 0,
+                        "image_src": ""
+                    },
+
+                    {
+                        "name": "",
+                        "current_goals": 0,
+                        "image_src": ""
+                    }
+                } 
+    }
+
     query = f"""
     SELECT * FROM participacao WHERE id_jogo = '{ game_id }'
     """
     partidas = executeSelection(connection, query)
-    partida_dict = [tutple_to_dict('team_id', 'game_id', 'goals', tupla=partida) for partida in partidas]
-    
+    partida_list_dict = [tutple_to_dict('team_id', 'game_id', 'goals', tupla=partida) for partida in partidas]
+
+    for partida in partida_list_dict:
+        club = get_club_by_id(partida['team_id'])
+        club['goals'] = partida['goals']
+        data['teams'].add(club)
+    return data
+
 
 # Retorna uma lista com todos os jogos cadastrados.
 # @return Lista de dicionário. Id do jogo, times jogando, placar atual.
