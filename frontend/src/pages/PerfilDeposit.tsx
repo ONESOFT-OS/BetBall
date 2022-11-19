@@ -85,8 +85,8 @@ export function PerfilDeposit(){
 
                         <label className='flex flex-col items-center w-full max-w-[260px]  gap-2 '>
                             <Text>Valor do depósito</Text>
-                            <TextInput.Root className="h-5" >
-                                <TextInput.Input  type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
+                            <TextInput.Root className="h-5 bg-white opacity-60" >
+                                <TextInput.Input className="text-black font-bold" type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
                         <Button className="w-fit">Confirmar</Button>
