@@ -18,9 +18,9 @@ export function getURL(team : ITeam[], id : string){
     var url : string = "";
 
     for (let index = 0; index < team.length; index++) {
-        const element = team[index];
-        if (element.idTeam == id) {
-            url = element.icon;
+        var element = team[index];
+        if (element.club_id == id) {
+            url = element.photo_link;
             break;
         }
     }
@@ -94,7 +94,7 @@ export function NewGame() {
                                         idTime1 : event.target.value
                                     })}>
                             <option value="" key={""}>--Selecione Time--</option>
-                            {team.map((team) => <option value={team.idTeam} key={team.idTeam}> {team.name} </option>)}
+                            {team.map((team) => <option value={team.club_id} key={team.club_id}> {team.club_name} </option>)}
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
                                 name="TimeDireita" 
@@ -105,7 +105,7 @@ export function NewGame() {
                                         idTime2 : event.target.value
                                     })}>
                             <option value="" key={""}>--Selecione Time--</option>
-                            {team.map((team) => <option value={team.idTeam} key={team.idTeam}> {team.name} </option>)}
+                            {team.map((team) => <option value={team.club_id} key={team.club_id}> {team.club_name} </option>)}
                         </select>
                     </div>
 
