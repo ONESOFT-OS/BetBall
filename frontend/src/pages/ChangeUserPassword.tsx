@@ -1,5 +1,5 @@
 import { Button } from "../components/Button";
-import { NavBar } from "../components/Navbar";
+import { NavBar } from "../components/NavBar";
 import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
 import { EyeClosed, Eye } from "phosphor-react";
@@ -30,7 +30,7 @@ export function ChangeUsersPassword() {
                         <Text className="w-[8rem]">Tipo de usuário</Text>
                         <Text className="w-[15rem]">Senha</Text>
                     </div>
-                    <div className="w-11/12 h-0.5 bg-white bg-opacity-60  shadow-sm shadow-black"></div>
+                    <div className="w- h-0.5 bg-white bg-opacity-60  shadow-sm shadow-black"></div>
                    
                    
                     <div  className="h-3/5 w-11/12 text-center overflow-y-scroll"> 

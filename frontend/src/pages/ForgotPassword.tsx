@@ -8,7 +8,7 @@ import { Link } from "react-router-dom";
 export function ForgotPassword(){
     return(
        <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
-            <header className="mt-4">
+            <header className="mt-4 mb-4">
                 <Link to={"/"}>   
                     <Logo />
                 </Link>

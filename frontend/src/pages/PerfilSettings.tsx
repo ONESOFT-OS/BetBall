@@ -55,7 +55,7 @@ export function PerfilSettings() {
 
             <div className="flex flex-col items-start mr-[1rem] w-[32rem]">
                 <Text className ="mb-[2rem]" size="2lg">Informações</Text>
-            <div className="h-[5rem] w-full bg-[#ffffff] mb-[2rem]"></div>
+            <div className="h-0.5 w-[30rem] bg-[#ffffff] mb-[2rem]"></div>
               
               <div className="flex justify-between w-full mb-[2rem]">
                 <label htmlFor="email" className="w-6/12">
@@ -79,7 +79,7 @@ export function PerfilSettings() {
               </label>
               </div>
 
-              <div className=" h-[5rem]  w-full mb-[2rem] bg-[#ffffff]"></div>
+              <div className=" h-0.5  w-[30rem] mb-[2rem] bg-[#ffffff]"></div>
 
               <label htmlFor="Senha" className="w-full">
                     <Text size="sm" className='font-semibold'>Senha</Text>

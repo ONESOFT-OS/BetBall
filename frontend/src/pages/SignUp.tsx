@@ -35,7 +35,7 @@ export function SignUp(){
         if(ischecked){          
           axios({
               method: 'post',
-              url: 'http://127.0.0.1:8000/cadastro/apostador',
+              url: 'http://127.0.0.1:8000/register/punter',
               
               data: {
                 nickname: nick,
@@ -60,7 +60,7 @@ export function SignUp(){
 
         <div className="w-full h-full bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
           {isSignup && (
-            <Navigate to="/" replace={true} />
+            <Navigate to="/signin" replace={true} />
           )}
             <header className="mt-4 ml-44">
                 <Link to={"/"}>   

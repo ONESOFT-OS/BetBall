@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { HistoricGame } from "../components/HistoricGame";
-import  {NavBar} from "../components/NavBar"
+import  {NavBar} from "../components/NavBar";
 import { Text } from "../components/Text";
 import { User } from "phosphor-react";
 

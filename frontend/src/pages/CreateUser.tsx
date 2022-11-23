@@ -120,12 +120,6 @@ const CreateUser = () => {
             <Select defaultOptions={defaultUserRoles} required={true} onValueChange={(e) => setRole(e)}/>
           </label>
 
-          <div>
-            {!isChecked && (
-              <Text className=" text-green-500 "> Checagem obrigatória</Text>
-            )}
-          </div>
-
           <Button type="submit" className="mt-4 mb-12 w-fit">
             Cadastrar
           </Button>

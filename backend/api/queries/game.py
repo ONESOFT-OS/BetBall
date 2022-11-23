@@ -1,4 +1,4 @@
-from queries.core.db import createDBConnection, executeQuery, executeSelection, connection
+from queries.core.db import executeQuery, executeSelection, connection
 from queries.utils.service import format_date, tutple_to_dict
 from queries.team import get_club_by_id
 

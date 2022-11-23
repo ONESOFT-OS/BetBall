@@ -28,8 +28,7 @@ export const RoutesBase = () => {
             <Route path="/perfil/withdraw" element={<PerfilWithdraw/>} />
             <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
             <Route path="/perfil/settings" element={<PerfilSettings/>} />
-            <Route path="/teste" element={<Teste/>} />
-            <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
+            <Route path="/superuser /password" element={<ChangeUsersPassword/>}/>
         </Routes>
      </BrowserRouter>
    )
