@@ -25,7 +25,7 @@ import {
   import ModalComp from "../components/ModalComp";
 
 export function Bet() {
-
+    const [busca, setBusca] = useState('');
     const [rightTeam,setRightTeam] = useState(defaultTeam1);
     const [leftTeam, setLeftTeam] = useState(defaultTeam2);
     const [valorAposta, setvalorAposta] = useState('');
@@ -99,7 +99,7 @@ export function Bet() {
               </Tr>
             </Thead> 
             <Tbody>
-              {data.map(({ valor, times }, index) => (
+            {data.filter((item:any)=>item.valor.toLowerCase().includes(busca.toLowerCase()) || item.times.toLowerCase().includes(busca.toLowerCase())).map(({ valor, times }, index) => (
                 <Tr key={index} cursor="pointer " _hover={{ bg: "gray.100" }}>
                     <Td color={"whiteAlpha.900"} maxW={100}>{valor}</Td>
                     <Td color={"whiteAlpha.900"} maxW={100}>{times}</Td>
@@ -135,7 +135,12 @@ export function Bet() {
           dataEdit={dataEdit}
           setDataEdit={setDataEdit}
         />
-      )}</Flex></div></div> 
+      )}</Flex><input
+      type='text'
+      placeholder="Buscar..."
+      value={busca}
+      onChange={(ev) => setBusca(ev.target.value)}
+    ></input></div></div> 
       </ChakraProvider>
   );
 };
