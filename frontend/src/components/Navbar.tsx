@@ -15,7 +15,9 @@ export function NavBar(){
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link to={'/'}>Jogos</Link></Text></li>
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link to={'/'}>Sobre</Link></Text></li>
               </ul>
-              <Button type='submit' className='w-fit m bg-transparent ring-2 ring-green-500'>Logout</Button>
+              <div className="w-[193.98px] flex flex-row justify-end">
+                <Button type='submit' className='w-fit m bg-transparent ring-2 ring-green-500'>Logout</Button>
+              </div>
        </nav>
         
     )

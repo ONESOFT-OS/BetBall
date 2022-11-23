@@ -11,6 +11,7 @@ import { PerfilWithdraw } from '../pages/PerfilWithdraw';
 import { Home } from '../pages/Home';
 import { Teste } from '../pages/Teste';
 import { PerfilSettings } from '../pages/PerfilSettings';
+import { ChangeUsersPassword } from '../pages/ChangeUserPassword';
 
 
 export const RoutesBase = () => {
@@ -22,13 +23,14 @@ export const RoutesBase = () => {
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/forgotpassword" element={<ForgotPassword />} />
             <Route path="/newgame" element={<NewGame />} />
-            <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
             <Route path="/bet" element={<Bet/>}/>
             <Route path="/user/create" element={<CreateUser/>} />
             <Route path="/perfil/deposit" element={<PerfilDeposit/>} />
             <Route path="/perfil/withdraw" element={<PerfilWithdraw/>} />
+            <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
             <Route path="/perfil/settings" element={<PerfilSettings/>} />
             <Route path="/teste" element={<Teste/>} />
+            <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
         </Routes>
      </BrowserRouter>
    )
