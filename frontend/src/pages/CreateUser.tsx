@@ -10,6 +10,7 @@ import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
 import { Select } from "../components/Select";
 import axios from "axios";
+import { NavBar } from "../components/NavBar";
 
 const CreateUser = () => {
   const [isValid, setIsValid] = React.useState<boolean>();
@@ -31,18 +32,15 @@ const CreateUser = () => {
 
   return (
     <div className="w-full h-full bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-start ">
-      <header>
-        <Link to={"/"}>
-          <Logo className="pt-3" />
-        </Link>
-      </header>
 
-      <div className="flex flex-row w-full px-14 gap-28 pb-10 justify-center">
+      <NavBar></NavBar>
+
+      <div className="flex flex-row w-full px-14 gap-28 pb-10 justify-center mt-3">
         <form
           onSubmit={handleCreateUser}
           className="bg-slate-50 bg-opacity-5 w-full max-w-md  h-screen flex flex-col items-center justify-center rounded-2xl gap-1 "
         >
-          <div className="flex flex-col  w-full max-w-sm gap-4  mt-12 mb-8">
+          <div className="flex flex-col  w-full max-w-sm gap-4  mt-2 mb-8">
             <Heading size="lg"> Cadastrar novo Usuário</Heading>
             <Text>Preencha os dados do novo usuário</Text>
           </div>
@@ -113,16 +111,24 @@ const CreateUser = () => {
             </TextInput.Root>
           </label>
 
-          <label htmlFor="userType" className="flex flex-col gap-3 w-full max-w-sm">
-            <Text size={"sm"} className={"font-semibold"}>
-              Tipo de Usuário
-            </Text>
-            <Select defaultOptions={defaultUserRoles} required={true} onValueChange={(e) => setRole(e)}/>
-          </label>
+          <div className="flex flex-row space-x-36">
+            <div>
+              <label htmlFor="userType" className="flex flex-col gap-3 w-full max-w-sm">
+                <Text size={"sm"} className={"font-semibold"}>
+                  Tipo de Usuário
+                </Text>
+                <Select defaultOptions={defaultUserRoles} required={true} onValueChange={(e) => setRole(e)}/>
+              </label>
+            </div>
 
-          <Button type="submit" className="mt-4 mb-12 w-fit">
-            Cadastrar
-          </Button>
+            <div className="mt-7">
+              <Button type="submit" className="w-fit">
+                Cadastrar
+              </Button>
+            </div>
+          </div>
+
+
         </form>
       </div>
     </div>
