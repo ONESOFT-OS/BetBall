@@ -13,12 +13,13 @@ const BootstrapInput = styled(InputBase)(({ theme }) => ({
   '& .MuiInputBase-input': {
     borderRadius: 4,
     position: 'relative',
-    backgroundColor: "#1E1E1E",
+    backgroundColor: "#FFF",
     border: '1px solid #ced4da',
     fontSize: 16,
-    color: '#FFF',
+    color: '#000',
     padding: '10px 26px 10px 12px',
     transition: theme.transitions.create(['border-color', 'box-shadow']),
+    opacity: 0.6,
     // Use the system font instead of the default Roboto font.
     fontFamily: [
       '-apple-system',

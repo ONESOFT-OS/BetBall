@@ -23,5 +23,3 @@ def tutple_to_dict(*atributos, tupla):
             dicionario[atributo]=tupla[index_tupla]
             index_tupla+=1
     return dicionario
-format_date('09-10-2022')
-    

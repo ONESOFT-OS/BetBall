@@ -38,12 +38,13 @@ function TextInputIcon(props: TextInputIconProps){
 TextInputIcon.displayName = 'TextInput.Icon'
 
 export interface TextInputInputProps extends InputHTMLAttributes<HTMLInputElement>{
+    className?: string
 }
 
-function TextInputInput(props: TextInputInputProps){
+function TextInputInput({className, ...props}: TextInputInputProps){
     return(
         <input
-            className="bg-transparent flex-1 text-white text-xs placeholder:text-gray-500 outline-none "
+            className={clsx("bg-transparent flex-1 text-white text-xs placeholder:text-gray-500 outline-none ", className)}
             {...props}
         />
     )

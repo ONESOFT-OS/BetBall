@@ -9,7 +9,6 @@ import { CreateUser } from '../pages/CreateUser';
 import {PerfilDeposit } from '../pages/PerfilDeposit';
 import { PerfilWithdraw } from '../pages/PerfilWithdraw';
 import { Home } from '../pages/Home';
-import { Teste } from '../pages/Teste';
 import { PerfilSettings } from '../pages/PerfilSettings';
 import { ChangeUsersPassword } from '../pages/ChangeUserPassword';
 

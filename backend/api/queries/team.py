@@ -1,8 +1,5 @@
 from queries.core.db import executeQuery, executeSelection, connection
-from queries.utils.service import tutple_to_dict, format_date
-
-from datetime import datetime
-
+from queries.utils.service import tutple_to_dict
 
 
 # @param nome do time, id, e diretório da imagem.
@@ -27,16 +24,6 @@ def get_clubs():
     return clubs_dict
 
 
-# Retorna uma lista com todas as apostas salvas.
-# Retorna o nickname, o valor da aposta e o time apostado
-def get_apostas():
-    query = """
-    SELECT * FROM aposta
-    """
-    apostas = executeSelection(connection, query)
-    return apostas
-
-
 # Retorna um dicionario com as informações de um time cadastrado.
 # @return Dicionário. Nome, id, diretório da imagem.
 def get_club_by_id(club_id):
@@ -46,4 +33,3 @@ def get_club_by_id(club_id):
     club = executeSelection(connection, query)
     club_dict = tutple_to_dict('team_name', 'team_id', 'image_src', tupla=club[0])
     return club_dict
-    
