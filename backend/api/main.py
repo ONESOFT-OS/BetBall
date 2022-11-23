@@ -8,7 +8,8 @@ from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
-from queries.game import add_game, get_poster_by_id
+from queries.game import add_game 
+#from queries.game import get_poster_by_id # Estava dando erro entao comentei ~Paulo
 
 from random import randint
 
@@ -88,5 +89,9 @@ async def registerUser(user: CadastroColaboratorAdmin):
 
 @app.get('/game/match')
 async def match(match: Match):
-    match_data = get_poster_by_id(match.game_id)
-    return match_data
+    #match_data = get_poster_by_id(match.game_id)
+    return #match_data
+
+@app.get('/teams')
+async def match():
+    return get_clubs()
