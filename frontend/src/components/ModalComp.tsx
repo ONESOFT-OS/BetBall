@@ -1,5 +1,6 @@
 //npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 //npm i @chakra-ui/icons
+import {useTeam2} from '../hooks/useTeam2'
 import {
     Modal,
     ModalOverlay,
@@ -20,7 +21,7 @@ import {
   const ModalComp = ({ data, setData, dataEdit, isOpen, onClose }:any) => {
     const [valor, setValor] = useState(dataEdit.valor || "");
     const [times, setTimes] = useState(dataEdit.times || "");
-  
+    const {team} = useTeam2()
     const handleSave = () => {
       if (!valor || !times) return;
   
@@ -70,11 +71,12 @@ import {
                 </Box>
                 <Box>
                   <FormLabel>Time</FormLabel>
-                  <Input
-                    type="text"
-                    value={times}
-                    onChange={(e) => setTimes(e.target.value)}
-                  />
+                  <select value={times} onChange={text => setTimes(text.target.value)}>
+                  <option>Selecione o time</option>
+                    
+                  {team.map((team) => (<option>{team.club_name}</option>))}
+                  
+                  </select>
                 </Box>
               </FormControl>
             </ModalBody>
