@@ -1,5 +1,6 @@
 //npm i @chakra-ui/react @emotion/react @emotion/styled framer-motion
 //npm i @chakra-ui/icons
+import { NavBar } from "../components/NavBar";
 import { SetStateAction, useState } from "react";
 import defaultTeam1 from "../assets/realMadridIcon.png"
 import defaultTeam2 from "../assets/barcelonaIcon.png"
@@ -68,6 +69,9 @@ export function Bet() {
 
     return(
       <ChakraProvider>
+        <div className="bg-black max-w-full flex flex-col items-center justify-center">
+            <NavBar />
+        </div>
     <div className="w-screen h-screen bg-gradient-to-bl from-green-900 via-gray-900 to-black flex flex-col items-center justify-center ">
     <div className="bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col justify-center rounded-2xl gap-3">
         <Flex
