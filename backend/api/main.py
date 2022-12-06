@@ -95,3 +95,9 @@ async def registerUser(user: CadastroColaboratorAdmin):
 @app.get('/teams')
 async def match():
     return get_clubs()
+
+@app.post('/teste/register/game')
+async def match():
+    #print("passou aqui")
+    add_game('Employee2', '2022-10-22 15:30:00', '8', '7')
+    return

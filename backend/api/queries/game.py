@@ -5,41 +5,28 @@ from queries.team import get_club_by_id
 # @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
 def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
     print('ADD GAME')
-    date = format_date(end_date)
+    date = end_date #format_date(end_date)
     queryNewGame = f"""
     INSERT INTO jogos (nick_colaborador, data_fim_aposta, isDone) VALUES
     (
         '{collaborator_nick}',
         '{date}',
-        '{isDone}'
+        {isDone}
     );
     """
-    executeQuery(connection, queryNewGame)
+    response = executeQuery(connection, queryNewGame)
+    print(response)
 
     queryGetNewGame = f"""
-    SELECT MAX (id_jogo)
-    FROM jogos
+    SELECT j.id_jogo 
+    FROM jogos j 
+    WHERE j.id_jogo NOT IN (SELECT p.id_jogo 
+	    					FROM participacao p);
     """
     newGame = executeSelection(connection, queryGetNewGame)
-    id_NewGame = newGame.index(0)[0]
-
-    queryNewParticipation = f"""
-    INSERT INTO participacao (id_time, id_jogo) VALUES
-    (
-        '{id_team1}',
-        '{id_NewGame}',
-    );
-    """
-    executeQuery(connection, queryNewParticipation)
-
-    queryNewParticipation = f"""
-    INSERT INTO participacao (id_time, id_jogo) VALUES
-    (
-        '{id_team2}',
-        '{id_NewGame}',
-    );
-    """
-    executeQuery(connection, queryNewParticipation)
+    print(newGame)
+    #id_NewGame = newGame.index(0)[0]
+    return
 
 
 # Retorna as informações de uma match cadastrada
