@@ -5,7 +5,7 @@ from queries.team import get_club_by_id
 
 # @param nickname do colaborador, data de inicio do jogo/fim de aposta, status do jogo
 def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
-    date = end_date #format_date(end_date)
+    date = end_date #format_date(end_date) ainda falta ver como usar o format_date para o padrao "aaaa-mm-dd hh:mm:ss"
     queryNewGame = f"""
     INSERT INTO jogos (nick_colaborador, data_fim_aposta, isDone) VALUES
     (
@@ -30,6 +30,7 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
 
 
 # Retorna as informações de uma match cadastrada
+# Desatualizada
 # @return Dicionário. Id do jogo, times jogando, placar atual.
 def get_match_by_id(game_id):
     data = {
@@ -63,10 +64,12 @@ def get_match_by_id(game_id):
 
 
 # Retorna uma lista com todos os jogos cadastrados.
+# Desatualizada
 # @return Lista de dicionário. Id do jogo, times jogando, placar atual.
 def get_games():
     pass
 
+# Desatualizada
 def list_game_by_id(game_id):
     query = f"""
         SELECT * FROM jogos WHERE id_jogo = '{game_id}'
