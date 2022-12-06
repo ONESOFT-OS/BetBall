@@ -10,5 +10,5 @@ def addParticipation(id_team, id_game):
         {id_game}
     );
     """
-    response = executeQuery(connection, queryParticipation)
+    executeQuery(connection, queryParticipation)
     return
