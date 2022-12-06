@@ -1,10 +1,10 @@
+from queries.participation import addParticipation
 from queries.core.db import executeQuery, executeSelection, connection
 from queries.utils.service import format_date, tutple_to_dict
 from queries.team import get_club_by_id
 
-# @param game_id, nickname do colaborador, data de inicio do jogo, data final, status do jogo
+# @param nickname do colaborador, data de inicio do jogo/fim de aposta, status do jogo
 def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
-    print('ADD GAME')
     date = end_date #format_date(end_date)
     queryNewGame = f"""
     INSERT INTO jogos (nick_colaborador, data_fim_aposta, isDone) VALUES
@@ -14,8 +14,7 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
         {isDone}
     );
     """
-    response = executeQuery(connection, queryNewGame)
-    print(response)
+    executeQuery(connection, queryNewGame)
 
     queryGetNewGame = f"""
     SELECT j.id_jogo 
@@ -23,9 +22,10 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
     WHERE j.id_jogo NOT IN (SELECT p.id_jogo 
 	    					FROM participacao p);
     """
-    newGame = executeSelection(connection, queryGetNewGame)
-    print(newGame)
-    #id_NewGame = newGame.index(0)[0]
+    id_newGame = executeSelection(connection, queryGetNewGame)[0][0]
+
+    addParticipation(id_team1, id_newGame)
+    addParticipation(id_team2, id_newGame)
     return
 
 
