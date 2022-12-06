@@ -11,4 +11,4 @@ def addParticipation(id_team, id_game):
     );
     """
     executeQuery(connection, queryParticipation)
-    return
+    return True

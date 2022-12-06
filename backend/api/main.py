@@ -66,7 +66,7 @@ async def cadastro(cadastro: Cadastro):
 # PS: add_game sera alterada posteriormente para lidar com o autoincrement no campo de game_id
 @app.post('/register/game')
 async def register_game(game: Game):
-    if add_game(randint(4567,8798), game.collaborator_nickname, game.start_datetime, game.end_datetime):
+    if add_game(game.collaborator_nickname, game.end_datetime, game.team1_id, game.team2_id):
         data = {
             "nickname": game.collaborator_nickname,
         }

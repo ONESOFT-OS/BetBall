@@ -30,7 +30,7 @@ export function getURL(team : ITeam[], id : string){
 export function NewGame() {
     
     const [game, setGame] = useState<Game>({
-        nickColaborador : "",
+        nickColaborador : "MASTER",
         dataFimAposta : "",
         horaFimAposta : "",
         idTime1 : "1",
@@ -41,18 +41,18 @@ export function NewGame() {
 
     const sendNewGame = (event : any) => {
         event.preventDefault();
-        /*
+        
         axios({
             method: 'post',
-            url: 'http://127.0.0.1:8000/cadastro/apostador',
+            url: 'http://127.0.0.1:8000/register/game',
             
             data: {
-              nickname: nick,
-              email: email,
-              password: password
+                collaborator_nickname: game.nickColaborador,
+                end_datetime: (game.dataFimAposta + " " + game.horaFimAposta),
+                team1_id: game.idTime1,
+                team2_id: game.idTime2
             }
           })
-        */
     }
 
     return(

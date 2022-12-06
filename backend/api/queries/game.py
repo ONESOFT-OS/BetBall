@@ -14,7 +14,8 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
         {isDone}
     );
     """
-    executeQuery(connection, queryNewGame)
+    if not executeQuery(connection, queryNewGame):
+        return False
 
     queryGetNewGame = f"""
     SELECT j.id_jogo 
@@ -24,9 +25,11 @@ def add_game(collaborator_nick, end_date, id_team1, id_team2, isDone=False):
     """
     id_newGame = executeSelection(connection, queryGetNewGame)[0][0]
 
-    addParticipation(id_team1, id_newGame)
-    addParticipation(id_team2, id_newGame)
-    return
+    if not addParticipation(id_team1, id_newGame):
+        return False
+    if not addParticipation(id_team2, id_newGame):
+        return False
+    return True
 
 
 # Retorna as informações de uma match cadastrada
