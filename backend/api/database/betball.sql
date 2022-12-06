@@ -41,7 +41,7 @@ CREATE TABLE `aposta` (
     `nick_apostador` varchar(50),
     `id_jogo` int,
     `id_time` varchar(50),
-    `credito_aposta` int NOT NULL,
+    /*`credito_aposta` int NOT NULL,*/
     `valor_aposta` int NOT NULL,
     `valor_ganho` int,
     PRIMARY KEY(`id_time`,`id_jogo`,`nick_apostador`)
