@@ -7,3 +7,4 @@ backend/api/.api
 .idea
 .DS_Store
 **.pyc
+.vscode/settings.json
