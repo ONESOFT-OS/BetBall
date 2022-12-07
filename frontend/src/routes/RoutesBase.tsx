@@ -11,6 +11,8 @@ import { PerfilWithdraw } from '../pages/PerfilWithdraw';
 import { Home } from '../pages/Home';
 import { PerfilSettings } from '../pages/PerfilSettings';
 import { ChangeUsersPassword } from '../pages/ChangeUserPassword';
+import {PasswordRecovery} from "../pages/PasswordRecovery";
+import {ConfirmPasswordRecovery} from "../pages/ConfirmPasswordRecovery";
 
 
 export const RoutesBase = () => {
@@ -29,6 +31,8 @@ export const RoutesBase = () => {
             <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
             <Route path="/perfil/settings" element={<PerfilSettings/>} />
             <Route path="/superuser /password" element={<ChangeUsersPassword/>}/>
+            <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
+            <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
         </Routes>
      </BrowserRouter>
    )
