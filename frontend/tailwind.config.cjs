@@ -18,6 +18,7 @@ module.exports = {
       transparent: 'transparent',
       white: '#FFF',
       black: '#000',
+      blacktransparent: '#00000080',       
 
       slate:{
         50: '#D9D9D9'
@@ -46,6 +47,7 @@ module.exports = {
       },
 
       dark: {
+        900: '#0D0D12',
         500: '#101010'
       }
     },
