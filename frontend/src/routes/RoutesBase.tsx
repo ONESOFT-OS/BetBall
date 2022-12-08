@@ -13,6 +13,7 @@ import { PerfilSettings } from '../pages/PerfilSettings';
 import { ChangeUsersPassword } from '../pages/ChangeUserPassword';
 import {PasswordRecovery} from "../pages/PasswordRecovery";
 import {ConfirmPasswordRecovery} from "../pages/ConfirmPasswordRecovery";
+import { EmployeeDashboard } from '../pages/EmployeeDashboard';
 
 
 export const RoutesBase = () => {
@@ -33,6 +34,7 @@ export const RoutesBase = () => {
             <Route path="/superuser /password" element={<ChangeUsersPassword/>}/>
             <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
             <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
+            <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
         </Routes>
      </BrowserRouter>
    )
