@@ -2,8 +2,8 @@
 //npm i @chakra-ui/icons
 import { NavBar } from "../components/NavBar";
 import { SetStateAction, useState } from "react";
-import defaultTeam1 from "../assets/realMadridIcon.png"
-import defaultTeam2 from "../assets/barcelonaIcon.png"
+import defaultTeam1 from "../assets/team/realMadridIcon.png"
+import defaultTeam2 from "../assets/team/barcelonaIcon.png"
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Text } from "../components/Text";
