@@ -14,6 +14,7 @@ import { ChangeUsersPassword } from '../pages/ChangeUserPassword';
 import {PasswordRecovery} from "../pages/PasswordRecovery";
 import {ConfirmPasswordRecovery} from "../pages/ConfirmPasswordRecovery";
 import { EmployeeDashboard } from '../pages/EmployeeDashboard';
+import { Test } from '../pages/Test';
 
 
 export const RoutesBase = () => {
@@ -35,6 +36,7 @@ export const RoutesBase = () => {
             <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
             <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
             <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
+            <Route path={"/test"} element={<Test />}/>
         </Routes>
      </BrowserRouter>
    )

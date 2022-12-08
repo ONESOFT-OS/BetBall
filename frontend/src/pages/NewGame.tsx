@@ -4,7 +4,7 @@ import { Button } from "../components/Button";
 import { Text } from "../components/Text";
 import { ITeam, useTeam } from "../hooks/useTeam";
 import axios from "axios";
-import { Key } from "phosphor-react";
+import { InputDate } from "../components/InputDate";
 
 export interface Game{
     nickColaborador : string;
@@ -115,30 +115,29 @@ export function NewGame() {
 
                     <div className="flex gap-10 pt-5">
                         <div className="flex flex-col gap-1">
-                            <input  id="dateGame" 
-                                    type="date" 
-                                    required 
-                                    min={"2022-11-11"} 
+                            <InputDate
+                                    id="dateGame"
+                                    min={"2022-11-11"}
                                     onChange={(event) => 
                                         setGame({
                                             ...game,
                                             dataFimAposta : event.target.value
                                         })} 
-                                    className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg p-2.5 focus:ring-green-700 focus:ring-[3px]"/>
+                            />
                             <Text className="pl-2">
                                 Data
                             </Text>
                         </div>
                         <div className="flex flex-col gap-1">
-                            <input  id="timeGame" 
-                                    type="time" 
-                                    required 
+                            <InputDate
+                                    id="timeGame" 
+                                    mode="time" 
                                     onChange={(event) => 
                                         setGame({
                                             ...game,
                                             horaFimAposta : event.target.value
                                         })} 
-                                    className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg p-2.5 focus:ring-green-700 focus:ring-[3px]"/>
+                                    />
                             <Text className="pl-2">
                                 Hora
                             </Text>
