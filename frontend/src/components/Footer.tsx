@@ -4,7 +4,7 @@ import { FooterLogo } from '../assets/FooterLogo';
 
 const Footer = () => {
   return (
-    <footer className='bg-[#121217] text-[#ffffff] bg-[#ffffff19]'>
+    <footer className='bg-dark-117 text-[#ffffff] bg-[#ffffff19] w-screen'>
         <div className='flex lg:px-5 items-center'>
           <FooterLogo />
           <div className='lg:pl-20 flex justify-between space-x-40 items-center'>
