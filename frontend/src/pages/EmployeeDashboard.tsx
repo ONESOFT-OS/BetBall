@@ -2,6 +2,7 @@ import { Button } from "../components/Button";
 import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
 import { SideBar } from "../components/SideBar";
 import { StaticCardDashboard } from "../components/StaticCardDashboard";
+import { Text } from "../components/Text";
 
 export function EmployeeDashboard (){
     return(
@@ -31,7 +32,12 @@ export function EmployeeDashboard (){
                 <StaticCardDashboard/>
             </div>
 
-            <div className="flex flex-col gap-3 pt-4 px-20">
+            <div className="flex flex-col gap-3 pt-8 px-20">
+                <div className="flex flex-row justify-center gap-10 pb-3">
+                    <Text className="font-bold text-3xl text-green-500 ">Todos</Text>
+                    <Text className="font-bold text-3xl text-gray-500 " >Agendados</Text>
+                    <Text className="font-bold text-3xl text-gray-500 ">Finalizados</Text>
+                </div>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
