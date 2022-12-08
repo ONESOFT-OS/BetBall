@@ -8,7 +8,7 @@ export function EmployeeDashboard (){
     return(
         <div className="main pt-[100px] p-10 bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
-                {/* <SideBar/> */}
+                <SideBar/>
             </div>
             <div className="header flex items-center justify-between">
                 <div className="col-1 text-white">
