@@ -1,4 +1,5 @@
 import { Button } from "../components/Button";
+import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
 import { SideBar } from "../components/SideBar";
 import { StaticCardDashboard } from "../components/StaticCardDashboard";
 
@@ -6,7 +7,7 @@ export function EmployeeDashboard (){
     return(
         <div className="main pt-[100px] p-10 bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
-                <SideBar/>
+                {/* <SideBar/> */}
             </div>
             <div className="header flex items-center justify-between">
                 <div className="col-1 text-white">
@@ -28,6 +29,18 @@ export function EmployeeDashboard (){
             <div className="body mt-10 flex justify-between">
                 <StaticCardDashboard/>
                 <StaticCardDashboard/>
+            </div>
+
+            <div className="flex flex-col gap-3 pt-4 px-20">
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
             </div>
         </div>
     )
