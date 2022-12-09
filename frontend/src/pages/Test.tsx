@@ -1,4 +1,5 @@
 import { InputDate } from "../components/InputDate";
+import { Ranking } from "../components/Ranking";
 import { RankingIten } from "../components/RankingIten";
 
 // So fiz essa pagina para testar uns componentes so ignora
@@ -7,10 +8,8 @@ import { RankingIten } from "../components/RankingIten";
 export function Test() {
     return (
     <div className="bg-gray-900">
-        <RankingIten ranking="1" nickName="paulo" earnedValue="1000" wonBets="10" position="top"/>
-        <RankingIten ranking="1" nickName="paulo" earnedValue="1000" wonBets="10"/>
-        <RankingIten ranking="1" nickName="paulo" earnedValue="1000" wonBets="10"/>
-        <RankingIten ranking="1" nickName="paulo" earnedValue="1000" wonBets="10" position="down"/>
+        <Ranking type = "value" className="w-3/5"/>
+        <Ranking type = "bet" className="w-3/5"/>
     </div>
     )
 }
