@@ -9,7 +9,7 @@ export function HistoricItemCurrent(){
                 <Text className=" text-green-700 text-xs font-bold">ESGOTADO</Text>
             </div>
 
-            <div className="status bg-green-700 w-fit h-7 px-4 pt-[2px] rounded-sm">
+            <div className="status bg-green-700 w-fit h-7 px-5 pt-[2px] ml-1 rounded-sm">
                 <Text className=" text-xs font-bold">ROLANDO</Text>
             </div>
 

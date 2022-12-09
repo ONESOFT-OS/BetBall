@@ -33,7 +33,7 @@ export function EmployeeDashboard (){
                 <StaticCardDashboard/>
             </div>
 
-            <div className="flex flex-col gap-3 pt-8 px-20">
+            <div className="flex flex-col gap-4 pt-8 px-20">
                 <div className="flex flex-row justify-center gap-10 pb-3">
                     <Text className="font-bold text-3xl text-green-500 ">Todos</Text>
                     <Text className="font-bold text-3xl text-gray-500 " >Agendados</Text>
@@ -41,9 +41,10 @@ export function EmployeeDashboard (){
                 </div>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemScheduled></HistoricItemScheduled>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
-                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemScheduled></HistoricItemScheduled>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
