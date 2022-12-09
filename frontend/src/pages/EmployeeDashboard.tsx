@@ -1,5 +1,6 @@
 import { Button } from "../components/Button";
 import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
+import { HistoricItemScheduled } from "../components/HistoricItemScheduled";
 import { SideBar } from "../components/SideBar";
 import { StaticCardDashboard } from "../components/StaticCardDashboard";
 import { Text } from "../components/Text";
@@ -46,7 +47,7 @@ export function EmployeeDashboard (){
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
-                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemScheduled></HistoricItemScheduled>
             </div>
         </div>
     )
