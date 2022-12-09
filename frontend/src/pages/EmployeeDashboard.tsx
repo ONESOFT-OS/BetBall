@@ -1,5 +1,6 @@
 import { Button } from "../components/Button";
 import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
+import { HistoricItemFinish } from "../components/HistoricItemFinish";
 import { HistoricItemScheduled } from "../components/HistoricItemScheduled";
 import { SideBar } from "../components/SideBar";
 import { StaticCardDashboard } from "../components/StaticCardDashboard";
@@ -40,15 +41,16 @@ export function EmployeeDashboard (){
                     <Text className="font-bold text-3xl text-gray-500 ">Finalizados</Text>
                 </div>
                 <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemFinish></HistoricItemFinish>
+                <HistoricItemScheduled></HistoricItemScheduled>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemFinish></HistoricItemFinish>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemScheduled></HistoricItemScheduled>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemCurrent></HistoricItemCurrent>
                 <HistoricItemScheduled></HistoricItemScheduled>
-                <HistoricItemCurrent></HistoricItemCurrent>
-                <HistoricItemCurrent></HistoricItemCurrent>
-                <HistoricItemCurrent></HistoricItemCurrent>
-                <HistoricItemScheduled></HistoricItemScheduled>
+                <HistoricItemFinish></HistoricItemFinish>
             </div>
         </div>
     )

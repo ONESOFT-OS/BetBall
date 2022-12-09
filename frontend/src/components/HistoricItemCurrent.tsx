@@ -33,7 +33,7 @@ export function HistoricItemCurrent(){
             </div>
 
             <div className="finish">
-                <Button mode="closer" className="rounded-sm text-xs">FINALIZADO</Button>
+                <Button mode="closer" className="rounded-sm text-xs px-[21px]">FINALIZAR</Button>
             </div>
         </div>
     )

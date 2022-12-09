@@ -1,15 +1,11 @@
 import {Text} from "./Text"
 import { Button } from "./Button"
 
-export function HistoricItemScheduled(){
+export function HistoricItemFinish(){
     return(
         <div className="bg-blacktransparent w-full h-full flex flex-row justify-between pt-2">
-            <div className="time flex flex-col items-center">
-                <Text className=" text-orange-400 text-xs font-bold">14/12/2022</Text>
-            </div>
-
-            <div className="status bg-orange-400 w-fit h-7 px-[17px] pt-[2px] rounded-sm">
-                <Text className=" text-xs font-bold">AGENDADO</Text>
+            <div className="status bg-green-800 w-fit h-7 px-4 pt-[2px] ml-44 rounded-sm">
+                <Text className=" text-xs font-bold">FINALIZADO</Text>
             </div>
 
             <div className="team flex flex-row gap-5">
@@ -32,7 +28,7 @@ export function HistoricItemScheduled(){
             </div>
 
             <div className="finish">
-                <Button mode="closer" className="rounded-sm text-xs px-[21px]">FINALIZAR</Button>
+                <Button mode="closer" className="rounded-sm text-xs">FINALIZADO</Button>
             </div>
         </div>
     )
