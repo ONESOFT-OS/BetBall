@@ -1,5 +1,5 @@
 import clsx from "clsx"
-import { CellSignalX } from "phosphor-react"
+import { Text } from "../components/Text";
 
 export interface RankingItenProps{
     ranking: string
@@ -12,12 +12,23 @@ export interface RankingItenProps{
 export function RankingIten({position = "middle", ...props} : RankingItenProps){
 
     return(
-        <div className={clsx("w-2/3 bg-white bg-opacity-5 border-white border-opacity-10 border-x-2",
-                            {"rounded-t border-y-2" : position === "top",
-                             "border-b-2" : position === "middle",
-                             "rounded-b border-b-2" : position === "down"} )}>
-            <div className="p-4 flex">
-                <h1>aaaaaaaaaaaaaaaaaaaa</h1>
+        <div className={clsx("w-2/3 bg-white bg-opacity-[0.02] border-white border-opacity-5 border-x-[1px]",
+                            {"rounded-t border-y-[1px]" : position === "top",
+                             "border-b-[1px]" : position === "middle",
+                             "rounded-b border-b-[1px]" : position === "down"} )}>
+            <div className="p-4 flex justify-between">
+                    <Text className="">
+                        {props.ranking}
+                    </Text>
+                    <Text className="w-1/2">
+                        {props.nickName}
+                    </Text>
+                    <Text className="">
+                        {clsx("R$ ",props.earnedValue)}
+                    </Text>
+                    <Text className="">
+                        {props.wonBets}
+                    </Text>
             </div>
         </div>
     )
