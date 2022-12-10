@@ -2,6 +2,8 @@ import { Banner } from "../components/Banner";
 import { Card } from "../components/Card";
 import { Footer } from "../components/Footer";
 import { NavBar } from "../components/NavBar";
+import { Ranking } from "../components/Ranking";
+import { SelectorHome } from "../components/SelectorHome";
 
 export function Home(){
     return(
@@ -12,13 +14,16 @@ export function Home(){
             <span>
                 <Banner />
             </span>
+            <span>
+                <SelectorHome/>
+            </span>
             <div>
                 <Card outTeam={""} homeTeam={""}/>
+                <Ranking type={"value"}/>
             </div>
             <footer>
                 <Footer/>
             </footer>
         </div>
-
     )
 }
