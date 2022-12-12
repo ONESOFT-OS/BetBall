@@ -1,6 +1,6 @@
 export function StaticCardDashboard (){
     return (
-        <div className="card p-7 bg-blacktransparent rounded-[12px] min-w-[550px] h-[210px]">
+        <div className="card p-7 bg-blacktransparent rounded-[12px] min-w-[500px] h-[210px]">
             {/* Primeira linha */}
             <div className="row-1 mt-[-5px] flex items-center justify-between">
                 {/* Coluna 1 */}

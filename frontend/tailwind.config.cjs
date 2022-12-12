@@ -44,7 +44,8 @@ module.exports = {
 
       glass: {
         800: '#FFFFFF50',
-        500: '#FFFFFF20'
+        500: '#FFFFFF20',
+        300: '#FFFFFF05'
 
       },
 
