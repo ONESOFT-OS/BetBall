@@ -1,11 +1,13 @@
 import {Text} from "./Text"
 import { Button } from "./Button"
+import { ArrowDownIcon } from "@radix-ui/react-icons"
 
 export function HistoricItemCurrent(){
     return(
         <div className="bg-blacktransparent w-full h-full flex flex-row items-center justify-between rounded-[10px] p-5">
             <div className="time flex flex-col items-center">
-                <Text className=" text-green-700 text-xs font-bold">-</Text>
+                <Text className=" text-green-700 text-xs font-bold">TEMPO</Text>
+                <Text className=" text-green-700 text-xs font-bold">ESGOTADO</Text>
             </div>
 
             <div className="status bg-green-700 w-fit h-7 px-5 pt-[2px] ml-1 rounded-sm">

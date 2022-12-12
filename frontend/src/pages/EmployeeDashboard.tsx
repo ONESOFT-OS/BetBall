@@ -1,3 +1,4 @@
+import { ArrowDownIcon } from "@radix-ui/react-icons";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
 import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
@@ -58,11 +59,12 @@ export function EmployeeDashboard (){
                     <HistoricItemFinish></HistoricItemFinish>
                     <HistoricItemCurrent></HistoricItemCurrent>
                     <HistoricItemScheduled></HistoricItemScheduled>
-                    <HistoricItemCurrent></HistoricItemCurrent>
-                    <HistoricItemCurrent></HistoricItemCurrent>
-                    <HistoricItemScheduled></HistoricItemScheduled>
-                    <HistoricItemFinish></HistoricItemFinish>
                 </div>
+            <div className="container flex justify-center items-center mt-[25px]">
+                <div className="see-more bg-white rounded-[100%] w-[40px] h-[40px] flex justify-center items-center">
+                        <ArrowDownIcon className="w-[30px] h-[30px]"/>
+                </div>
+            </div>
             </div>
         </div>
     )
