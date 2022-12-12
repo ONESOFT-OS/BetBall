@@ -8,8 +8,7 @@ import { RankingIten } from "../components/RankingIten";
 export function Test() {
     return (
     <div className="bg-gray-900">
-        <Ranking type = "value" className="w-3/5"/>
-        <Ranking type = "bet" className="w-3/5"/>
+        <Ranking className="w-3/5"/>
     </div>
     )
 }

@@ -19,7 +19,7 @@ export function Home(){
             </span>
             <div>
                 <Card outTeam={""} homeTeam={""}/>
-                <Ranking type={"value"}/>
+                <Ranking/>
             </div>
             <footer>
                 <Footer/>

@@ -8,11 +8,11 @@ interface Bettor{
 }
 
 export const useBettorEarnedValue = () => {
-    const [bettor, setTeam] = useState<Bettor[]>([{ranking:"1", nickName:"Fulano", earnedValue:"102.189,10", wonBets:"523"},
-                                                  {ranking:"2", nickName:"Ciclano", earnedValue:"5.556,33", wonBets:"342"},
-                                                  {ranking:"3", nickName:"Beltrano", earnedValue:"1.147,65", wonBets:"123"},
-                                                  {ranking:"4", nickName:"Solano", earnedValue:"171,72", wonBets:"13"},
-                                                  {ranking:"5", nickName:"Gilclano", earnedValue:"5,25", wonBets:"58"},]);
+    const [bestBettorEarnedValue, setBestBettorEarnedValue] = useState<Bettor[]>([{ranking:"1", nickName:"Fulano", earnedValue:"102.189,10", wonBets:"523"},
+                                                                                  {ranking:"2", nickName:"Ciclano", earnedValue:"5.556,33", wonBets:"342"},
+                                                                                  {ranking:"3", nickName:"Beltrano", earnedValue:"1.147,65", wonBets:"123"},
+                                                                                  {ranking:"4", nickName:"Solano", earnedValue:"171,72", wonBets:"13"},
+                                                                                  {ranking:"5", nickName:"Gilclano", earnedValue:"5,25", wonBets:"58"},]);
     /*
     useEffect(() => {
         fetch("http://127.0.0.1:8000/teams")
@@ -20,7 +20,8 @@ export const useBettorEarnedValue = () => {
             .then((data) => setTeam(data));
     }, [])
     */
+
     return {
-        bettor
+        bestBettorEarnedValue
     };
 };

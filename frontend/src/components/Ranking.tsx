@@ -1,39 +1,47 @@
 import { useBettorEarnedValue } from "../hooks/useBettorEarnedValue";
 import { useBettorWonBets } from "../hooks/useBettorWonBets";
 import { RankingIten } from "./RankingIten";
-
+import { RankingHeading } from "./RankingHeading";
+import { useState } from "react";
 
 export interface RankingProps{
-    type: "value" | "bet"
     className?: string
 }
 
 export function Ranking(props:RankingProps){
-    if (props.type == "value"){
-        var {bettor} = useBettorEarnedValue();
-    } else {
-        var {bettor} = useBettorWonBets();    
+
+    const {bestBettorEarnedValue} = useBettorEarnedValue();
+
+    const {bestBettorsWonBets} = useBettorWonBets();
+
+    const [type, setType] = useState("earnedValue");
+    const [bettor, setBettor] = useState(bestBettorEarnedValue);
+
+    const setEarnedValueRanking = () => {
+        setType("earnedValue");
+        setBettor(bestBettorEarnedValue);
     }
-    const lestBestBettor = bettor.pop();
-    if(bettor.length == 0){
-        return(
-            <div className={props.className}>
-            <RankingIten ranking="RANKING" nickName="NOME" earnedValue="VALOR GANHO" wonBets="VITORIAS" position="top"/>
-            <RankingIten ranking="-" nickName='-' earnedValue="-" wonBets="-" position="down"/>
-        </div>  
-        )
+    const setWonBetsRanking = () => {
+        setType("wonBets");
+        setBettor(bestBettorsWonBets);
     }
+
     return(
         <div className={props.className}>
-            <RankingIten ranking="RANKING" nickName="NOME" earnedValue="VALOR GANHO" wonBets="VITORIAS" position="top"/>
-            {bettor.map((bettor) => 
-                    <RankingIten ranking={bettor.ranking} 
-                    nickName={bettor.nickName}
-                    earnedValue={bettor.earnedValue}
-                    wonBets={bettor.wonBets}
-                    position="middle"/>
-                )}
-            <RankingIten ranking={lestBestBettor?.ranking} nickName={lestBestBettor?.nickName} earnedValue={lestBestBettor?.earnedValue} wonBets={lestBestBettor?.wonBets} position="down"/>
+            <RankingHeading type = {type} 
+                            onClickEarnedValue = {setEarnedValueRanking} 
+                            onClickWonBets = {setWonBetsRanking}/>
+            {bettor.map((b) => {
+                var position = "middle";
+                if (b == bettor[bettor.length - 1])
+                    position = "down";
+                return(
+                    <RankingIten ranking={b.ranking} 
+                                 nickName = {b.nickName}
+                                 earnedValue = {b.earnedValue}
+                                 wonBets = {b.wonBets}
+                                 position = {position}/>)
+            })}
         </div>
     )
 }
