@@ -1,19 +1,17 @@
 import {Text} from "./Text"
 import { PhoneIcon } from '@chakra-ui/icons';
-import { InstagramLogo } from 'phosphor-react';
-import { FooterLogo } from '../assets/FooterLogo';
 import { InstagramLogoIcon } from "@radix-ui/react-icons";
 
 export function Footer (){
   return(
-    <footer className='text-[#ffffff] bg-[#121217] w-[100vw] h-[280px] mt-[30px] flex flex-col'>
-      <div className="content flex flex-row w-[100vw] h-[280px] justify-between items-center">
+    <footer className='text-[#ffffff] bg-[#121217] min-w-screen max-w-full h-[320px] mt-[30px] flex flex-col'>
+      <div className="content flex flex-row h-[280px] justify-between items-center">
         
-        <div className="col-1 w-[33.3%] h-[100%] flex flex-col items-center justify-center p-16">
+        <div className="col-1 w-[33%] h-[100%] flex flex-col items-center justify-center p-16">
           <div className="logo bg-[url('../assets/logo-transparente.png')] bg-contain bg-no-repeat w-[350px] h-[202px] p-5"></div>
         </div>
 
-        <div className="col-2 w-[33.3%] h-[100%] flex flex-col items-start justify-start p-16">
+        <div className="col-2 w-[33%] h-[100%] flex flex-col items-start justify-start p-16">
           <div className="contact">
             <div className="title">
               <h1 className="text-xl font-semibold">CONTATO</h1>
@@ -31,7 +29,7 @@ export function Footer (){
             </div>
         </div>
 
-        <div className="col-3 w-[33.3%] h-[100%] flex flex-col items-start justify-start p-16">
+        <div className="col-3 w-[33%] h-[100%] flex flex-col items-start justify-start p-16">
           <div className="links">
             <div className="title">
                 <h1 className="text-xl font-semibold">LINKS ÚTEIS</h1>
