@@ -8,7 +8,7 @@ export interface CardProps{
 
 export function Card (props:CardProps){
     return(
-        <div className="flex flex-row items-center justify-center p-1 w-full h-[100vh] bg-black">
+        <div className="flex flex-row items-center justify-center p-1 w-full h-[100vh] bg-dark-900">
             <div className="card min-w-[350px] bg-dark-500 rounded-[10px] p-10">
                 <div className="card-header flex flex-row justify-between pt-3 pb-10">
                     <div className="game-status bg-green-500 p-[5px] rounded-[5px] px-5 py-1">

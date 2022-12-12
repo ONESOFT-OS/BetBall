@@ -1,6 +1,11 @@
+import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
+import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
+import { HistoricItemFinish } from "../components/HistoricItemFinish";
+import { HistoricItemScheduled } from "../components/HistoricItemScheduled";
 import { SideBar } from "../components/SideBar";
 import { StaticCardDashboard } from "../components/StaticCardDashboard";
+import { Text } from "../components/Text";
 
 export function EmployeeDashboard (){
     return(
@@ -28,6 +33,31 @@ export function EmployeeDashboard (){
             <div className="body mt-10 flex justify-between">
                 <StaticCardDashboard/>
                 <StaticCardDashboard/>
+            </div>
+
+            <div className="flex flex-col gap-4 pt-8 px-20">
+                <div className="flex flex-row justify-center gap-10 pb-3">
+                <Link to={'/dashboard'}> 
+                    <Text className="font-bold text-3xl text-green-500 ">Todos</Text> 
+                </Link>
+                <Link to={'/dashboard'}>  
+                    <Text className="font-bold text-3xl text-gray-500 hover:text-green-700" >Agendados</Text>
+                </Link>
+                <Link to={'/dashboard'}>   
+                    <Text className="font-bold text-3xl text-gray-500 hover:text-green-700">Finalizados</Text>
+                </Link>
+                </div>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemFinish></HistoricItemFinish>
+                <HistoricItemScheduled></HistoricItemScheduled>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemFinish></HistoricItemFinish>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemScheduled></HistoricItemScheduled>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemCurrent></HistoricItemCurrent>
+                <HistoricItemScheduled></HistoricItemScheduled>
+                <HistoricItemFinish></HistoricItemFinish>
             </div>
         </div>
     )
