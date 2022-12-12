@@ -253,17 +253,10 @@ header .image-text .profession{
     position: absolute;
     top: 0;
     top: 0;
-    left: 250px;
+    left: 140px;
     height: 100vh;
     width: calc(100% - 250px);
-    background-color: var(--body-color);
     transition: var(--tran-05);
-}
-.home .text{
-    font-size: 30px;
-    font-weight: 500;
-    color: var(--text-color);
-    padding: 12px 60px;
 }
 
 .sidebar.close ~ .home{

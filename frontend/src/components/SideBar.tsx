@@ -1,7 +1,6 @@
 import '../styles/sideBar.css';
 import { BellIcon, CalendarIcon, DoubleArrowRightIcon, HomeIcon, PlusCircledIcon } from '@radix-ui/react-icons';
 import { ArrowRightIcon, ChevronRightIcon } from '@chakra-ui/icons';
-import { ArrowCircleDownRight, ArrowFatRight } from 'phosphor-react';
 
 export function SideBar (){
     return (
