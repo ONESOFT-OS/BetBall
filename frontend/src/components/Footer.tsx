@@ -1,36 +1,54 @@
+import {Text} from "./Text"
 import { PhoneIcon } from '@chakra-ui/icons';
 import { InstagramLogo } from 'phosphor-react';
 import { FooterLogo } from '../assets/FooterLogo';
+import { InstagramLogoIcon } from "@radix-ui/react-icons";
 
 export function Footer (){
   return(
-    <footer className='bg-[#121217] text-[#ffffff] bg-[#ffffff19]'>
-    <div className='flex lg:px-5 items-center'>
-      <FooterLogo />
-      <div className='lg:pl-20 flex justify-between space-x-40 items-center'>
-        <div className='md:pr-5 md:pl-5 xl:pr-30 xl:pl-30'>
-          <h1 className='font-bold'>CONTATOS</h1>
-          <small>
-            <PhoneIcon />
-            {' (XX) - XXXX-XXXX'}
-          </small>
-          <span className='md:flex md:itens-center font-sans'>
-            <InstagramLogo className='w-5 h-5' />{'@betball'}
-          </span>
+    <footer className='text-[#ffffff] bg-[#121217] w-[100vw] h-[280px] mt-[30px] flex flex-col'>
+      <div className="content flex flex-row w-[100vw] h-[280px] justify-between items-center">
+        
+        <div className="col-1 w-[33.3%] h-[100%] flex flex-col items-center justify-center p-16">
+          <div className="logo bg-[url('../assets/logo-transparente.png')] bg-contain bg-no-repeat w-[350px] h-[202px] p-5"></div>
         </div>
-        <div>
-          <h1 className='font-bold'>SOBRE NÓS</h1>
-          <div className='md:flex flex-col md:justify-between'>
-            <a href="#" className='font-sans'>Política de Privacidade</a>
-            <a href="#" className='font-sans'>Termos de Serviço</a>
-            <a href="#" className='font-sans'>Central de Ajuda</a>
+
+        <div className="col-2 w-[33.3%] h-[100%] flex flex-col items-start justify-start p-16">
+          <div className="contact">
+            <div className="title">
+              <h1 className="text-xl font-semibold">CONTATO</h1>
+            </div>
+            <div className="list text-gray-500">
+              <div className="phone mt-10 flex gap-3 items-center">
+                <PhoneIcon />
+                <p>(75) - 7070-7070</p>
+              </div>
+              <div className="social mt-4 flex gap-3 items-center">
+                <InstagramLogoIcon />
+                <p>/@betball</p>
+              </div>
+            </div>
+            </div>
+        </div>
+
+        <div className="col-3 w-[33.3%] h-[100%] flex flex-col items-start justify-start p-16">
+          <div className="links">
+            <div className="title">
+                <h1 className="text-xl font-semibold">LINKS ÚTEIS</h1>
+            </div>
+            <div className="list text-gray-500">
+              <ul className="list-none mt-10">
+                <li>Politica de Privacidade</li>
+                <li className="mt-4">Termos de Serviço</li>
+                <li className="mt-4">Central de Ajuda</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
-    </div>
-    <div className='bg-[#7DC120] flex flex-row justify-center items-center text-center'>
-    <span><span className='font-bold'>Betball</span> © Copyright 2022 - Desenvolvido por <span className='font-bold'>OneSoft</span></span>
-    </div>
+      <div className="subfooter bg-green-700 text-white w-[100vw] h-[20px] p-5 flex items-center justify-center">
+          <p><span className='font-bold'>Betball</span>© Copyright 2022 - Desenvolvido por <span className='font-bold'>OneSoft</span></p>
+        </div>
     </footer>
   )
 }
