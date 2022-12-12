@@ -7,7 +7,7 @@ import { TextInput } from "../components/TextInput";
 import { LockKey } from "phosphor-react";
 import { Button } from "../components/Button";
 
-export function AdmSettings() {
+export function PerfilAdmSettings() {
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center justify-center ">
         <NavBar/>
@@ -20,7 +20,7 @@ export function AdmSettings() {
           </header>
 
           <div className="flex flex-row pt-2 px-12 space-x-8">
-              <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/admSettings'}>Configurar Perfil</Link></Text>
+              <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/admSettings'}>teste</Link></Text>
               <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/newgame'}>Cadastrar Jogos</Link></Text>
           </div>
           </div>

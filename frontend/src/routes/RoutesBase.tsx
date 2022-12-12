@@ -14,7 +14,7 @@ import {PasswordRecovery} from "../pages/PasswordRecovery";
 import {ConfirmPasswordRecovery} from "../pages/ConfirmPasswordRecovery";
 import { EmployeeDashboard } from '../pages/EmployeeDashboard';
 import { Test } from '../pages/Test';
-import { AdmSettings } from '../pages/PainelADM';
+import { PerfilAdmSettings } from '../pages/PerfilAdmSettings';
 import { PerfilAdm } from '../pages/PerfilAdm';
 
 
@@ -38,7 +38,7 @@ export const RoutesBase = () => {
             <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
             <Route path={"/test"} element={<Test />}/>
             <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
-            <Route path={"admSettings"} element={<AdmSettings/>}/>
+            <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
         </Routes>
      </BrowserRouter>
    )
