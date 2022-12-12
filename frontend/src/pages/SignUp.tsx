@@ -68,9 +68,9 @@ export function SignUp(){
                 </Link>
             </header>
 
-            <div className="flex flex-row w-full px-14 gap-28 pb-10 ">
-                <ICad className=" h-[500px] w-[500px]"/>
-
+            <div className="flex flex-row w-full px-14 justify-between p-10 ">
+                <div className="img-teams bg-[url('../assets/sign-up-img.png')] bg-contain bg-no-repeat w-[500px] h-[500px]">
+                </div>
                 <form onSubmit={handleSignUp} className="bg-slate-50 bg-opacity-5 w-full max-w-md  h-screen flex flex-col items-center justify-center rounded-2xl gap-1 ">
                     <div className="flex flex-col  w-full max-w-sm gap-4  mt-12 mb-8">
                         <Heading size="lg"> Cadastre-se</Heading>
