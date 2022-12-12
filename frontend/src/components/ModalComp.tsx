@@ -40,6 +40,7 @@ import {
       localStorage.setItem("aposta_cliente", JSON.stringify(newDataArray));
   
       setData(newDataArray);
+      window.location.href = window.location.href;
   
       onClose();
     };
