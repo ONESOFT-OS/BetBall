@@ -1,7 +1,11 @@
 import {Text} from "./Text"
 import { Button } from "./Button"
 
-export function HistoricItemFinish(){
+export interface ItemProps{
+    action:string
+}
+
+export function HistoricItemFinish(props:ItemProps){
     return(
         <div className="bg-blacktransparent w-full h-full flex flex-row items-center justify-between rounded-[10px] p-5">
             <div className="time flex flex-col items-center">
@@ -31,7 +35,7 @@ export function HistoricItemFinish(){
             </div>
 
             <div className="finish">
-                <Button mode="closer" className="rounded-sm bg-glass-300  text-xs px-[21px]">FINALIZADO</Button>
+                <Button mode="closer" className="rounded-sm bg-glass-300  text-xs px-[21px]">{props.action}</Button>
             </div>
         </div>
     )
