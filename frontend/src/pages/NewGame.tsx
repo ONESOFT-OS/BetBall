@@ -1,4 +1,4 @@
-import { SetStateAction, useState } from "react";
+import { FormEvent, MouseEventHandler, SetStateAction, useState } from "react";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Text } from "../components/Text";
@@ -33,15 +33,23 @@ export function NewGame() {
         nickColaborador : "MASTER",
         dataFimAposta : "",
         horaFimAposta : "",
-        idTime1 : "1",
-        idTime2 : "2",
+        idTime1 : "",
+        idTime2 : "",
     });
 
     const { team } = useTeam();
 
-    const sendNewGame = (event : any) => {
+    async function sendNewGame(event : FormEvent){
         event.preventDefault();
         
+        if (game.dataFimAposta == "" || 
+            game.horaFimAposta == "" || 
+            game.idTime1 == "" ||
+            game.idTime2 == ""||
+            game.idTime1 == game.idTime2){
+                alert("Dados incompletos ou incorretos");
+                return
+        }
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/register/game',
@@ -53,6 +61,12 @@ export function NewGame() {
                 team2_id: game.idTime2
             }
           })
+        
+        history.back();
+    }
+
+    const close = (event : any) => {
+        history.back();
     }
 
     return(
@@ -63,7 +77,7 @@ export function NewGame() {
                         <Heading classname="text-5xl">
                             Novo Jogo
                         </Heading>
-                        <Button mode="closer" className=" px-[19px]">
+                        <Button mode="closer" onClick={close} className=" px-[19px]">
                             X
                         </Button>
                     </div>

@@ -29,9 +29,11 @@ export function EmployeeDashboard (){
                         </div>
 
                         <div className="button w-[150px] h-[35px]">
-                            <Button type='submit' className='min-w-fit max-w-xs'>       
-                                + Add New 
-                            </Button>
+                            <Link to={"/newgame"}>
+                                <Button type='submit' className='min-w-fit max-w-xs'>       
+                                    + Add New 
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
@@ -52,12 +54,12 @@ export function EmployeeDashboard (){
                         <Text className="font-bold text-xl text-gray-500 hover:text-green-700">Finalizados</Text>
                     </Link>
                     </div>
-                    <HistoricItemCurrent></HistoricItemCurrent>
-                    <HistoricItemFinish></HistoricItemFinish>
+                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
+                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
                     <HistoricItemScheduled></HistoricItemScheduled>
-                    <HistoricItemCurrent></HistoricItemCurrent>
-                    <HistoricItemFinish></HistoricItemFinish>
-                    <HistoricItemCurrent></HistoricItemCurrent>
+                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
+                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
+                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
                     <HistoricItemScheduled></HistoricItemScheduled>
                 </div>
             <div className="container flex justify-center items-center mt-[25px]">
