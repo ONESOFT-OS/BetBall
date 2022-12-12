@@ -29,9 +29,11 @@ export function EmployeeDashboard (){
                         </div>
 
                         <div className="button w-[150px] h-[35px]">
-                            <Button type='submit' className='min-w-fit max-w-xs'>       
-                                + Add New 
-                            </Button>
+                            <Link to={"/newgame"}>
+                                <Button type='submit' className='min-w-fit max-w-xs'>       
+                                    + Add New 
+                                </Button>
+                            </Link>
                         </div>
                     </div>
                 </div>
