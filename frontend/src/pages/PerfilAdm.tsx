@@ -20,8 +20,13 @@ export function PerfilAdm(){
           </header>
 
           <div className="flex flex-row pt-2 px-12 space-x-8">
-              <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/admSettings'}>Configurar Perfil</Link></Text>
+              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/admSettings'}>Configurar Perfil</Link></Text>
               <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/newgame'}>Cadastrar Jogos</Link></Text>
+              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/user/create'}>Cadastrar Usuários</Link></Text>
+              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/games'}>Visualizar Jogos</Link></Text>
+              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/profit'}>Definir Lucro</Link></Text>
+              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/backup'}>Backup</Link></Text>
+              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/logs'}>Visualizar Logs</Link></Text>
           </div>
           </div>
         </div>
