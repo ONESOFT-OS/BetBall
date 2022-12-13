@@ -19,6 +19,7 @@ import { PerfilAdm } from '../pages/PerfilAdm';
 import { Allgames } from '../pages/Games';
 import { DefineProfit } from '../pages/Profit';
 import { SystemLogs } from '../pages/Logs';
+import {PerfilEmployee} from "../pages/PerfilEmployee";
 import { EditGame } from '../pages/EditGame';
 
 export const RoutesBase = () => {
@@ -42,6 +43,7 @@ export const RoutesBase = () => {
             <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
             <Route path={"/test"} element={<Test />}/>
             <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
+            <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
             <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
             <Route path={"games"} element={<Allgames/>}/>
             <Route path={"profit"} element={<DefineProfit/>}/>
