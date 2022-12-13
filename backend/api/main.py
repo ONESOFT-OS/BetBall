@@ -2,6 +2,7 @@ from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
+
 from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match
 
 from queries.queries import get_clubs
@@ -9,7 +10,8 @@ from queries.users import get_users, get_users_by_type
 from queries.users import login_user
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
 # from queries.game import add_game, get_poster_by_id
-from queries.game import add_game 
+from queries.game import add_game, list_game_by_id
+from queries.team import get_clubs_by_game
 
 from random import randint
 
@@ -95,6 +97,14 @@ async def registerUser(user: CadastroColaboratorAdmin):
 @app.get('/teams')
 async def match():
     return get_clubs()
+
+@app.get('/game/{id}')
+async def getGame(id):
+    return list_game_by_id(id)
+
+@app.get('/team/game/{gameId}')
+async def getTeansInGame(gameId):
+    return get_clubs_by_game(gameId)
 
 @app.post('/teste/register/game')
 async def match():

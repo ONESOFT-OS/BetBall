@@ -33,3 +33,13 @@ def get_club_by_id(club_id):
     club = executeSelection(connection, query)
     club_dict = tutple_to_dict('team_name', 'team_id', 'image_src', tupla=club[0])
     return club_dict
+
+
+def get_clubs_by_game(game_id):
+    query = f"""
+        SELECT times.id_time, times.nome, times.brasao
+        FROM (participacao JOIN times ON times.id_time = participacao.id_time)
+        where participacao.id_jogo = {game_id}
+    """
+    clubs = executeSelection(connection, query)
+    return clubs

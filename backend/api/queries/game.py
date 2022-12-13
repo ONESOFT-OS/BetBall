@@ -72,9 +72,12 @@ def get_match_by_id(game_id):
 def get_games():
     pass
 
-# Desatualizada
-def list_game_by_id(game_id):
-    query = f"""
-        SELECT * FROM jogos WHERE id_jogo = '{game_id}'
-    """
-    executeQuery(connection, query)
+
+# Retorna a tupla do jogo que contem aquele ID
+# @param game_id: ID do jogo que deseja buscar
+# @return tupla do jogo encontrado
+def list_game_by_id(id):
+    query = f"""SELECT * FROM jogos WHERE id_jogo = {id}"""
+    game = executeSelection(connection, query)
+    game_dict = tutple_to_dict('idGame', 'nickColaborador', 'date','isFinish', tupla=game[0])
+    return game_dict

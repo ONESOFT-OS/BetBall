@@ -35,8 +35,8 @@ export function EditGame() {
         nickColaborador : game.nickColaborador,
         dataFimAposta : game.date.split(" ")[0],
         horaFimAposta : game.date.split(" ")[1],
-        idTime1 : game.iDTeam1,
-        idTime2 : game.iDTeam2,
+        idTime1 : "1",//game.iDTeam1,
+        idTime2 : "2"//game.iDTeam2,
     });
 
     const team1 = useTeamById(editGame.idTime1);
@@ -103,7 +103,7 @@ export function EditGame() {
                     <div className="flex justify-center pt-11 gap-28">
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96" 
                                 name="TimeEsquerda"
-                                value = {game.iDTeam1}
+                                value = {"1"}//game.iDTeam1}
                                 placeholder = {"aaaaaaa"}
                                 id="leftTeamSelect" 
                                 disabled>
@@ -111,7 +111,7 @@ export function EditGame() {
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
                                 name="TimeDireita" 
-                                value = {game.iDTeam2}
+                                value = {"2"}//game.iDTeam2}
                                 id="rightTeamSelect"
                                 disabled>
                                 <option value="" >{team2.club_name}</option>
