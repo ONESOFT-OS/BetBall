@@ -2,10 +2,10 @@ import { FormEvent, MouseEventHandler, SetStateAction, useState } from "react";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Text } from "../components/Text";
-import { ITeam, useTeam } from "../hooks/useTeam";
+import { useGameById } from "../hooks/useGameById";
 import axios from "axios";
 import { InputDate } from "../components/InputDate";
-import clsx from "clsx";
+import { useTeamById } from "../hooks/useTeamById";
 
 export interface NewGame{
     nickColaborador : string;
@@ -14,7 +14,7 @@ export interface NewGame{
     idTime1 : string;
     idTime2 : string;
 }
-
+/*
 export function getURL(team : ITeam[], id : string){
     var url : string = "";
 
@@ -27,32 +27,32 @@ export function getURL(team : ITeam[], id : string){
     }
     return url;
 }
+*/
+export function EditGame() {
+    const game = useGameById(1);
 
-export function NewGame() {
-    
-    const [game, setGame] = useState<NewGame>({
-        nickColaborador : "MASTER",
-        dataFimAposta : "",
-        horaFimAposta : "",
-        idTime1 : "",
-        idTime2 : "",
+    const [editGame, setEditGame] = useState<NewGame>({
+        nickColaborador : game.nickColaborador,
+        dataFimAposta : game.date.split(" ")[0],
+        horaFimAposta : game.date.split(" ")[1],
+        idTime1 : game.iDTeam1,
+        idTime2 : game.iDTeam2,
     });
 
-    const { team } = useTeam();
-    const date = new Date();
-    const today : string = date.getFullYear().toString() + "-" + (date.getMonth() + 1).toString() + "-" + date.getDate().toString();
+    const team1 = useTeamById(editGame.idTime1);
+    const team2 = useTeamById(editGame.idTime2);
 
-    async function sendNewGame(event : FormEvent){
+    async function sendNewEditGame(event : FormEvent){
         event.preventDefault();
-        
-        if (game.dataFimAposta == "" || 
-            game.horaFimAposta == "" || 
-            game.idTime1 == "" ||
-            game.idTime2 == ""||
-            game.idTime1 == game.idTime2){
-                alert("Dados incompletos ou incorretos");
+        if (editGame.dataFimAposta == game.date.split(" ")[0]){
+            console.log("Mesmo dia");
+            if (editGame.horaFimAposta < game.date.split(" ")[1]) {
+                console.log("Hora anterior");
+                alert("Reagendar jogo apenas para depois da hora marcada");
                 return
+            }     
         }
+        /*
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/register/game',
@@ -64,10 +64,9 @@ export function NewGame() {
                 team2_id: game.idTime2
             }
           })
-        
+          */
         history.back();
     }
-
     const close = (event : any) => {
         history.back();
     }
@@ -78,7 +77,7 @@ export function NewGame() {
                 <form className="mx-16 my-16 flex flex-col justify-evenly">
                     <div className="flex justify-between">
                         <Heading classname="text-5xl">
-                            Novo Jogo
+                            Editar Jogo
                         </Heading>
                         <Button mode="closer" onClick={close} className=" px-[19px]">
                             X
@@ -88,7 +87,7 @@ export function NewGame() {
                     <div className="flex justify-center pt-3">
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
                             <img className="scale-75" 
-                                 src={getURL(team, game.idTime1)}/>
+                                 src={team1?.photo_link}/>
                         </div>
                         <div className="items-center flex flex-col justify-center">
                             <p className="text-white mx-4">
@@ -97,32 +96,25 @@ export function NewGame() {
                         </div>
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
                             <img className="scale-75" 
-                                 src={getURL(team, game.idTime2)}/>
+                                 src={team2?.photo_link}/>
                         </div>
                     </div>
 
                     <div className="flex justify-center pt-11 gap-28">
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96" 
-                                name="TimeEsquerda" 
+                                name="TimeEsquerda"
+                                value = {game.iDTeam1}
+                                placeholder = {"aaaaaaa"}
                                 id="leftTeamSelect" 
-                                onChange={(event) => 
-                                    setGame({
-                                        ...game,
-                                        idTime1 : event.target.value
-                                    })}>
-                            <option value="" key={""}>--Selecione Time--</option>
-                            {team.map((team) => <option value={team.club_id} key={team.club_id}> {team.club_name} </option>)}
+                                disabled>
+                                <option value="" >{team1.club_name}</option>
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
                                 name="TimeDireita" 
-                                id="rightTeamSelect" 
-                                onChange={(event) => 
-                                    setGame({
-                                        ...game,
-                                        idTime2 : event.target.value
-                                    })}>
-                            <option value="" key={""}>--Selecione Time--</option>
-                            {team.map((team) => <option value={team.club_id} key={team.club_id}> {team.club_name} </option>)}
+                                value = {game.iDTeam2}
+                                id="rightTeamSelect"
+                                disabled>
+                                <option value="" >{team2.club_name}</option>
                         </select>
                     </div>
 
@@ -134,10 +126,11 @@ export function NewGame() {
                         <div className="flex flex-col gap-1">
                             <InputDate
                                     id="dateGame"
-                                    min={today}
+                                    min={game.date.split(" ")[0]}
+                                    value = {editGame.dataFimAposta}
                                     onChange={(event) => 
-                                        setGame({
-                                            ...game,
+                                        setEditGame({
+                                            ...editGame,
                                             dataFimAposta : event.target.value
                                         })} 
                             />
@@ -148,12 +141,13 @@ export function NewGame() {
                         <div className="flex flex-col gap-1">
                             <InputDate
                                     id="timeGame" 
-                                    mode="time" 
+                                    mode="time"
+                                    value = {editGame.horaFimAposta}
                                     onChange={(event) => 
-                                        setGame({
-                                            ...game,
+                                        setEditGame({
+                                            ...editGame,
                                             horaFimAposta : event.target.value
-                                        })} 
+                                        })}
                                     />
                             <Text className="pl-2">
                                 Hora
@@ -163,7 +157,7 @@ export function NewGame() {
 
                     <div className="flex justify-center pt-12">
                         <Button type='submit' 
-                                onClick={sendNewGame} 
+                                onClick={sendNewEditGame} 
                                 className='mt-4 min-w-fit max-w-xs'>
                             Salvar
                         </Button>

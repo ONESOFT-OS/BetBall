@@ -19,6 +19,7 @@ import { PerfilAdm } from '../pages/PerfilAdm';
 import { Allgames } from '../pages/Games';
 import { DefineProfit } from '../pages/Profit';
 import { SystemLogs } from '../pages/Logs';
+import { EditGame } from '../pages/EditGame';
 
 export const RoutesBase = () => {
    return(
@@ -28,6 +29,7 @@ export const RoutesBase = () => {
             <Route path="/signin" element={<SignIn/>} />
             <Route path="/signup" element={<SignUp/>} />
             <Route path="/newgame" element={<NewGame />} />
+            <Route path="/editgame" element={<EditGame />} />
             <Route path="/bet" element={<Bet/>}/>
             <Route path="/user/create" element={<CreateUser/>} />
             <Route path="/perfil/deposit" element={<PerfilDeposit/>} />

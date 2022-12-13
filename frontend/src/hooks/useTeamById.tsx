@@ -17,6 +17,5 @@ export const useTeamById = (id : string) => {
     }, [])
     */
     var fakeID : number = parseInt(id); 
-    
-    return team[fakeID];
+    return team[fakeID-1];
 };
