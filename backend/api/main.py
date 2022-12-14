@@ -9,7 +9,6 @@ from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
-# from queries.game import add_game, get_poster_by_id
 from queries.game import add_game, list_game_by_id
 from queries.team import get_clubs_by_game
 
@@ -100,7 +99,17 @@ async def match():
 
 @app.get('/game/{id}')
 async def getGame(id):
-    return list_game_by_id(id)
+    auxGame = list_game_by_id(id)
+    endDate = str(auxGame['date']).split(" ")
+    print(endDate)
+    game = {
+        'idGame'            : auxGame['idGame'],
+        'nickColaborador'   : auxGame['nickColaborador'],
+        'endDate'           : endDate[0],
+        'endTime'           : endDate[1],
+        'isFinish'          : auxGame['isFinish'],
+    }
+    return game
 
 @app.get('/team/game/{gameId}')
 async def getTeansInGame(gameId):

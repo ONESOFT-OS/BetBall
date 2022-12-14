@@ -5,14 +5,13 @@ import { Text } from "../components/Text";
 import { useGameById } from "../hooks/useGameById";
 import axios from "axios";
 import { InputDate } from "../components/InputDate";
-import { useTeamById } from "../hooks/useTeamById";
+import { ITeam, useTeamById } from "../hooks/useTeamById";
+import { useTeamByGame } from "../hooks/useTeamByGame";
 
 export interface NewGame{
     nickColaborador : string;
     dataFimAposta : string;
     horaFimAposta : string;
-    idTime1 : string;
-    idTime2 : string;
 }
 /*
 export function getURL(team : ITeam[], id : string){
@@ -29,28 +28,29 @@ export function getURL(team : ITeam[], id : string){
 }
 */
 export function EditGame() {
-    const game = useGameById(1);
+    const game = useGameById(2);
+    const teams = useTeamByGame(2);
 
     const [editGame, setEditGame] = useState<NewGame>({
         nickColaborador : game.nickColaborador,
-        dataFimAposta : game.date.split(" ")[0],
-        horaFimAposta : game.date.split(" ")[1],
-        idTime1 : "1",//game.iDTeam1,
-        idTime2 : "2"//game.iDTeam2,
+        dataFimAposta : game.endDate,
+        horaFimAposta : game.endTime,
     });
 
-    const team1 = useTeamById(editGame.idTime1);
-    const team2 = useTeamById(editGame.idTime2);
+    console.log(game)
+    console.log(editGame.horaFimAposta)
+    //const team1 = useTeamById(editGame.idTime1);
+    //const team2 = useTeamById(editGame.idTime2);
 
     async function sendNewEditGame(event : FormEvent){
         event.preventDefault();
-        if (editGame.dataFimAposta == game.date.split(" ")[0]){
+        if (editGame.dataFimAposta == game.endDate){
             console.log("Mesmo dia");
-            if (editGame.horaFimAposta < game.date.split(" ")[1]) {
+            if (editGame.horaFimAposta < game.endTime) {
                 console.log("Hora anterior");
                 alert("Reagendar jogo apenas para depois da hora marcada");
                 return
-            }     
+            }
         }
         /*
         axios({
@@ -67,6 +67,7 @@ export function EditGame() {
           */
         history.back();
     }
+
     const close = (event : any) => {
         history.back();
     }
@@ -87,7 +88,7 @@ export function EditGame() {
                     <div className="flex justify-center pt-3">
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
                             <img className="scale-75" 
-                                 src={team1?.photo_link}/>
+                                 src={teams[0].photo_link}/>
                         </div>
                         <div className="items-center flex flex-col justify-center">
                             <p className="text-white mx-4">
@@ -96,25 +97,24 @@ export function EditGame() {
                         </div>
                         <div className="bg-[#24242E] rounded-full h-24 w-24 items-center flex flex-col justify-center">
                             <img className="scale-75" 
-                                 src={team2?.photo_link}/>
+                                 src={teams[1].photo_link}/>
                         </div>
                     </div>
 
                     <div className="flex justify-center pt-11 gap-28">
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96" 
                                 name="TimeEsquerda"
-                                value = {"1"}//game.iDTeam1}
-                                placeholder = {"aaaaaaa"}
+                                value = {teams[0].club_id}
                                 id="leftTeamSelect" 
                                 disabled>
-                                <option value="" >{team1.club_name}</option>
+                                <option value="" >{teams[0].club_name}</option>
                         </select>
                         <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
                                 name="TimeDireita" 
-                                value = {"2"}//game.iDTeam2}
+                                value = {teams[1].club_id}
                                 id="rightTeamSelect"
                                 disabled>
-                                <option value="" >{team2.club_name}</option>
+                                <option value="" >{teams[1].club_name}</option>
                         </select>
                     </div>
 
@@ -126,7 +126,7 @@ export function EditGame() {
                         <div className="flex flex-col gap-1">
                             <InputDate
                                     id="dateGame"
-                                    min={game.date.split(" ")[0]}
+                                    min = {game.endDate}
                                     value = {editGame.dataFimAposta}
                                     onChange={(event) => 
                                         setEditGame({
