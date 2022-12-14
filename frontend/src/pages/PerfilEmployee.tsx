@@ -2,12 +2,39 @@ import {Link} from "react-router-dom";
 import {Heading} from "../components/Heading";
 import {NavBar} from "../components/NavBar";
 import {Text} from "../components/Text";
-import {useState, useMemo, useEffect} from "react";
+import React, {useState, useMemo, useEffect} from "react";
 import { useSearchParams } from "react-router-dom";
 import api from "../services/api";
+import {BaseTable} from "../components/BaseTable";
+import {Table, TableBody, TableCell, TableContainer, TableHead, TableRow} from "@mui/material";
+
+interface GameDetails {
+    game_id: number;
+    nickColaborator: string;
+    finalBetDate: string;
+
+    participants: [
+        {
+            time: {
+                id_time: number;
+                name: string;
+                logo: string;
+            },
+            goals: number;
+        },
+        {
+            time: {
+                id_time: number;
+                name: string;
+                logo: string;
+            },
+            goals: number;
+        },
+    ]
+}
 
 const PerfilEmployee: React.FC = () => {
-    const [gamesRows, setGamesRows] = useState([]);
+    const [gamesRows, setGamesRows] = useState<GameDetails[]>([]);
     const [employeeRows, setEmployeeRows] = useState();
     const [searchParams, setSearchParams] = useSearchParams();
     const [loading, setLoading] = useState(true);
@@ -16,11 +43,12 @@ const PerfilEmployee: React.FC = () => {
         return searchParams.get('search') || "";
     }, [searchParams]);
 
-    useEffect(async () => {
+    useEffect( () => {
+        //TODO criar service para fazer tratamento das requisições
         setLoading(true);
 
         try {
-            await api.get('/url_dos_jogos')
+            api.get('/url_dos_jogos')
                 .then(response => {
                     setLoading(false)
 
@@ -34,7 +62,7 @@ const PerfilEmployee: React.FC = () => {
             console.error(e);
         }
 
-    }, [searchParams]);
+    }, [search]);
 
 
     return (
@@ -61,9 +89,42 @@ const PerfilEmployee: React.FC = () => {
                         Jogos</Link></Text>
                 </div>
             </div>
+
+            <BaseTable
+                showNewButton
+                textNewButton={"Novo Jogo"}
+                showSearchInput={true}
+                searchText={search}
+                onChangeSearchText={(text) => setSearchParams({search: text}, {replace: true})}
+            />
+            <TableContainer>
+                <Table>
+                    <TableHead>
+                        <TableRow>
+                            <TableCell>Id do Jogo</TableCell>
+                            <TableCell>Time da Casa</TableCell>
+                            <TableCell>Placar</TableCell>
+                            <TableCell>Time Visitante</TableCell>
+                            <TableCell>Funcionário Responsável</TableCell>
+                            <TableCell>Data final da Aposta</TableCell>
+                        </TableRow>
+                    </TableHead>
+                    <TableBody>
+                        {gamesRows.map((row) => (
+                            <TableRow key={row.game_id}>
+                                <TableCell>{row.game_id}</TableCell>'
+                                <TableCell>{row.participants[0].time.name}</TableCell>'
+                                <TableCell>{`${row.participants[0].goals} 'x' ${row.participants[1].goals}`}</TableCell>'
+                                <TableCell>{row.nickColaborator}</TableCell>'
+                                <TableCell>{row.finalBetDate}</TableCell>'
+                            </TableRow>
+                        ))}
+                    </TableBody>
+                </Table>
+            </TableContainer>
+
         </div>
     )
 }
 
-
-export {PerfilEmployee}
+export {PerfilEmployee};
