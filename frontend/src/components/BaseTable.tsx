@@ -10,7 +10,7 @@ interface ITableListProps {
     onClickNewButton?: () => void;
 }
 
-const Table: React.FC<ITableListProps> =  ({
+const BaseTable: React.FC<ITableListProps> =  ({
     searchText = '',
     showSearchInput = false ,
     onChangeSearchText,
@@ -48,4 +48,4 @@ const Table: React.FC<ITableListProps> =  ({
     );
 };
 
-export { Table };
+export { BaseTable };
