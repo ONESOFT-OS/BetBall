@@ -28,9 +28,9 @@ export function Home(){
                     </div>
                 </div>
                 <div className="games flex justify-around p-10">
-                    <Card outTeam={"Barcelona"} homeTeam={"Real Madrid"}/>
-                    <Card outTeam={"PSG"} homeTeam={"Milan FC"}/>
-                    <Card outTeam={"Brasil"} homeTeam={"Croácia"}/>
+                    <Card outTeam={"Barcelona"} homeTeam={"Real Madrid"} teamHomeIconScr={"../src/assets/team/barcelonaIcon.png"} teamOutIconScr={"../src/assets/team/realMadridIcon.png"}/>
+                    <Card outTeam={"PSG"} homeTeam={"Chelsea"} teamHomeIconScr={"../src/assets/team/chelseaIcon.png"} teamOutIconScr={"../src/assets/team/psgIcon.png"}/>
+                    <Card outTeam={"Real Madrid"} homeTeam={"Manchester United"} teamHomeIconScr={"../src/assets/team/manchesterUnitedIcon.png"} teamOutIconScr={"../src/assets/team/realMadridIcon.png"}/>
                 </div>
                 <div className="ranking">
                     <Ranking className="w-[100vw] p-20"/>
