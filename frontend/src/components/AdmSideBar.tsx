@@ -33,16 +33,18 @@ export function AdmSideBar (){
 
                 <ul className="menu-links">
                     <li className="nav-link">
-                        <div className="link ">
-                            <HomeIcon className="icon"/>
-                            <span className="text nav-text">Dashboard</span>
+                        <div className="link">
+                            <Link to={"/adm/dashboard"}>
+                                <HomeIcon className="icon"/>
+                                <span className="text nav-text">Dashboard</span>
+                            </Link>
                         </div>
                     </li>
 
                     <li className="nav-link">
                         <div className="link">
-                            <PersonIcon className="icon"/>
                             <Link to={"/adm/users"}>
+                                <PersonIcon className="icon"/>
                                 <span className="text nav-text">Adicionar</span>
                             </Link>
                         </div>
@@ -101,8 +103,10 @@ export function AdmSideBar (){
 
                     <li className="nav-link">
                         <div className="link">
-                            <ActivityLogIcon className="icon"/>
-                            <span className="text nav-text">Logs</span>
+                            <Link to={"/adm/logs"}>
+                                <ActivityLogIcon className="icon"/>
+                                <span className="text nav-text">Logs</span>
+                            </Link>
                         </div>
 
 

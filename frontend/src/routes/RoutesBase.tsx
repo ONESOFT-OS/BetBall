@@ -73,6 +73,7 @@ export const RoutesBase = () => {
 
                 <Route path={"/adm/dashboard"} element={<AdmDashboard/>}/>
                 <Route path={"/adm/users"} element={<AdmUsers/>}/>
+                <Route path={"/adm/logs"} element={<SystemLogs/>}/>
 
 
 
