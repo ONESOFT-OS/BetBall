@@ -7,7 +7,6 @@ export function App() {
         <AuthProvider>
             <RoutesBase/>
         </AuthProvider>
-
     )
 }
 
@@ -15,4 +14,3 @@ export function App() {
 // function then(arg0: { new(body?: BodyInit | null | undefined, init?: ResponseInit | undefined): Response; prototype: Response; error(): Response; redirect(url: string | URL, status?: number | undefined): Response; }): string {
 //   throw new Error('Function not implemented.');
 // }
-

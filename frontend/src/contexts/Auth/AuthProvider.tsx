@@ -1,31 +1,27 @@
-import {useEffect, useState} from "react"
+import { useEffect, useState } from "react";
 
-import {AuthContext, typeAuthProps} from "./AuthContext";
+import { AuthContext, typeAuthProps } from "./AuthContext";
 import {
     getTokenLocalStorage,
     loginRequestToken,
     removeTokenLocalStorage,
-    setTokenLocalStorage
+    setTokenLocalStorage,
 } from "../../utils/authFunctions";
 
-export const AuthProvider = ({children}: typeAuthProps) => {
-    const [token, setToken] = useState<string | null>(null);
+export const AuthProvider = ({ children }: typeAuthProps) => {
+    const [token, setToken] = useState<boolean | null>(null);
 
     useEffect(() => {
         const token = getTokenLocalStorage();
-
         token == null ? setToken(null) : setToken(token);
-
     }, []);
-
 
     async function loginAuthentication(email: string, senha: string) {
         const response = await loginRequestToken(email, senha);
 
-        if (response.status === 200) {
-            console.log(response.data);
-            setToken(response.detail);
-            setTokenLocalStorage(response.detail);
+        if (response) {
+            setToken(response);
+            setTokenLocalStorage(response);
             return true;
         }
 
@@ -38,7 +34,8 @@ export const AuthProvider = ({children}: typeAuthProps) => {
     }
 
     return (
-        <AuthContext.Provider value={{token, loginAuthentication, logOut}}>
+        <AuthContext.Provider value={{ token, loginAuthentication, logOut }}>
             {children}
-        </AuthContext.Provider>);
-}
+        </AuthContext.Provider>
+    );
+};

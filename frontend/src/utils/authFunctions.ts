@@ -1,5 +1,4 @@
 import api from "../services/api";
-import axios from "axios";
 
 interface authResponse {
     token?: boolean,
@@ -18,7 +17,6 @@ export async function loginRequestToken(email: string, password: string) {
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" }
         });
-        console.log(data);
         return data.detail;
     } catch (error) {
         return null;
