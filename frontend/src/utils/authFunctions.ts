@@ -1,12 +1,20 @@
 import api from "../services/api";
+import axios from "axios";
 
-export async function loginRequestToken(email: string, senha: string) {
+export async function loginRequestToken(email: string, password: string) {
     try {
-        const auth = await api.post('/auth/login', {
-            email,
-            senha,
+        var bodyFormData = new FormData();
+        bodyFormData.append('username', email);
+        bodyFormData.append('password', password);
+
+        const {data} = await api({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/token',
+            data: bodyFormData,
+            headers: { "Content-Type": "multipart/form-data" }
         });
-        return auth.data.access_token;
+        console.log(data);
+        return data.detail;
     } catch (error) {
         return null;
     }

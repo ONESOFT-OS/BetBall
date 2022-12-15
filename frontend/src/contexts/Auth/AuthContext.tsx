@@ -1,7 +1,8 @@
 import { createContext } from 'react';
 
 export interface typeUser {
-    token?: string | null;
+    token?: string | boolean | null;
+    type?: string | null;
 }
 
 export interface typeAuthContext extends typeUser {
