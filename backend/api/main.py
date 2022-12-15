@@ -1,3 +1,4 @@
+from queries.users import type_user
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
@@ -50,10 +51,14 @@ async def users():
 @app.post('/token')
 async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = login_user(form_data.username, form_data.password)
+    dict_reponse ={}
     if not user_dict:
-        raise HTTPException(status_code=400, detail="Usuário ou senha incorreto")
+        dict_reponse['token'] = False
+        raise HTTPException(status_code=400, detail=f"{dict_reponse}")
     else:
-        raise HTTPException(status_code=200, detail="Authenticated!")
+        dict_reponse['token'] = True
+        dict_reponse['type'] = type_user(form_data.username)
+        raise HTTPException(status_code=200, detail=f"{dict_reponse}")
 
 
 @app.post('/register/punter')
