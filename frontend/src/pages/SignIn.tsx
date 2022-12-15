@@ -22,8 +22,7 @@ export function SignIn(){
 
   async function handleSignIp(event: FormEvent){
     event.preventDefault();
-
-    const auth = loginAuthentication(username, password);
+    const auth = await loginAuthentication(username, password);
     console.log(auth);
 }
 
