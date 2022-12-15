@@ -1,41 +1,43 @@
-import { stringify } from "querystring";
-import { useEffect, useState } from "react"
-import { useApi } from "../../hooks/userApi";
+import {useEffect, useState} from "react"
 
-import { User } from "../../types/User"
-import { AuthContext } from "./AuthContext";
+import {AuthContext, typeAuthProps} from "./AuthContext";
+import {
+    getTokenLocalStorage,
+    loginRequestToken,
+    removeTokenLocalStorage,
+    setTokenLocalStorage
+} from "../../utils/authFunctions";
 
-export const AuthProvider = ({ children }: { children: JSX.Element }) => {
-    const [user, setUser] = useState<User | null>(null);
-    
-    
-    const api = useApi();
+export const AuthProvider = ({children}: typeAuthProps) => {
+    const [token, setToken] = useState<string | null>(null);
 
-    const signin = async (email: string, password: string) => {
-        const data = await api.signin(email, password);
-        if(data.user && data.token) {
-            setUser(data.user);
-            setToken(data.token);
+    useEffect(() => {
+        const token = getTokenLocalStorage();
+
+        token == null ? setToken(null) : setToken(token);
+
+    }, []);
+
+
+    async function loginAuthentication(email: string, senha: string) {
+        const response = await loginRequestToken(email, senha);
+
+        if (response.status === 200) {
+            setToken(response.access_token);
+            setTokenLocalStorage(response.access_token);
             return true;
         }
+
         return false;
     }
 
-    const signout = async () => {
-        setUser(null);
-        setToken('');
-        await api.signout();
+    async function logOut() {
+        setToken(null);
+        removeTokenLocalStorage();
     }
 
-    const setToken = (token: string) => {
-        localStorage.setItem('authToken', token);
-    }
-    
     return (
-        <AuthContext.Provider value={{ user, signin, signout}}>
+        <AuthContext.Provider value={{token, loginAuthentication, logOut}}>
             {children}
-        </AuthContext.Provider>
-
-
-    );
+        </AuthContext.Provider>);
 }

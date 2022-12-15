@@ -1,11 +1,19 @@
 import { createContext } from 'react';
-import { User } from '../../types/User';
 
-export type AuthContextType = {
-    user: User | null;
-    signin: (email: string, password: string) => Promise<boolean>;
-    signout: () => void;
+export interface typeUser {
+    token?: string | null;
 }
 
+export interface typeAuthContext extends typeUser {
+    loginAuthentication: (email: string, password: string) => Promise<boolean>;
+    logOut: () => void;
+}
 
-export const AuthContext = createContext<AuthContextType>(null!);
+export type typeAuthProps = {
+    children: JSX.Element;
+};
+
+
+export const AuthContext = createContext<typeAuthContext>(
+    {} as typeAuthContext
+);
