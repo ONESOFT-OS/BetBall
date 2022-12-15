@@ -22,9 +22,11 @@ import {
     useBreakpointValue,
     ChakraProvider,
   } from "@chakra-ui/react";
-  import { useEffect} from "react";
+  import { useEffect } from "react";
   import ModalComp from "../components/ModalComp";
 import Resume from "../components/Resumo";
+
+
 
 export function Bet() {
     const [busca, setBusca] = useState('');
@@ -36,6 +38,9 @@ export function Bet() {
     const [data, setData] = useState([]);
     const [dataEdit, setDataEdit] = useState({});
     const data2 = localStorage.getItem("financeiro");
+    const [valor, setValor] = useState("");
+
+    
     const [financeiroList, setfinanceiroList] = useState(
       data2 ? JSON.parse(data2!) : []
     );
@@ -44,6 +49,7 @@ export function Bet() {
     const [total, setTotal] = useState(0);
   
     useEffect(() => {
+      
   
       const amountExpense = financeiroList
         .filter((item: any) => item.expense)
@@ -53,21 +59,8 @@ export function Bet() {
         .filter((item: any) => item.expense)
         .map((financeiro: any) => Number(financeiro.amount));
   
-  
-      function Contador(){
-        var soma=0
-        var contador=0
-        var lista = [JSON.parse(localStorage.getItem("aposta_cliente")!).map((c: any) => c.valor)]
-        for (var i = 0; i < lista[0].length; i++){
-          soma+=Number(lista[0][i])
-          if (i==lista[0].length-1){
-            return soma
-          }
-        }
-        
-      }
-  
-      const expense = amountExpense.reduce((acc: any, cur: any) => acc + cur, Contador()).toFixed(2);
+
+      const expense = amountExpense.reduce((acc: any, cur: any) => acc + cur, Number(localStorage.getItem("saida"))).toFixed(2);
       const income = amountIncome.reduce((acc: any, cur: any) => acc + cur, Number(["100"])).toFixed(2);
   
       const total: any = Math.abs(income - expense).toFixed(2);
@@ -107,12 +100,14 @@ export function Bet() {
         
          
     }
-    const handleRemove = (times: any) => {
+    const handleRemove = (times: any, valor:any) => {
         const newArray = data.filter((item: any) => item.times !== times);
     
         setData(newArray);
     
         localStorage.setItem("aposta_cliente", JSON.stringify(newArray));
+        const subtracao:any = Number(localStorage.getItem("saida")!) - valor
+        localStorage.setItem("saida", subtracao)
         window.location.href = window.location.href;
       };
 
@@ -174,7 +169,7 @@ export function Bet() {
                           <DeleteIcon
                             color={"whiteAlpha.900"}
                             fontSize={20}
-                            onClick={() => handleRemove(times)}
+                            onClick={() => handleRemove(times, valor)}
                           />
                         </Td>
                       </Tr>
