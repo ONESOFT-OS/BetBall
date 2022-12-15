@@ -3,10 +3,10 @@ from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
 
-from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit
+from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw
 
 from queries.users import type_user
-from queries.credit import user_deposit
+from queries.credit import user_deposit, get_balance, user_withdraw
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
@@ -129,4 +129,15 @@ async def match():
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):
-    return user_deposit(deposit.nickname, deposit.value)
+    if deposit.value > 0:
+        return user_deposit(deposit.nickname, deposit.value)
+    else:
+        return False
+
+@app.post('/perfil/withdraw')
+async def deposit(withdraw: Withdraw):
+    balance = get_balance(withdraw.nickname)
+    if balance[0][0] > withdraw.value :
+        return user_withdraw(withdraw.nickname, withdraw.value)
+    else:
+        return False

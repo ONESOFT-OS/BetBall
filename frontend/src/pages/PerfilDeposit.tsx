@@ -12,7 +12,6 @@ import { TextInput } from "../components/TextInput";
 export function PerfilDeposit(){
     
     const [valor, setValor]  = useState('')
-    const saldo = 100
 
     function maskCoin() {
 
@@ -21,6 +20,9 @@ export function PerfilDeposit(){
         console.log(dinheiro)
         
     }
+
+
+
 
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center justify-center">
