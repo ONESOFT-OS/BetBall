@@ -1,6 +1,11 @@
 import api from "../services/api";
 import axios from "axios";
 
+interface authResponse {
+    token?: boolean,
+    type?: string
+}
+
 export async function loginRequestToken(email: string, password: string) {
     try {
         var bodyFormData = new FormData();
@@ -20,16 +25,16 @@ export async function loginRequestToken(email: string, password: string) {
     }
 }
 
-export function setTokenLocalStorage(token: string | null) {
-    localStorage.setItem('user_token', JSON.stringify(token));
+export function setTokenLocalStorage(detail: authResponse) {
+    localStorage.setItem('authentication', JSON.stringify(detail));
 }
 
 export function removeTokenLocalStorage() {
-    localStorage.removeItem('user_token');
+    localStorage.removeItem('authentication');
 }
 
 export function getTokenLocalStorage() {
-    const response = localStorage.getItem('user_token');
+    const response = localStorage.getItem('authentication');
     if (!response) {
         return null;
     }
