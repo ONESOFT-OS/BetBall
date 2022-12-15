@@ -11,7 +11,7 @@ export function PerfilHistoric() {
     <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">
               <NavBar/>
             
-            <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70  mt-28">
+            <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70  mt-10 mb-10">
                 <header className="flex flex-row justify-between pt-12 px-10">
                     <div className="flex flex-row justify-start items-baseline">
                         <Heading size="xlg">Perfil</Heading>

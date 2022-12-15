@@ -1,11 +1,12 @@
-from queries.users import type_user
 from fastapi import Depends, FastAPI, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 
 
-from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match
+from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit
 
+from queries.users import type_user
+from queries.credit import user_deposit
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
@@ -125,3 +126,7 @@ async def match():
     #print("passou aqui")
     add_game('Employee2', '2022-10-22 15:30:00', '8', '7')
     return
+
+@app.post('/perfil/deposit')
+async def deposit(deposit: Deposit):
+    return user_deposit(deposit.nickname, deposit.value)

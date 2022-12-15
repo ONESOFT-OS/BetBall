@@ -6,7 +6,7 @@ import {Text} from './Text';
 
 export function NavBar(){
     return(
-       <nav className="flex justify-between items-center w-screen h-[5rem] pl-20 pr-20"> 
+       <nav className="flex justify-between items-center  min-w-full max-w-screen h-[5rem] pl-20 pr-20"> 
               <Logo/>
               <ul className=" w-[20rem] flex flex-row justify-between">
               

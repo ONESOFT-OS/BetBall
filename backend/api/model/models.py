@@ -38,3 +38,7 @@ class Game(BaseModel):
 
 class Match(BaseModel):
     game_id: str
+
+class Deposit(BaseModel):
+    nickname: str
+    value: int
