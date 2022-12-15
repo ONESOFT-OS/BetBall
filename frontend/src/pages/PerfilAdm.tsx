@@ -30,7 +30,5 @@ export function PerfilAdm(){
           </div>
           </div>
         </div>
-
-
     )
 }
