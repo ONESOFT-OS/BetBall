@@ -11,7 +11,7 @@ import { Text } from "../components/Text";
 import '../styles/sideBar.css';
 
 
-export function EmployeeDashboard (){
+export function EmployeeDashboardTime (){
     return(
         <div className="main bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
@@ -45,22 +45,22 @@ export function EmployeeDashboard (){
                 <div className="flex flex-col gap-4 pt-8 px-20">
                     <div className="flex flex-row justify-center gap-10 pb-3">
                     <Link to={'/dashboard'}> 
-                        <Text className="font-bold text-xl text-green-500 ">Em Andamento</Text> 
+                        <Text className="font-bold text-xl text-gray-500 hover:text-green-700 ">Em Andamento</Text> 
                     </Link>
                     <Link to={'/dashboard/time'}>  
-                        <Text className="font-bold text-xl text-gray-500 hover:text-green-700" >Agendados</Text>
+                        <Text className="font-bold text-xl  text-green-500" >Agendados</Text>
                     </Link>
                     <Link to={'/dashboard/finish'}>   
-                        <Text className="font-bold text-xl text-gray-500 hover:text-green-700">Finalizados</Text>
+                        <Text className="font-bold text-xl  text-gray-500 hover:text-green-700  ">Finalizados</Text>
                     </Link>
                     </div>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
+                    <HistoricItemScheduled></HistoricItemScheduled>
+                    <HistoricItemScheduled></HistoricItemScheduled>
+                    <HistoricItemScheduled></HistoricItemScheduled>
+                    <HistoricItemScheduled></HistoricItemScheduled>
+                    <HistoricItemScheduled></HistoricItemScheduled>
+                    <HistoricItemScheduled></HistoricItemScheduled>
+                    <HistoricItemScheduled></HistoricItemScheduled>
                 </div>
             <div className="container flex justify-center items-center mt-[25px]">
                 <div className="see-more bg-white rounded-[100%] w-[40px] h-[40px] flex justify-center items-center">

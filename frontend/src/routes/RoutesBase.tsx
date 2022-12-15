@@ -21,6 +21,8 @@ import { DefineProfit } from '../pages/Profit';
 import { SystemLogs } from '../pages/Logs';
 import {PerfilEmployee} from "../pages/PerfilEmployee";
 import { EditGame } from '../pages/EditGame';
+import { EmployeeDashboardFinish } from '../pages/EmployeeDashboardFinish';
+import { EmployeeDashboardTime } from '../pages/EmployeeDashboardTime';
 
 export const RoutesBase = () => {
    return(
@@ -41,6 +43,8 @@ export const RoutesBase = () => {
             <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
             <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
             <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
+            <Route path={"/dashboard/time"} element={<EmployeeDashboardTime/>}/>
+            <Route path={"/dashboard/finish"} element={<EmployeeDashboardFinish/>}/>
             <Route path={"/test"} element={<Test />}/>
             <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
             <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
