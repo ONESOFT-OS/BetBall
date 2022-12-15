@@ -25,7 +25,7 @@ def get_user_by_email(email):
 
 def user_exists(email):
     if len(get_user_by_email(email))==0:
-        return False    
+        return False
     else:
         return True
 
@@ -33,8 +33,8 @@ def user_exists(email):
 def login_user(email, password):
     query = f"""
     SELECT nickname, email FROM usuario
-    WHERE email = '{email}' AND 
-    senha = '{password}' 
+    WHERE email = '{email}' AND
+    senha = '{password}'
     """
     user_return = executeSelection(connection, query)
     if len(user_return)!=0:
@@ -72,6 +72,7 @@ def type_user(nickname):
             SELECT isAdmin FROM colaborador WHERE nickname = '{nickname}'
         """
         isAdmin = executeSelection(connection, newQuery)
+        print(isAdmin)
         if isAdmin:
             return "Admin"
         else:

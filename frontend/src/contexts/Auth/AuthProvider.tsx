@@ -9,18 +9,22 @@ import {
 } from "../../utils/authFunctions";
 
 export const AuthProvider = ({ children }: typeAuthProps) => {
-    const [token, setToken] = useState<boolean | null>(null);
+    const [token, setToken] = useState<string>("");
+    const [role, setRole] = useState<string>("");
 
     useEffect(() => {
-        const token = getTokenLocalStorage();
-        token == null ? setToken(null) : setToken(token);
+        const localStorage = getTokenLocalStorage();
+
+        localStorage == null ? setToken("") : setToken(localStorage.token);
+        localStorage == null ? setRole("") : setToken(localStorage.role);
     }, []);
 
     async function loginAuthentication(email: string, senha: string) {
         const response = await loginRequestToken(email, senha);
 
         if (response) {
-            setToken(response);
+            setToken(response.token);
+            setRole(response.role);
             setTokenLocalStorage(response);
             return true;
         }
@@ -29,12 +33,14 @@ export const AuthProvider = ({ children }: typeAuthProps) => {
     }
 
     async function logOut() {
-        setToken(null);
+        setToken("");
         removeTokenLocalStorage();
     }
 
     return (
-        <AuthContext.Provider value={{ token, loginAuthentication, logOut }}>
+        <AuthContext.Provider
+            value={{ token, role, loginAuthentication, logOut }}
+        >
             {children}
         </AuthContext.Provider>
     );

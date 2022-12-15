@@ -1,38 +1,40 @@
+import { isBoolean } from "util";
 import api from "../services/api";
 
 interface authResponse {
-    token?: boolean,
-    type?: string
+    token?: boolean;
+    type?: string;
 }
 
 export async function loginRequestToken(email: string, password: string) {
     try {
         var bodyFormData = new FormData();
-        bodyFormData.append('username', email);
-        bodyFormData.append('password', password);
+        bodyFormData.append("username", email);
+        bodyFormData.append("password", password);
 
-        const {data} = await api({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/token',
+        const auth = await api({
+            method: "post",
+            url: "http://127.0.0.1:8000/token",
             data: bodyFormData,
-            headers: { "Content-Type": "multipart/form-data" }
+            headers: { "Content-Type": "multipart/form-data" },
         });
-        return data.detail;
+        console.log(auth.data);
+        return auth.data;
     } catch (error) {
         return null;
     }
 }
 
-export function setTokenLocalStorage(detail: authResponse) {
-    localStorage.setItem('authentication', JSON.stringify(detail));
+export function setTokenLocalStorage(detail: any) {
+    localStorage.setItem("authentication", JSON.stringify(detail));
 }
 
 export function removeTokenLocalStorage() {
-    localStorage.removeItem('authentication');
+    localStorage.removeItem("authentication");
 }
 
 export function getTokenLocalStorage() {
-    const response = localStorage.getItem('authentication');
+    const response = localStorage.getItem("authentication");
     if (!response) {
         return null;
     }

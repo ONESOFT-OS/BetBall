@@ -1,6 +1,7 @@
-from fastapi import Depends, FastAPI, HTTPException, status
+from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
+import json
 
 
 from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw
@@ -54,12 +55,13 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = login_user(form_data.username, form_data.password)
     dict_reponse ={}
     if not user_dict:
-        dict_reponse['token'] = False
+        dict_reponse['token'] = "error"
         raise HTTPException(status_code=400, detail=f"{dict_reponse}")
     else:
-        dict_reponse['token'] = True
-        dict_reponse['type'] = type_user(form_data.username)
-        raise HTTPException(status_code=200, detail=f"{dict_reponse}")
+        dict_reponse["token"] = "success"
+        dict_reponse["role"] = type_user(form_data.username)
+        json_string = json.dumps(dict_reponse)
+        return Response(content=f"{json_string}", status_code=200, media_type="application/json")
 
 
 @app.post('/register/punter')

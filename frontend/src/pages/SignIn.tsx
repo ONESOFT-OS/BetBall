@@ -21,11 +21,9 @@ export function SignIn() {
     async function handleSignIp(event: FormEvent) {
         event.preventDefault();
         const auth = await loginAuthentication(username, password);
-
         if (auth) {
             navigate("/");
         } else{
-            console.log(auth);
             setPassword('');
             toast({
                 title: 'Erro',

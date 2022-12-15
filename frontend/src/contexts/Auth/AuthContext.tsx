@@ -1,8 +1,8 @@
-import { createContext } from 'react';
+import { createContext } from "react";
 
 export interface typeUser {
-    token?: string | boolean | null;
-    type?: string | null;
+    token: string;
+    role: string;
 }
 
 export interface typeAuthContext extends typeUser {
@@ -13,7 +13,6 @@ export interface typeAuthContext extends typeUser {
 export type typeAuthProps = {
     children: JSX.Element;
 };
-
 
 export const AuthContext = createContext<typeAuthContext>(
     {} as typeAuthContext
