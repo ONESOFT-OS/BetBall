@@ -22,6 +22,8 @@ import {
     const [valor, setValor] = useState(dataEdit.valor || "");
     const [times, setTimes] = useState(dataEdit.times || "");
     const {team} = useTeam2()
+
+
     const handleSave = () => {
       if (!valor || !times) return;
   
@@ -38,12 +40,23 @@ import {
         : [...(data ? data : [])];
   
       localStorage.setItem("aposta_cliente", JSON.stringify(newDataArray));
-  
       setData(newDataArray);
       window.location.href = window.location.href;
-  
+
+      const lista = [JSON.parse(localStorage.getItem("aposta_cliente")!).map((c: any) => c.valor)]
+          var soma=0
+          const lista2:any=[]
+          
+          for (var i = 0; i < lista[0].length; i++){
+            soma+=Number(lista[0][i])
+            if (i<lista[0].length){
+              localStorage.setItem("saida", JSON.stringify(soma))
+
+            }
+          }
       onClose();
     };
+
   
     const timesAlreadyExists = () => {
       if (dataEdit.times !== times && data?.length) {
