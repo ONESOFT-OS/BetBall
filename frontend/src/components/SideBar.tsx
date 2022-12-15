@@ -1,6 +1,7 @@
 import '../styles/sideBar.css';
-import { BellIcon, CalendarIcon, DoubleArrowRightIcon, HomeIcon, PlusCircledIcon } from '@radix-ui/react-icons';
+import { ActivityLogIcon, BellIcon, CalendarIcon, DoubleArrowRightIcon, HomeIcon, PlusCircledIcon, UploadIcon } from '@radix-ui/react-icons';
 import { ArrowRightIcon, ChevronRightIcon } from '@chakra-ui/icons';
+import { CurrencyCircleDollar, CurrencyDollar } from 'phosphor-react';
 
 export function SideBar (){
     return (
@@ -49,8 +50,22 @@ export function SideBar (){
 
                     <li className="nav-link">
                         <div className="link">
-                            <CalendarIcon className="icon"/>
-                            <span className="text nav-text">Agendados</span>
+                            <CurrencyCircleDollar className="icon"/>
+                            <span className="text nav-text">Lucro</span>
+                        </div>
+                    </li>
+
+                    <li className="nav-link">
+                        <div className="link">
+                            <UploadIcon className="icon"/>
+                            <span className="text nav-text">Backup</span>
+                        </div>
+                    </li>
+
+                    <li className="nav-link">
+                        <div className="link">
+                            <ActivityLogIcon className="icon"/>
+                            <span className="text nav-text">Logs</span>
                         </div>
                     </li>
                 </ul>
