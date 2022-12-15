@@ -24,6 +24,8 @@ import {EditGame} from '../pages/EditGame';
 import {EmployeeDashboardFinish} from '../pages/EmployeeDashboardFinish';
 import {EmployeeDashboardTime} from '../pages/EmployeeDashboardTime';
 import {useAuth} from '../hooks/useAuth';
+import { AdmDashboard } from '../pages/AdmDashboard';
+import { AdmUsers } from '../pages/AdmUsers';
 
 export function ProtectLoginRoute() {
     const {token} = useAuth();
@@ -49,29 +51,34 @@ export const RoutesBase = () => {
 
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
+                <Route path="/newgame" element={<NewGame/>}/>
+                <Route path="/editgame" element={<EditGame/>}/>
+                <Route path="/bet" element={<Bet/>}/>
+                <Route path="/user/create" element={<CreateUser/>}/>
+                <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
+                <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
+                <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
+                <Route path="/perfil/settings" element={<PerfilSettings/>}/>
+                <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
+                <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
+                <Route path={"/dashboard/time"} element={<EmployeeDashboardTime/>}/>
+                <Route path={"/dashboard/finish"} element={<EmployeeDashboardFinish/>}/>
+                <Route path={"/test"} element={<Test/>}/>
+                <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
+                <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
+                <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
+                <Route path={"games"} element={<Allgames/>}/>
+                <Route path={"profit"} element={<DefineProfit/>}/>
+                <Route path={"logs"} element={<SystemLogs/>}/>
+
+                <Route path={"/adm/dashboard"} element={<AdmDashboard/>}/>
+                <Route path={"/adm/users"} element={<AdmUsers/>}/>
+
+
 
 
                 {/*PROTECTED ROUTES*/}
                 <Route element={<ProtectRoute />}>
-                    <Route path="/newgame" element={<NewGame/>}/>
-                    <Route path="/editgame" element={<EditGame/>}/>
-                    <Route path="/bet" element={<Bet/>}/>
-                    <Route path="/user/create" element={<CreateUser/>}/>
-                    <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
-                    <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
-                    <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
-                    <Route path="/perfil/settings" element={<PerfilSettings/>}/>
-                    <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
-                    <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
-                    <Route path={"/dashboard/time"} element={<EmployeeDashboardTime/>}/>
-                    <Route path={"/dashboard/finish"} element={<EmployeeDashboardFinish/>}/>
-                    <Route path={"/test"} element={<Test/>}/>
-                    <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
-                    <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
-                    <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
-                    <Route path={"games"} element={<Allgames/>}/>
-                    <Route path={"profit"} element={<DefineProfit/>}/>
-                    <Route path={"logs"} element={<SystemLogs/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

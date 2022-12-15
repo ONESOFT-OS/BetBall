@@ -3,6 +3,10 @@ import { Link } from "react-router-dom";
 import { ActivityLogIcon, BellIcon, CalendarIcon, DoubleArrowRightIcon, HomeIcon, PersonIcon, PlusCircledIcon, UploadIcon } from '@radix-ui/react-icons';
 import { ArrowRightIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { CurrencyCircleDollar } from 'phosphor-react';
+import '../styles/dialog.css';
+import * as Dialog from '@radix-ui/react-dialog';
+import { Cross2Icon } from '@radix-ui/react-icons';
+
 
 export function AdmSideBar (){
     return (
@@ -52,10 +56,40 @@ export function AdmSideBar (){
                     </li>
 
                     <li className="nav-link">
-                        <div className="link">
-                            <CurrencyCircleDollar className="icon"/>
-                            <span className="text nav-text">Lucro</span>
-                        </div>
+                    <Dialog.Root>
+                    <Dialog.Trigger>
+                        <button className="link">
+                        <CurrencyCircleDollar className="icon"/>
+                        <span className="text nav-text">Lucro</span>
+                        </button>
+                    </Dialog.Trigger>
+                        <Dialog.Portal>
+                            <Dialog.Overlay className="DialogOverlay" />
+                            <Dialog.Content className="DialogContent">
+                                <Dialog.Title className="DialogTitle">Taxa de Lucro</Dialog.Title>
+                                <Dialog.Description className="DialogDescription">
+                                    Altere sua taxa  de lucro por aposta ganha (%).
+                                </Dialog.Description>
+                                <fieldset className="Fieldset">
+                                    <label className="Label" htmlFor="description">
+                                        Descrição
+                                    </label>
+                                    <input className="Input" id="description" defaultValue="Lucro 2025" />
+                                    <input className="Input" id="valor" defaultValue="80%" />
+                                </fieldset> 
+                                <div className="flex mt-[25px] justify-end">
+                                    <Dialog.Close asChild>
+                                        <button className="Button green">Salvar mudanças</button>
+                                    </Dialog.Close>
+                                </div>
+                                <Dialog.Close asChild>
+                                    <button className="IconButton" aria-label="Close">
+                                        <Cross2Icon />
+                                    </button>
+                                </Dialog.Close>
+                            </Dialog.Content>    
+                        </Dialog.Portal>
+                    </Dialog.Root>
                     </li>
 
                     <li className="nav-link">
@@ -70,6 +104,9 @@ export function AdmSideBar (){
                             <ActivityLogIcon className="icon"/>
                             <span className="text nav-text">Logs</span>
                         </div>
+
+
+                        
                     </li>
                 </ul>
             </div>
