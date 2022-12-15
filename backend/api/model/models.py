@@ -42,3 +42,8 @@ class Match(BaseModel):
 class Deposit(BaseModel):
     nickname: str
     value: int
+
+class Withdraw(BaseModel):
+    nickname: str
+    value: int
+
