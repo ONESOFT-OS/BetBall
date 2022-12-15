@@ -30,7 +30,8 @@ export function SignIn(){
         data: bodyFormData,
         headers: { "Content-Type": "multipart/form-data" },
       }).then(function (response) {
-        console.log(response)
+        localStorage.setItem("validation",JSON.stringify(response.data.detail))
+        
       });
 }
 

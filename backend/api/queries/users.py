@@ -59,3 +59,20 @@ def get_collaborators():
     """
     collaborators = executeSelection(connection, query)
     return collaborators
+
+def type_user(nickname):
+    query = """
+    SELECT nickname FROM apostador WHERE nickname = '{nickname}'
+    """
+    valid = executeSelection(connection, query)
+    if len(valid) != 0:
+        return "Punter"
+    else:
+        newQuery ="""
+            SELECT isAdmin FROM colaborador WHERE nickname = '{nickname}'
+        """
+        isAdmin = executeSelection(connection, newQuery)
+        if isAdmin:
+            return "Admin"
+        else:
+            return "Employee"
