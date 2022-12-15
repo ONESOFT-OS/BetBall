@@ -9,30 +9,21 @@ import { Logo } from "../assets/Logo";
 import {Link} from 'react-router-dom';
 import { FormEvent, useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { AuthContext } from "../../src/contexts/Auth/AuthContext";
-import axios from "axios";
+import {useAuth} from "../hooks/useAuth";
+
 
 export function SignIn(){
 
-  const [username, setEmail]  = useState('')
-  const [password, setPassword]  = useState('')
+  const [username, setEmail]  = useState('');
+  const [password, setPassword]  = useState('');
+
+  const {loginAuthentication} = useAuth();
+  const navigate = useNavigate();
 
   async function handleSignIp(event: FormEvent){
     event.preventDefault();
-    
-    var bodyFormData = new FormData();
-    bodyFormData.append('username', username);
-    bodyFormData.append('password', password);
-
-    axios({
-        method: 'post',
-        url: 'http://127.0.0.1:8000/token',
-        data: bodyFormData,
-        headers: { "Content-Type": "multipart/form-data" },
-      }).then(function (response) {
-        localStorage.setItem("validation",JSON.stringify(response.data.detail))
-        
-      });
+    const auth = await loginAuthentication(username, password);
+    console.log(auth);
 }
 
     return(
@@ -41,8 +32,8 @@ export function SignIn(){
               <Logo/>
           </header>
 
-          <form 
-            onSubmit={handleSignIp} 
+          <form
+            onSubmit={handleSignIp}
             className="bg-slate-50 bg-opacity-5 w-full max-w-2xl flex flex-col items-center justify-center rounded-2xl gap-3">
             <div className="flex flex-col  w-full max-w-sm gap-4  mt-12 mb-8">
                 <Heading size="lg">
@@ -53,11 +44,11 @@ export function SignIn(){
                 </Text>
             </div>
 
-            <label 
-              htmlFor='email' 
+            <label
+              htmlFor='email'
               className='flex flex-col gap-3 w-full max-w-sm'>
-              <Text 
-                size="sm" 
+              <Text
+                size="sm"
                 className='font-semibold'>
                   Endereço de e-mail
               </Text>
@@ -65,21 +56,21 @@ export function SignIn(){
                 <TextInput.Icon>
                   <Envelope/>
                 </TextInput.Icon>
-                <TextInput.Input 
-                  value={username} 
-                  onChange={(e) => setEmail(e.target.value)} 
-                  type='email' 
-                  id='email' 
-                  autoComplete="off" 
+                <TextInput.Input
+                  value={username}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type='email'
+                  id='email'
+                  autoComplete="off"
                   placeholder='Digite seu e-mail'/>
               </TextInput.Root>
             </label>
 
-            <label 
-              htmlFor='password' 
+            <label
+              htmlFor='password'
               className='flex flex-col gap-3 w-full max-w-sm'>
-                <Text 
-                  size="sm" 
+                <Text
+                  size="sm"
                   className='font-semibold'>
                     Sua senha
                 </Text>
@@ -87,47 +78,47 @@ export function SignIn(){
                   <TextInput.Icon>
                     <Lock/>
                   </TextInput.Icon>
-                  <TextInput.Input 
-                    value={password} 
-                    onChange={(e) => setPassword(e.target.value)} 
-                    type='password' 
-                    id='password' 
+                  <TextInput.Input
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    type='password'
+                    id='password'
                     placeholder='********'/>
                 </TextInput.Root>
             </label>
 
-            <label 
-              htmlFor='remember' 
+            <label
+              htmlFor='remember'
               className='flex items-center w-full max-w-sm gap-2 mt-2'>
                 <Checkbox id='remember'/>
-                <Text 
-                  size='sm' 
+                <Text
+                  size='sm'
                   className='text-gray-200'>
                     Matenha-me conectado
                 </Text>
             </label>
 
-            <Button  
-              type='submit' 
+            <Button
+              type='submit'
               className='mt-4 mb-12 w-fit'>
                 Entrar na plataforma
             </Button>
           </form>
 
           <footer className=" flex flex-col items-center gap-3 mt-4 ">
-            <Text  
-              size='sm'>Não possui uma conta? 
-                <Link 
-                  to={"/signup"} 
-                  className='text-green-700 underline hover:text-white'>   
+            <Text
+              size='sm'>Não possui uma conta?
+                <Link
+                  to={"/signup"}
+                  className='text-green-700 underline hover:text-white'>
                     Crie uma agora!
                 </Link>
             </Text>
 
-            <Text 
+            <Text
               asChild size='sm'>
-                <Link 
-                  to={"/forgotpassword"} 
+                <Link
+                  to={"/forgotpassword"}
                   className='text-green-700 underline hover:text-white'>
                     Esqueceu sua senha?
                 </Link>

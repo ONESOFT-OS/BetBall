@@ -1,10 +1,14 @@
 import {RoutesBase} from './routes/RoutesBase';
 import './styles/global.css';
+import {AuthProvider} from "./contexts/Auth/AuthProvider";
 
-export function App(){
-  return (
-    <RoutesBase/>
-  )
+export function App() {
+    return (
+        <AuthProvider>
+            <RoutesBase/>
+        </AuthProvider>
+
+    )
 }
 
 // export default App

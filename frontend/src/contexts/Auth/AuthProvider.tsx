@@ -23,8 +23,9 @@ export const AuthProvider = ({children}: typeAuthProps) => {
         const response = await loginRequestToken(email, senha);
 
         if (response.status === 200) {
-            setToken(response.access_token);
-            setTokenLocalStorage(response.access_token);
+            console.log(response.data);
+            setToken(response.detail);
+            setTokenLocalStorage(response.detail);
             return true;
         }
 
