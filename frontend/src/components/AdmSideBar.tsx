@@ -114,9 +114,9 @@ export function AdmSideBar (){
 
                     <li className="nav-link">
                         <div className="link">
-                            <Link to={"/adm/settings"}>
+                            <Link to={"/perfil/withdraw"}>
                                 <GearIcon className="icon"/>
-                                <span className="text nav-text">Logs</span>
+                                <span className="text nav-text">Config</span>
                             </Link>
                         </div>
                     </li>

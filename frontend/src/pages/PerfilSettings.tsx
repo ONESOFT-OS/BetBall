@@ -8,11 +8,13 @@ import { LockKey } from "phosphor-react";
 import { Button } from "../components/Button";
 import axios from "axios";
 import { useState } from "react";
+import { createStandaloneToast } from "@chakra-ui/react";
 
 export function PerfilSettings() {
     const [email,setEmail] = useState('');
     let  nick = undefined
     const user = localStorage.getItem("nickname");
+    const {toast} = createStandaloneToast();
     if (user === null){
           nick = undefined
     }else{
@@ -34,17 +36,34 @@ export function PerfilSettings() {
         })
     }
 
+    function reload (){
+        window.location.reload()
+    }
+    function save(){
+        toast({
+            title: '',
+            description: 'Senha alterada com sucesso',
+            status: 'success',
+            duration: 3000,
+            isClosable: false
+        });
+
+        setTimeout(reload, 1000)
+
+    }
     getEmail()
 
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">
-        <NavBar/>
-      
-      <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70   mt-10 mb-10">
           <header className="flex flex-row justify-between pt-12 px-10">
               <div className="flex flex-row justify-start items-baseline">
                   <Heading size="xlg">Perfil</Heading>
               </div>
+              <Link to="/user/dashboard">
+                        <Button mode="closer" onClick={close} className=" px-[19px]">
+                                X
+                        </Button>
+                </Link>
           </header>
 
           <div className="flex flex-row pt-2 px-12 space-x-8">
@@ -112,19 +131,16 @@ export function PerfilSettings() {
               <label htmlFor="Senha" className="w-full">
                     <Text size="sm" className='font-semibold'>Senha</Text>
                     <TextInput.Root >
-                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='******'  />
+                        <TextInput.Input required type='password' id='password' autoComplete="off" placeholder='******'   />
                     </TextInput.Root>
               </label>
 
               <div className="flex w-full justify-end">
                 <Button className='mt-4  w-fit mr-[2rem]' type='submit' >Cancelar</Button>
-                <Button className='mt-4 w-fit' type='submit' >Salvar</Button>
+                <Button className='mt-4 w-fit' type='submit' onClick={save} >Salvar</Button>
               </div>
             </div>
           </div>
-
       </div>
-
-  </div>
     )
 }

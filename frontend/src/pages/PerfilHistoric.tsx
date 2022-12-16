@@ -1,22 +1,25 @@
 import { Link } from "react-router-dom";
 import { Heading } from "../components/Heading";
 import { HistoricGame } from "../components/HistoricGame";
-import  {NavBar} from "../components/NavBar";
 import { Text } from "../components/Text";
 import { User } from "phosphor-react";
+import { Button } from "../components/Button";
 
 
 export function PerfilHistoric() {
     const  nick = localStorage.getItem("nickname");
   return (
-    <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">
-              <NavBar/>
-            
+    <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">            
             <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70  mt-10 mb-10">
                 <header className="flex flex-row justify-between pt-12 px-10">
                     <div className="flex flex-row justify-start items-baseline">
                         <Heading size="xlg">Perfil</Heading>
                     </div>
+                    <Link to="/user/dashboard">
+                        <Button mode="closer" onClick={close} className=" px-[19px]">
+                                X
+                        </Button>
+                    </Link>
                 </header>
 
                 <div className="flex flex-row pt-2 px-12 space-x-8">

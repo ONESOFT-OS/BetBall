@@ -4,32 +4,24 @@ import { Button } from "../components/Button";
 import { HistoricItemCurrent } from "../components/HistoricItemCurrent";
 import { HistoricItemFinish } from "../components/HistoricItemFinish";
 import { HistoricItemScheduled } from "../components/HistoricItemScheduled";
-import { AdmSideBar } from "../components/AdmSideBar";
+import { UserSideBar } from "../components/UserSideBar";
 import { StaticCardDashboard } from "../components/StaticCardDashboard";
 import { Text } from "../components/Text";
 
 import '../styles/sideBar.css';
-import {useAuth} from "../hooks/useAuth";
 
 
-export function AdmDashboard(){
-
-    const {token} = useAuth();
-    const isAuthenticated = token === 'success';
-
-    const nickname = isAuthenticated ? localStorage.getItem('nickname') : null;
-
-
+export function UserDashboard (){
     return(
         <div className="main bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
-                <AdmSideBar/>
+                <UserSideBar/>
             </div>
             <div className="home pt-[100px] ">
                 <div className="header flex items-center justify-between">
                     <div className="col-1 text-white">
                         <h1 className="font-black text-[2.5rem]">Dashboard</h1>
-                        <p className=" text-[1.2rem] text-glass-800">Bem-vindo, {nickname}!</p>
+                        <p className=" text-[1.2rem] text-glass-800">Bem-vindo, João!</p>
                     </div>
 
                     <div className="col-2 flex justify-center items-center gap-6">
@@ -37,45 +29,37 @@ export function AdmDashboard(){
                         </div>
 
                         <div className="button w-[150px] h-[35px]">
-                            <Link to={"/newgame"}>
+                            <Link to={"/bet"}>
                                 <Button type='submit' className='min-w-fit max-w-xs text-center'>       
-                                    + Add New 
+                                    + Nova Aposta
                                 </Button>
                             </Link>
                         </div>
                     </div>
                 </div>
-                <div className="body mt-10 flex justify-between flex-wrap">
-                    <StaticCardDashboard/>
-                    <StaticCardDashboard/>
-                </div>
 
                 <div className="flex flex-col gap-4 pt-8 px-20">
                     <div className="flex flex-row justify-center gap-10 pb-3">
                     <Link to={'/dashboard'}> 
-                        <Text className="font-bold text-xl text-gray-500 hover:text-green-700">Em Andamento</Text> 
+                        <Text className="font-bold text-xl text-green-500 ">Em Andamento</Text> 
                     </Link>
-                    <Link to={'/dashboard/time'}>  
+                    <Link to={'scheduled'}>  
                         <Text className="font-bold text-xl text-gray-500 hover:text-green-700" >Agendados</Text>
                     </Link>
-                    <Link to={'/dashboard/finish'}>   
-                        <Text className="font-bold text-xl text-green-500">Finalizados</Text>
-                    </Link>
                     </div>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    <HistoricItemFinish action="FINALIZADO"></HistoricItemFinish>
-                    
+                    <HistoricItemCurrent action="APOSTOU"></HistoricItemCurrent>
+                    <HistoricItemCurrent action="APOSTOU"></HistoricItemCurrent>
+                    <HistoricItemCurrent action="APOSTOU"></HistoricItemCurrent>
+                    <HistoricItemCurrent action="NÃO APOSTOU"></HistoricItemCurrent>
+                    <HistoricItemCurrent action="APOSTOU"></HistoricItemCurrent>
+                    <HistoricItemCurrent action="NÃO APOSTOU"></HistoricItemCurrent>
+                    <HistoricItemCurrent action="NÃO APOSTOU"></HistoricItemCurrent>
                 </div>
-                <div className="container flex justify-center items-center mt-[25px]">
-                    <div className="see-more bg-white rounded-[100%] w-[40px] h-[40px] flex justify-center items-center">
-                            <ArrowDownIcon className="w-[30px] h-[30px]"/>
-                    </div>
+            <div className="container flex justify-center items-center mt-[25px]">
+                <div className="see-more bg-white rounded-[100%] w-[40px] h-[40px] flex justify-center items-center">
+                        <ArrowDownIcon className="w-[30px] h-[30px]"/>
                 </div>
+            </div>
             </div>
         </div>
     )
