@@ -30,7 +30,7 @@ export function AdmDashboard(){
 
                         <div className="button w-[150px] h-[35px]">
                             <Link to={"/newgame"}>
-                                <Button type='submit' className='min-w-fit max-w-xs'>       
+                                <Button type='submit' className='min-w-fit max-w-xs text-center'>       
                                     + Add New 
                                 </Button>
                             </Link>
