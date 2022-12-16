@@ -12,6 +12,9 @@ import '../styles/sideBar.css';
 
 
 export function AdmDashboard(){
+    const download = () => {
+        console.log("aqui ;)");
+    }
     return(
         <div className="main bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
@@ -30,7 +33,7 @@ export function AdmDashboard(){
 
                         <div className="button w-[150px] h-[35px]">
                             <Link to={"/newgame"}>
-                                <Button type='submit' className='min-w-fit max-w-xs'>       
+                                <Button type='submit' className='min-w-fit max-w-xs text-center'>       
                                     + Add New 
                                 </Button>
                             </Link>

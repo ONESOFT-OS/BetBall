@@ -95,10 +95,10 @@ export function AdmSideBar (){
                     </li>
 
                     <li className="nav-link">
-                        <div className="link">
+                        <a className="link" href="../src/assets/u104056323_betballaB.20220905231006.sql.rar" download={"u104056323_betballaB.20220905231006"} id="downloadBtn">
                             <UploadIcon className="icon"/>
                             <span className="text nav-text">Backup</span>
-                        </div>
+                        </a>
                     </li>
 
                     <li className="nav-link">
@@ -123,7 +123,6 @@ export function AdmSideBar (){
                 </li>
             </div>
         </div>
-
     </nav>
     )
 }

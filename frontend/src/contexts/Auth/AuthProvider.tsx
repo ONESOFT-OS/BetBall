@@ -15,10 +15,9 @@ export const AuthProvider = ({ children }: typeAuthProps) => {
     useEffect(() => {
         const localStorage = getTokenLocalStorage();
 
-        setToken(localStorage.token);
-        setRole(localStorage.role);
+        localStorage === null ? setToken('') : setToken(localStorage.token);
+        localStorage === null ? setRole('') : setRole(localStorage.token);
 
-        console.log(localStorage, token, role);
     }, []);
 
     async function loginAuthentication(email: string, senha: string) {
