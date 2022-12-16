@@ -6,35 +6,32 @@ import { Text } from "../components/Text";
 import { useGameById } from "../hooks/useGameById";
 import axios from "axios";
 import { InputDate } from "../components/InputDate";
-import { ITeam, useTeamById } from "../hooks/useTeamById";
 import { useTeamByGame } from "../hooks/useTeamByGame";
+import { GameController } from "phosphor-react";
 
 export interface NewGame{
     dataFimAposta : string;
     horaFimAposta : string;
+    goalTeamLeft : number;
+    goalTeamRight : number; 
 }
-/*
-export function getURL(team : ITeam[], id : string){
-    var url : string = "";
 
-    for (let index = 0; index < team.length; index++) {
-        var element = team[index];
-        if (element.club_id == id) {
-            url = element.photo_link;
-            break;
-        }
-    }
-    return url;
-}
-*/
 export function EditGame() {
-    const game = useGameById(1);
-    const teams = useTeamByGame(1);
+    const id = 2;
+    const game = useGameById(id);
+    const teams = useTeamByGame(id);
+    const date = new Date();
+    const today : string = date.getFullYear().toString() + "-" + (date.getMonth() + 1).toString() + "-" + date.getDate().toString();
+    const currentTime = date.getHours + ":" + date.getMinutes() + ":00";
+    const timeBetOver = today > game.endDate && currentTime > game.endTime; 
+    console.log(game);
+    console.log(timeBetOver);
 
-    
     const [editGame, setEditGame] = useState<NewGame>({
         dataFimAposta : "",
         horaFimAposta : "",
+        goalTeamLeft : -1,
+        goalTeamRight : -1,
     });
     
     const datePlacehold = ():string => {
@@ -42,28 +39,50 @@ export function EditGame() {
             return game.endDate
         }
         return editGame.dataFimAposta
-    }
+    };
 
     const timePlacehold = ():string => {
         if (editGame.horaFimAposta == ""){
             return game.endTime
         }
         return editGame.horaFimAposta
+    };
+
+    const golsTeamLeftPlacehold = ():string =>{
+        if (editGame.goalTeamLeft == -1){
+            return teams[0].goal.toString();
+        }
+        return editGame.goalTeamLeft.toString();
     }
-    ;
+
+    const golsTeamRightPlacehold = ():string =>{
+        if (editGame.goalTeamRight == -1){
+            return teams[1].goal.toString();
+        }
+        return editGame.goalTeamRight.toString();
+    }
 
     async function sendNewEditGame(event : FormEvent){
         event.preventDefault();
         var time:string = game.endTime;
         var date:string = game.endDate;
+        var goalTeamLeft = teams[0].goal;
+        var goalTeamRight = teams[1].goal;
+
         if (editGame.dataFimAposta != ""){
-            console.log("valor Date");
             date = editGame.dataFimAposta;
         }
 
         if (editGame.horaFimAposta != ""){
-            console.log("valor time");
             time = editGame.horaFimAposta;
+        }
+
+        if (editGame.goalTeamLeft != -1){
+            goalTeamLeft = editGame.goalTeamLeft
+        }
+
+        if (editGame.goalTeamRight != -1){
+            goalTeamLeft = editGame.goalTeamRight
         }
 
         if (editGame.dataFimAposta == game.endDate){
@@ -72,19 +91,21 @@ export function EditGame() {
                 return
             }
         }
-        /*
+        
         axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/register/game',
+            method: 'put',
+            url: 'http://127.0.0.1:8000/update/game',
             
             data: {
-                collaborator_nickname: game.nickColaborador,
-                end_datetime: (game.dataFimAposta + " " + game.horaFimAposta),
-                team1_id: game.idTime1,
-                team2_id: game.idTime2
+                idGame: id,
+                end_datetime: (date + " " + time),
+                idTeam1: teams[0].club_id,
+                goalTeam1: goalTeamLeft,
+                idTeam2: teams[1].club_id,
+                goalTeam2: goalTeamRight,
             }
-          })
-          */
+        })
+          
         history.back();
     }
 
@@ -122,20 +143,50 @@ export function EditGame() {
                     </div>
 
                     <div className="flex justify-center pt-11 gap-28">
-                        <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96" 
-                                name="TimeEsquerda"
-                                value = {teams[0].club_id}
-                                id="leftTeamSelect" 
-                                disabled>
-                                <option value="" >{teams[0].club_name}</option>
-                        </select>
-                        <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
-                                name="TimeDireita" 
-                                value = {teams[1].club_id}
-                                id="rightTeamSelect"
-                                disabled>
-                                <option value="" >{teams[1].club_name}</option>
-                        </select>
+                        <div className="flex gap-1">
+                            <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-80" 
+                                    name="TimeEsquerda"
+                                    value = {teams[0].club_id}
+                                    id="leftTeamSelect" 
+                                    disabled>
+                                    <option value="" >{teams[0].club_name}</option>
+                            </select>
+                            <input className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 max-w-[32px]"
+                                   type="Number" 
+                                   name="goalLeftTeam" 
+                                   id="goalLeftTeam" 
+                                   value={golsTeamLeftPlacehold()}
+                                   min={0}
+                                   disabled={!timeBetOver}
+                                   onChange={(event) => 
+                                    setEditGame({
+                                        ...editGame,
+                                        goalTeamLeft : parseInt(event.target.value)
+                                    })} />
+                        </div>
+                        <div  className="flex gap-1">
+                            <input className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 max-w-[32px]"
+                                   type="Number" 
+                                   name="goalRightTeam" 
+                                   id="goalRightTeam" 
+                                   value={golsTeamRightPlacehold()}
+                                   min={0}
+                                   disabled={!timeBetOver}
+                                   onChange={(event) => 
+                                        setEditGame({
+                                            ...editGame,
+                                            goalTeamRight : parseInt(event.target.value)
+                                        })} />
+                            <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-80 sele" 
+                                    name="TimeDireita" 
+                                    value = {teams[1].club_id}
+                                    id="rightTeamSelect"
+                                    disabled>
+                                    <option value="" >{teams[1].club_name}</option>
+                            </select>
+                            
+                        </div>
+                        
                     </div>
 
                     <Text className="pl-2 pt-10">
@@ -148,6 +199,7 @@ export function EditGame() {
                                     id="dateGame"
                                     min = {game.endDate}
                                     value = {datePlacehold()}
+                                    disabled={timeBetOver}
                                     onChange={(event) => 
                                         setEditGame({
                                             ...editGame,
@@ -163,6 +215,7 @@ export function EditGame() {
                                     id="timeGame" 
                                     mode="time"
                                     value = {timePlacehold()}
+                                    disabled={timeBetOver}
                                     onChange={(event) => 
                                         setEditGame({
                                             ...editGame,

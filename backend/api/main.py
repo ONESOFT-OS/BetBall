@@ -1,3 +1,4 @@
+from queries.participation import updateParticipationGoals
 from queries.users import get_user_by_email
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -5,7 +6,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 
 
-from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email
+from model.models import Login, User, Cadastro, Game, EditGame, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email, Balance
 
 from queries.users import type_user
 from queries.credit import user_deposit, get_balance, user_withdraw
@@ -13,7 +14,7 @@ from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
-from queries.game import add_game, list_game_by_id
+from queries.game import add_game, list_game_by_id, edit_datetime_game
 from queries.team import get_clubs_by_game
 
 from random import randint
@@ -56,7 +57,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = login_user(form_data.username, form_data.password)
     dict_reponse ={}
     if not user_dict:
-        print("oi")
         dict_reponse['token'] = "error"
         raise HTTPException(status_code=400, detail=f"{dict_reponse}")
     else:
@@ -112,7 +112,6 @@ async def match():
 async def getGame(id):
     auxGame = list_game_by_id(id)
     endDate = str(auxGame['date']).split(" ")
-    print(endDate)
     game = {
         'idGame'            : auxGame['idGame'],
         'nickColaborador'   : auxGame['nickColaborador'],
@@ -124,13 +123,24 @@ async def getGame(id):
 
 @app.get('/team/game/{gameId}')
 async def getTeansInGame(gameId):
-    return get_clubs_by_game(gameId)
+    response = get_clubs_by_game(gameId)
+    return response
 
-@app.post('/teste/register/game')
-async def match():
-    #print("passou aqui")
-    add_game('Employee2', '2022-10-22 15:30:00', '8', '7')
-    return
+@app.put('/update/game')
+async def updateGame(game : EditGame):
+    response = edit_datetime_game(game.idGame, game.end_datetime)
+    if (not response):
+        return response
+    
+    response = updateParticipationGoals(game.idGame, game.idTeam1, game.goalTeam1)
+    if (not response):
+        return response
+
+    response = updateParticipationGoals(game.idGame, game.idTeam2, game.goalTeam2)
+    if (not response):
+        return response
+
+    return True 
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):
@@ -151,3 +161,9 @@ async def deposit(withdraw: Withdraw):
 async def get_nick(email:Email):
     var = get_user_by_email(email.email)
     return var
+
+@app.post('/getbalance')
+async def get_balance_by_nick(balance: Balance):
+     sale = get_balance(balance.nickname)
+     sale = sale[0][0]
+     return sale

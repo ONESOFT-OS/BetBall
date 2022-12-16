@@ -28,6 +28,7 @@ class Game(BaseModel):
     end_datetime: str
     team1_id: str
     team2_id: str
+    
 """ 
 -- Antiga Classe Game --
 class Game(BaseModel):
@@ -35,6 +36,13 @@ class Game(BaseModel):
     start_datetime: str
     end_datetime: str
 """
+class EditGame(BaseModel):
+    idGame : int
+    end_datetime: str
+    idTeam1: str
+    goalTeam1: int
+    idTeam2: str
+    goalTeam2: int
 
 class Match(BaseModel):
     game_id: str
@@ -49,3 +57,6 @@ class Withdraw(BaseModel):
 
 class Email(BaseModel):
     email: str
+
+class Balance(BaseModel):
+    nickname:str

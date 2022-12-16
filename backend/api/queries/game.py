@@ -81,3 +81,14 @@ def list_game_by_id(id):
     game = executeSelection(connection, query)
     game_dict = tutple_to_dict('idGame', 'nickColaborador', 'date','isFinish', tupla=game[0])
     return game_dict
+
+# Dado o id do jogo, ele atualiza a coluna data_fim_Aposta
+# @param game_id: ID do jogo que deseja buscar
+# @return tupla do jogo encontrado
+def edit_datetime_game(id, new_end_datetime):
+    query = f"""
+        UPDATE jogos
+        SET data_fim_aposta = '{new_end_datetime}'
+        WHERE jogos.id_jogo = {id}
+    """
+    return executeQuery(connection, query)

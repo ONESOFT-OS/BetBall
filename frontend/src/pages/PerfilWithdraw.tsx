@@ -17,6 +17,7 @@ export function PerfilWithdraw(){
     const [valor, setValor]  = useState('')
     const saldo = 100
     const {toast} = createStandaloneToast();
+    const  nick = localStorage.getItem("nickname");
 
     function maskCoin() {
 
@@ -27,7 +28,7 @@ export function PerfilWithdraw(){
     }
 
     async function withdraw(){
-        const  nick = localStorage.getItem("nickname");
+        
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/perfil/withdraw',
@@ -77,7 +78,7 @@ export function PerfilWithdraw(){
 
                 <div className="flex flex-row mt-5 justify-between">
                     <div className="flex flex-col items-center justify-center gap-4 ml-8">
-                        <Heading size="lg"><h2>Fulano</h2></Heading>
+                        <Heading size="lg"><h2>{nick}</h2></Heading>
 
                         <User className="bg-green-500 rounded-full w-40 h-40"></User>
 
