@@ -29,6 +29,7 @@ import { AdmUsers } from '../pages/AdmUsers';
 import { ROLES } from "../utils/roles";
 import { UserDashboard } from '../pages/UserDashboard';
 import { UserDashboardScheduled } from '../pages/UserDashboardScheduled';
+import { HomeRanking } from '../pages/HomeRanking';
 
 interface RouteProps {
     allowedRoles?: string[];
@@ -63,6 +64,7 @@ export const RoutesBase = () => {
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/" element={<Home />}/>
+                <Route path="/ranking" element={<HomeRanking />}/>
                 <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                 <Route path="/bet" element={<Bet/>}/>
                 <Route path={"games"} element={<Allgames/>}/>

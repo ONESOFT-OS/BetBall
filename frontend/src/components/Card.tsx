@@ -47,7 +47,7 @@ export function Card (props:CardProps){
                     <div className="progress-bar">
                         <p className="text-white font-bold text-[14px]">20' 13"</p>            
                         <div className="progress pt-1 pb-3">
-                            <Progress percentage={65} classname="h-[0.8px]"/>
+                            <Progress percentage={65} classname="h-1"/>
                         </div>      
                         <p className="text-glass-800 font-semibold text-[12px]">Tempo de aposta</p>      
                     </div>
