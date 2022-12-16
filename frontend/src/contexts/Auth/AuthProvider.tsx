@@ -29,7 +29,7 @@ export const AuthProvider = ({ children }: typeAuthProps) => {
             setTokenLocalStorage(response);
             return response;
         }
-        return false;
+        return null;
     }
 
     async function logOut() {
