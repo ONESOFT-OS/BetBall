@@ -6,9 +6,36 @@ import { User } from "phosphor-react";
 import { TextInput } from "../components/TextInput";
 import { LockKey } from "phosphor-react";
 import { Button } from "../components/Button";
+import axios from "axios";
+import { useState } from "react";
 
 export function PerfilSettings() {
-    const  nick = localStorage.getItem("nickname");
+    const [email,setEmail] = useState('');
+    let  nick = undefined
+    const user = localStorage.getItem("nickname");
+    if (user === null){
+          nick = undefined
+    }else{
+         nick = user
+    }
+    
+    async function getEmail(){
+        
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/getemail',
+            
+            data: {
+            nickname: user,
+            }
+        }).then(function(reponse){
+            const result = reponse.data
+            setEmail(result)
+        })
+    }
+
+    getEmail()
+
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">
         <NavBar/>
@@ -62,7 +89,7 @@ export function PerfilSettings() {
                 <label htmlFor="email" className="w-6/12">
                     <Text size="sm" className='font-semibold'>E-mail</Text>
                     <TextInput.Root >
-                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'  />
+                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder={email} disabled />
                         <TextInput.Icon>
                         <LockKey/>
                         </TextInput.Icon>
@@ -72,7 +99,7 @@ export function PerfilSettings() {
                 <label htmlFor="Nickname">
                     <Text size="sm" className='font-semibold'>Nickname</Text>
                     <TextInput.Root >
-                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='Fulano'  />
+                        <TextInput.Input required type='text' id='nick' autoComplete="off" placeholder={nick} disabled />
                         <TextInput.Icon>
                         <LockKey/>
                         </TextInput.Icon>
