@@ -63,12 +63,13 @@ export const RoutesBase = () => {
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
 
+                <Route path="/editgame" element={<EditGame/>}/>
 
                 {/*PROTECTED ROUTES*/}
                 <Route element={<ProtectRoute allowedRoles={[ROLES.Employee]}/>}>
                     <Route path="/" element={<Home />}/>
                     <Route path="/newgame" element={<NewGame/>}/>
-                    <Route path="/editgame" element={<EditGame/>}/>
+                    
                     <Route path="/bet" element={<Bet/>}/>
                     <Route path="/user/create" element={<CreateUser/>}/>
                    
