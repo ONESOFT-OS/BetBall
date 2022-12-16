@@ -1,10 +1,11 @@
+from queries.users import get_user_by_email
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 import json
 
 
-from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw
+from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email
 
 from queries.users import type_user
 from queries.credit import user_deposit, get_balance, user_withdraw
@@ -55,11 +56,13 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = login_user(form_data.username, form_data.password)
     dict_reponse ={}
     if not user_dict:
+        print("oi")
         dict_reponse['token'] = "error"
         raise HTTPException(status_code=400, detail=f"{dict_reponse}")
     else:
+        nickname = get_user_by_email(form_data.username)
         dict_reponse["token"] = "success"
-        dict_reponse["role"] = type_user(form_data.username)
+        dict_reponse["role"] = type_user(nickname[0][0])
         json_string = json.dumps(dict_reponse)
         return Response(content=f"{json_string}", status_code=200, media_type="application/json")
 
@@ -131,6 +134,8 @@ async def match():
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):
+    print(deposit.nickname)
+    print(deposit.value)
     if deposit.value > 0:
         return user_deposit(deposit.nickname, deposit.value)
     else:
@@ -143,3 +148,8 @@ async def deposit(withdraw: Withdraw):
         return user_withdraw(withdraw.nickname, withdraw.value)
     else:
         return False
+
+@app.post('/getnick')
+async def get_nick(email:Email):
+    var = get_user_by_email(email.email)
+    return var

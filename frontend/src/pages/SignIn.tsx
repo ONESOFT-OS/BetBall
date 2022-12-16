@@ -11,6 +11,7 @@ import { FormEvent, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { createStandaloneToast, useToast } from '@chakra-ui/react';
+import axios from "axios";
 
 export function SignIn() {
     const [username, setEmail] = useState("");
@@ -22,6 +23,17 @@ export function SignIn() {
         event.preventDefault();
         const auth = await loginAuthentication(username, password);
         if (auth) {
+            axios({
+                    method: 'post',
+                    url: 'http://127.0.0.1:8000/getnick',
+                    
+                    data: {
+                    email: username,
+                    }
+                }).then(function (response){
+                    localStorage.setItem("nickname", response.data[0][0]);
+                })
+            
             navigate("/");
         } else{
             setPassword('');
@@ -121,7 +133,7 @@ export function SignIn() {
 
                 <Text asChild size="sm">
                     <Link
-                        to={"/forgotpassword"}
+                        to={"/password_recovery"}
                         className="text-green-700 underline hover:text-white"
                     >
                         Esqueceu sua senha?

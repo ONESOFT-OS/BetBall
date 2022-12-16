@@ -1,4 +1,5 @@
 import { FormEvent, MouseEventHandler, SetStateAction, useState } from "react";
+import {clsx} from "clsx";
 import { Heading } from "../components/Heading";
 import { Button } from "../components/Button";
 import { Text } from "../components/Text";
@@ -9,7 +10,6 @@ import { ITeam, useTeamById } from "../hooks/useTeamById";
 import { useTeamByGame } from "../hooks/useTeamByGame";
 
 export interface NewGame{
-    nickColaborador : string;
     dataFimAposta : string;
     horaFimAposta : string;
 }
@@ -28,26 +28,46 @@ export function getURL(team : ITeam[], id : string){
 }
 */
 export function EditGame() {
-    const game = useGameById(2);
-    const teams = useTeamByGame(2);
+    const game = useGameById(1);
+    const teams = useTeamByGame(1);
 
+    
     const [editGame, setEditGame] = useState<NewGame>({
-        nickColaborador : game.nickColaborador,
-        dataFimAposta : game.endDate,
-        horaFimAposta : game.endTime,
+        dataFimAposta : "",
+        horaFimAposta : "",
     });
+    
+    const datePlacehold = ():string => {
+        if (editGame.dataFimAposta == ""){
+            return game.endDate
+        }
+        return editGame.dataFimAposta
+    }
 
-    console.log(game)
-    console.log(editGame.horaFimAposta)
-    //const team1 = useTeamById(editGame.idTime1);
-    //const team2 = useTeamById(editGame.idTime2);
+    const timePlacehold = ():string => {
+        if (editGame.horaFimAposta == ""){
+            return game.endTime
+        }
+        return editGame.horaFimAposta
+    }
+    ;
 
     async function sendNewEditGame(event : FormEvent){
         event.preventDefault();
+        var time:string = game.endTime;
+        var date:string = game.endDate;
+        if (editGame.dataFimAposta != ""){
+            console.log("valor Date");
+            date = editGame.dataFimAposta;
+        }
+
+        if (editGame.horaFimAposta != ""){
+            console.log("valor time");
+            time = editGame.horaFimAposta;
+        }
+
         if (editGame.dataFimAposta == game.endDate){
-            console.log("Mesmo dia");
             if (editGame.horaFimAposta < game.endTime) {
-                console.log("Hora anterior");
                 alert("Reagendar jogo apenas para depois da hora marcada");
                 return
             }
@@ -127,7 +147,7 @@ export function EditGame() {
                             <InputDate
                                     id="dateGame"
                                     min = {game.endDate}
-                                    value = {editGame.dataFimAposta}
+                                    value = {datePlacehold()}
                                     onChange={(event) => 
                                         setEditGame({
                                             ...editGame,
@@ -142,7 +162,7 @@ export function EditGame() {
                             <InputDate
                                     id="timeGame" 
                                     mode="time"
-                                    value = {editGame.horaFimAposta}
+                                    value = {timePlacehold()}
                                     onChange={(event) => 
                                         setEditGame({
                                             ...editGame,
@@ -158,7 +178,7 @@ export function EditGame() {
                     <div className="flex justify-center pt-12">
                         <Button type='submit' 
                                 onClick={sendNewEditGame} 
-                                className='mt-4 min-w-fit max-w-xs'>
+                                className='mt-4 min-w-fit max-w-xs text-center'>
                             Salvar
                         </Button>
                     </div>

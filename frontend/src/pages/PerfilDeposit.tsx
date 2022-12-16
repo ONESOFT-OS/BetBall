@@ -1,4 +1,5 @@
 import { MenuItem } from "@mui/material";
+import axios from "axios";
 import { User } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -21,7 +22,18 @@ export function PerfilDeposit(){
         
     }
 
-
+    async function deposit(){
+        const  nick = localStorage.getItem("nickname");
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/perfil/deposit',
+            
+            data: {
+            nickname: nick,
+            value: valor
+            }
+        })
+    }
 
 
     return(
@@ -91,7 +103,7 @@ export function PerfilDeposit(){
                                 <TextInput.Input className="text-black font-bold" type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
-                        <Button className="w-fit">Confirmar</Button>
+                        <Button onClick={deposit} className="w-fit">Confirmar</Button>
                 </div>
                 </div>
 

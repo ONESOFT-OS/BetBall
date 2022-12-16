@@ -47,3 +47,5 @@ class Withdraw(BaseModel):
     nickname: str
     value: int
 
+class Email(BaseModel):
+    email: str
