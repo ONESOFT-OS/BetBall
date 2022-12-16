@@ -29,15 +29,15 @@ export function getURL(team : ITeam[], id : string){
 }
 
 export function NewGame() {
-    /*
+
     var nickname = localStorage.getItem("nickname");
     console.log(nickname);
     if (nickname == null){
         nickname = "MASTER";
     }
-    */
+    
     const [game, setGame] = useState<NewGame>({
-        nickColaborador : "MASTER",
+        nickColaborador : nickname,
         dataFimAposta : "",
         horaFimAposta : "",
         idTime1 : "",
@@ -170,7 +170,7 @@ export function NewGame() {
                     <div className="flex justify-center pt-12">
                         <Button type='submit' 
                                 onClick={sendNewGame} 
-                                className='mt-4 min-w-fit max-w-xs'>
+                                className='mt-4 min-w-fit max-w-xs text-center'>
                             Salvar
                         </Button>
                     </div>
