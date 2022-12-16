@@ -35,7 +35,7 @@ interface RouteProps {
 export function ProtectLoginRoute() {
     const { token } = useAuth();
 
-    if (token === '') return null;
+    if (token === '' || token === undefined) return null;
 
     return token ? <Navigate to="/" /> : <Outlet />;
 }
@@ -44,7 +44,7 @@ export function ProtectRoute(props: RouteProps) {
     const { token, role } = useAuth();
     const { allowedRoles } = props;
 
-    if (token === '') return null;
+    if (token === '' || token === undefined) return null;
 
     const canAccess = allowedRoles?.includes(role);
 

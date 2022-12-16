@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }: typeAuthProps) => {
         const localStorage = getTokenLocalStorage();
 
         localStorage === null ? setToken('') : setToken(localStorage.token);
-        localStorage === null ? setRole('') : setRole(localStorage.token);
+        localStorage === null ? setRole('') : setRole(localStorage.role);
 
     }, []);
 
