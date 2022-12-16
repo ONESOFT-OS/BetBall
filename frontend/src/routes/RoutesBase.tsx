@@ -34,7 +34,9 @@ interface RouteProps {
 
 export function ProtectLoginRoute() {
     const { token } = useAuth();
-    if (token === undefined) return null;
+
+    if (token === '') return null;
+
     return token ? <Navigate to="/" /> : <Outlet />;
 }
 
@@ -42,11 +44,11 @@ export function ProtectRoute(props: RouteProps) {
     const { token, role } = useAuth();
     const { allowedRoles } = props;
 
+    if (token === '') return null;
+
     const canAccess = allowedRoles?.includes(role);
 
-    console.log("Authenticated?", token, "Can access?", canAccess, allowedRoles, role);
-
-    return token ? <Outlet /> : <Navigate to="/signin" replace />;
+    return token && canAccess ? <Outlet /> : <Navigate to="/" replace />;
 }
 
 export const RoutesBase = () => {
@@ -58,20 +60,18 @@ export const RoutesBase = () => {
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
 
-
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
 
-
                 {/*PROTECTED ROUTES*/}
-                <Route element={<ProtectRoute allowedRoles={[ROLES.Employee]}/>}>
+                <Route element={<ProtectRoute allowedRoles={[ROLES.Employee, ROLES.Admin]}/>}>
                     <Route path="/" element={<Home />}/>
                     <Route path="/newgame" element={<NewGame/>}/>
                     <Route path="/editgame" element={<EditGame/>}/>
                     <Route path="/bet" element={<Bet/>}/>
                     <Route path="/user/create" element={<CreateUser/>}/>
-                   
+
                     <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
                     <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
                     <Route path="/perfil/settings" element={<PerfilSettings/>}/>
