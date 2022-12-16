@@ -1,6 +1,6 @@
 import '../styles/sideBar.css';
 import { Link } from "react-router-dom";
-import { ActivityLogIcon, BellIcon, CalendarIcon, DoubleArrowRightIcon, HomeIcon, PersonIcon, PlusCircledIcon, UploadIcon } from '@radix-ui/react-icons';
+import { ActivityLogIcon, BellIcon, CalendarIcon, DoubleArrowRightIcon, GearIcon, HomeIcon, PersonIcon, PlusCircledIcon, UploadIcon } from '@radix-ui/react-icons';
 import { ArrowRightIcon, ChevronRightIcon } from '@chakra-ui/icons';
 import { CurrencyCircleDollar } from 'phosphor-react';
 import '../styles/dialog.css';
@@ -14,8 +14,10 @@ export function AdmSideBar (){
         <header>
             <div className="image-text">
                 <span className="image">
-                    <div className="mt-3 bg-[url('../assets/betball-icon.png')] bg-contain bg-no-repeat w-[40px] h-[40px]">
-                    </div>
+                    <Link to={"/adm/settings"}>
+                        <div className="mt-3 bg-[url('../assets/betball-icon.png')] bg-contain bg-no-repeat w-[40px] h-[40px]">
+                        </div>
+                    </Link>
                 </span>
 
                 <div className="text logo-text">
@@ -108,9 +110,15 @@ export function AdmSideBar (){
                                 <span className="text nav-text">Logs</span>
                             </Link>
                         </div>
+                    </li>
 
-
-                        
+                    <li className="nav-link">
+                        <div className="link">
+                            <Link to={"/adm/settings"}>
+                                <GearIcon className="icon"/>
+                                <span className="text nav-text">Logs</span>
+                            </Link>
+                        </div>
                     </li>
                 </ul>
             </div>

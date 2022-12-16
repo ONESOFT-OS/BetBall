@@ -10,71 +10,68 @@ import { Button } from "../components/Button";
 export function PerfilAdmSettings() {
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center justify-center ">
-        <NavBar/>
-      
-      <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70  mt-10 mb-10">
-          <header className="flex flex-row justify-between pt-12 px-10">
-              <div className="flex flex-row justify-start items-baseline">
-                  <Heading size="xlg">Perfil</Heading>
+          <div className="card bg-glass-300 min-w-[80vw] h-[90vh] m-[60px] rounded-[10px] p-16">
+            <div className="profile-header flex gap-5 text-white font-normal">
+              <div className="photo">
+                  <img className="w-[50px] h-[50px] rounded-[100%]" src="../src/assets/users/user.png"/>
               </div>
-          </header>
+              <div className="data-text flex flex-col">
+                  <div className="name font-bold">Rodrigo D.</div>
+                  <div className="email text-gray-300 font-extralight text-[12px]">rodrigosampaio@gmail.com</div>
+              </div>  
+            </div>
 
-          <div className="flex flex-row pt-2 px-12 space-x-8">
-              <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/admSettings'}>Configurar Perfil</Link></Text>
-              <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/newgame'}>Cadastrar Jogos</Link></Text>
-              
-              <div className="flex flex-row mt-5 justify-between">
-                <div className="flex flex-col items-center justify-center gap-4 ml-8">
-                  <Heading size="lg"><h2>Fulano</h2></Heading>
-
-                  <User className="bg-green-500 rounded-full w-40 h-40"></User>
-                </div>
-
-            <div className="h-[350px] w-0.5 bg-[#ffffff] bg-opacity-60  shadow-sm shadow-black"></div>
-
-            <div className="flex flex-col items-start mr-[1rem] w-[32rem]">
-                <Text className ="mb-[2rem]" size="2lg">Informações</Text>
-            <div className="h-0.5 w-[30rem] bg-[#ffffff] mb-[2rem]"></div>
-              
-              <div className="flex justify-between w-full mb-[2rem]">
-                <label htmlFor="email" className="w-6/12">
-                    <Text size="sm" className='font-semibold'>E-mail</Text>
+            <div className="title text-white font-extrabold mt-[30px]">
+              <h1 className="text-[1.6rem]">Editar Perfil</h1>
+            </div>
+            <div className="form">
+              <div className="row flex gap-5">
+                <label htmlFor="Nickname" className="w-6/12">
+                    <Text size="sm" className='font-semibold pt-5 pb-5'>Nickname</Text>
                     <TextInput.Root >
-                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='Digite seu e-mail'  />
+                        <TextInput.Input required type='Nickname' id='Nickname' autoComplete="off" placeholder='@rodrigodamasceno'  />
                         <TextInput.Icon>
-                        <LockKey/>
+                            <LockKey/>
                         </TextInput.Icon>
                     </TextInput.Root>
                 </label>
 
-                <label htmlFor="Nickname">
-                    <Text size="sm" className='font-semibold'>Nickname</Text>
+                <label htmlFor="email" className="w-6/12">
+                    <Text size="sm" className='font-semibold pt-5 pb-5'>E-mail</Text>
                     <TextInput.Root >
-                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='Fulano'  />
+                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='rodrigosampaio@gmail.com'  />
                         <TextInput.Icon>
-                        <LockKey/>
+                            <LockKey/>
                         </TextInput.Icon>
                     </TextInput.Root>
-              </label>
+                </label>
               </div>
 
-              <div className=" h-0.5  w-[30rem] mb-[2rem] bg-[#ffffff]"></div>
-
-              <label htmlFor="Senha" className="w-full">
-                    <Text size="sm" className='font-semibold'>Senha</Text>
-                    <TextInput.Root >
-                        <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='******'  />
-                    </TextInput.Root>
-              </label>
-
-              <div className="flex w-full justify-end">
-                <Button className='mt-4  w-fit mr-[2rem]' type='submit' >Cancelar</Button>
-                <Button className='mt-4 w-fit' type='submit' >Salvar</Button>
+              <div className="title text-white font-extrabold mt-[30px]">
+                <h1 className="text-[1.6rem]">Alterar Senha</h1>
               </div>
+
+              <div className="row flex gap-5">
+                <label htmlFor="Senha" className="w-full">
+                  <Text size="sm" className='font-semibold'>Senha Antiga</Text>
+                  <TextInput.Root >
+                  <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='******'/>
+                  </TextInput.Root>
+                </label>
+                <label htmlFor="Senha" className="w-full">
+                  <Text size="sm" className='font-semibold'>Nova Senha</Text>
+                  <TextInput.Root >
+                  <TextInput.Input required type='email' id='email' autoComplete="off" placeholder='******'/>
+                  </TextInput.Root>
+                </label>
+              </div>
+
+              <div className="flex w-full justify-end mt-5">
+                            <Button className='mt-4  w-fit mr-[2rem]' type='submit' >Cancelar</Button>
+                            <Button className='mt-4 w-fit' type='submit' >Salvar</Button>
+                        </div>
             </div>
           </div>
         </div>
-      </div>
-  </div>
   )
 }
