@@ -29,7 +29,13 @@ export function getURL(team : ITeam[], id : string){
 }
 
 export function NewGame() {
-    
+    /*
+    var nickname = localStorage.getItem("nickname");
+    console.log(nickname);
+    if (nickname == null){
+        nickname = "MASTER";
+    }
+    */
     const [game, setGame] = useState<NewGame>({
         nickColaborador : "MASTER",
         dataFimAposta : "",
