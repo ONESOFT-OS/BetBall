@@ -4,6 +4,13 @@ import { ArrowDownIcon } from "@radix-ui/react-icons"
 
 export interface ItemProps{
     action:string
+    name1:string
+    name2:string
+    url1:string
+    url2:string
+    team1Goal:string
+    team2Goal:string
+    apostar:string
 }
 
 export function HistoricItemCurrent(props:ItemProps){
@@ -19,21 +26,21 @@ export function HistoricItemCurrent(props:ItemProps){
             </div>
 
             <div className="team flex flex-row items-center gap-5">
-                <Text className="font-bold">Barcelona</Text>
+                <Text className="font-bold">{props.name1}</Text>
                 <div>
-                    <img className="w-6" src="../src/assets/team/barcelonaIcon.png"/>
+                    <img className="w-6" src={props.url1}/>
                 </div>
                 <div className="score">
-                    <Text className=" font-bold">3 | 0</Text>
+                    <Text className=" font-bold">{props.team1Goal} | {props.team2Goal}</Text>
                 </div>
-                <Text className="font-bold">Real Madrid</Text>
+                <Text className="font-bold">{props.name2}</Text>
                 <div>
-                    <img className="w-5" src="../src/assets/team/realMadridIcon.png"/>
+                    <img className="w-5" src={props.url2}/>
                 </div>
             </div>
 
             <div className="bets flex flex-col items-center">
-                <Text>25 </Text>
+                <Text>{props.apostar} </Text>
                 <Text>Apostas</Text>
             </div>
 

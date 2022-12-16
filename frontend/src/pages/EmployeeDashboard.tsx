@@ -61,13 +61,75 @@ export function EmployeeDashboard() {
                             <Text className="font-bold text-xl text-gray-500 hover:text-green-700">Finalizados</Text>
                         </Link>
                     </div>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
-                    <HistoricItemCurrent action="FINALIZAR"></HistoricItemCurrent>
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Bahia"
+                        name2 = "Flamengo"
+                        url1 = "../src/assets/team/bahiaIcon.png"
+                        url2 = "../src/assets/team/flamengoIcon.png"
+                        team1Goal = "0"
+                        team2Goal = "0"
+                        apostar= "32"/>
+
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Cuiabá"
+                        name2 = "Botafogo"
+                        url1 = "../src/assets/team/cuiabaIcon.png"
+                        url2 = "../src/assets/team/botafogoIcon.png"
+                        team1Goal = "0"
+                        team2Goal = "0"
+                        apostar= "47"/>
+
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Fluminense"
+                        name2 = "Internacional"
+                        url1 = "../src/assets/team/fluminenseIcon.png"
+                        url2 = "./src/assets/team/internacionalIcon.png"
+                        team1Goal = "2"
+                        team2Goal = "1"
+                        apostar= "67"/>
+
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Corinthians"
+                        name2 = "São Paulo"
+                        url1 = "../src/assets/team/corinthiansIcon.png"
+                        url2 = "../src/assets/team/saoPauloIcon.png"
+                        team1Goal = "0"
+                        team2Goal = "1"
+                        apostar= "22"/>
+
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Santos"
+                        name2 = "Avai"
+                        url1 = "../src/assets/team/santosIcon.png"
+                        url2 = "../src/assets/team/avaiIcon.png"
+                        team1Goal = "0"
+                        team2Goal = "0"
+                        apostar= "31"/>
+
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Atletico-MG"
+                        name2 = "Palmeiras"
+                        url1 = "../src/assets/team/atleticoMGIcon.png"
+                        url2 = "../src/assets/team/flamengoIcon.png"
+                        team1Goal = "1"
+                        team2Goal = "2"
+                        apostar= "53"/>
+
+                    <HistoricItemCurrent 
+                        action = "FINALIZAR"
+                        name1 = "Real Madrid"
+                        name2 = "Barcelona"
+                        url1 = "../src/assets/team/realMadridIcon.png"
+                        url2 = "../src/assets/team/barcelonaIcon.png"
+                        team1Goal = "3"
+                        team2Goal = "3"
+                        apostar= "324"/>
                 </div>
                 <div className="container flex justify-center items-center mt-[25px]">
                     <div
