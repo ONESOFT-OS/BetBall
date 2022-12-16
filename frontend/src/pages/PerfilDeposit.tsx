@@ -1,7 +1,7 @@
 import { createStandaloneToast } from "@chakra-ui/react";
 import { MenuItem } from "@mui/material";
 import axios from "axios";
-import { User } from "phosphor-react";
+import { Eye, EyeClosed, User } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -11,10 +11,19 @@ import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
 
-export function PerfilDeposit(){
+export  function PerfilDeposit(){
     
     const [valor, setValor]  = useState('')
     const {toast} = createStandaloneToast();
+    const  nick = localStorage.getItem("nickname");
+
+    const [visible, setVisibility] = useState(false)
+    const toggle = () =>{
+        visible ? setVisibility(false)  : setVisibility(true)
+    }
+
+    let Icon = visible ? <Eye/>: <EyeClosed/>
+    let dado =  visible ? "***" : "teste"
 
     function maskCoin() {
 
@@ -24,8 +33,23 @@ export function PerfilDeposit(){
         
     }
 
+    async function balance(){
+        return axios({
+           method: 'post',
+           url: 'http://127.0.0.1:8000/getbalance',
+           
+           data: {
+           nickname: nick,
+           }
+       }).then(function(response){
+           return response.data
+       })
+
+   }
+
+
     async function deposit(){
-        const  nick = localStorage.getItem("nickname");
+        
         axios({
             method: 'post',
             url: 'http://127.0.0.1:8000/perfil/deposit',
@@ -56,7 +80,7 @@ export function PerfilDeposit(){
         })
     }
 
-
+    
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center justify-center">
             <NavBar/>
@@ -71,12 +95,18 @@ export function PerfilDeposit(){
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Configurações</Link></Text>
                     <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/deposit'}>Carteira</Link></Text>
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/historic'}>Histórico</Link></Text>
+                    <Text size="lg"   className="font-semibold pl-[19rem]" >Betballs: </Text>
+                    <div onClick={toggle}>
+                                        {<TextInput.Icon >
+                                            {Icon}
+                                        </TextInput.Icon>}
+                    </div>
                 </div>
 
 
                 <div className="flex flex-row mt-5 justify-between">
                     <div className="flex flex-col items-center justify-center gap-4 ml-8">
-                        <Heading size="lg"><h2>Fulano</h2></Heading>
+                        <Heading size="lg"><h2>{nick}</h2></Heading>
 
                         <User className="bg-green-500 rounded-full w-40 h-40"></User>
 

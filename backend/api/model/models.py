@@ -53,3 +53,6 @@ class Withdraw(BaseModel):
 
 class Email(BaseModel):
     email: str
+
+class Balance(BaseModel):
+    nickname:str

@@ -61,6 +61,7 @@ export const RoutesBase = () => {
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/" element={<Home />}/>
+                <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
 
                 <Route path="/editgame" element={<EditGame/>}/>
                 <Route path="/newgame" element={<NewGame/>}/>
