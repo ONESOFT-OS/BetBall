@@ -1,13 +1,8 @@
-import {RoutesBase} from './routes/RoutesBase';
-import './styles/global.css';
-import {AuthProvider} from "./contexts/Auth/AuthProvider";
+import { RoutesBase } from "./routes/RoutesBase";
+import "./styles/global.css";
 
 export function App() {
-    return (
-        <AuthProvider>
-            <RoutesBase/>
-        </AuthProvider>
-    )
+    return <RoutesBase />;
 }
 
 // export default App

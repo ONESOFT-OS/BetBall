@@ -34,7 +34,9 @@ interface RouteProps {
 
 export function ProtectLoginRoute() {
     const { token } = useAuth();
-    if (token === undefined) return null;
+
+    if (token === '') return null;
+
     return token ? <Navigate to="/" /> : <Outlet />;
 }
 
@@ -42,53 +44,55 @@ export function ProtectRoute(props: RouteProps) {
     const { token, role } = useAuth();
     const { allowedRoles } = props;
 
+    if (token === '') return null;
+
     const canAccess = allowedRoles?.includes(role);
 
-    console.log("Authenticated?", token, "Can access?", canAccess, allowedRoles, role);
-
-    return token ? <Outlet /> : <Navigate to="/signin" replace />;
+    return token && canAccess ? <Outlet /> : <Navigate to="/" replace />;
 }
 
 export const RoutesBase = () => {
     return (
         <BrowserRouter>
             <Routes>
-
                 {/*PUBLIC ROUTES*/}
                 <Route path="/signin" element={<SignIn/>}/>
                 <Route path="/signup" element={<SignUp/>}/>
-
-
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
-                <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
-                <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
+                <Route path="/" element={<Home />}/>
 
-                {/*PROTECTED ROUTES*/}
-                <Route element={<ProtectRoute allowedRoles={[ROLES.Employee]}/>}>
-                    <Route path="/" element={<Home />}/>
+                {/* USER ROUTES */}
+                <Route element={<ProtectRoute allowedRoles={[ROLES.User]}/> }>
+                    <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
+                    <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
+                    <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
+                    <Route path="/perfil/settings" element={<PerfilSettings/>}/>
+                    <Route path="/bet" element={<Bet/>}/>
+                </Route>
+
+                {/* ADMIN ROUTES */}
+                <Route element={<ProtectRoute allowedRoles={[ROLES.Admin]}/> }>
+                    <Route path={"/adm/logs"} element={<SystemLogs/>}/>
+                    <Route path={"/adm/dashboard"} element={<AdmDashboard/>}/>
+                    <Route path={"/adm/users"} element={<AdmUsers/>}/>
+                    <Route path="/user/create" element={<CreateUser/>}/>
+                    <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
+                    <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
+                    <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
+                </Route>
+
+                {/*EMPLOYEE ROUTES*/}
+                <Route element={<ProtectRoute allowedRoles={[ROLES.Employee, ROLES.Admin]}/>}>
                     <Route path="/newgame" element={<NewGame/>}/>
                     <Route path="/editgame" element={<EditGame/>}/>
-                    <Route path="/bet" element={<Bet/>}/>
-                    <Route path="/user/create" element={<CreateUser/>}/>
-                   
-
-                    <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
-                    <Route path="/perfil/settings" element={<PerfilSettings/>}/>
-                    <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                     <Route path={"/dashboard"} element={<EmployeeDashboard/>}/>
                     <Route path={"/dashboard/time"} element={<EmployeeDashboardTime/>}/>
                     <Route path={"/dashboard/finish"} element={<EmployeeDashboardFinish/>}/>
                     <Route path={"/test"} element={<Test/>}/>
-                    <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
                     <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
-                    <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
                     <Route path={"games"} element={<Allgames/>}/>
                     <Route path={"profit"} element={<DefineProfit/>}/>
-                    <Route path={"logs"} element={<SystemLogs/>}/>
-                    <Route path={"/adm/logs"} element={<SystemLogs/>}/>
-                    <Route path={"/adm/dashboard"} element={<AdmDashboard/>}/>
-                    <Route path={"/adm/users"} element={<AdmUsers/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>

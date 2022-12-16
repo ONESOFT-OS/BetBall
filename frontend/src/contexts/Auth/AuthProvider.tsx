@@ -9,14 +9,16 @@ import {
 } from "../../utils/authFunctions";
 
 export const AuthProvider = ({ children }: typeAuthProps) => {
-    const [token, setToken] = useState<string>("");
-    const [role, setRole] = useState<string>("");
+    const [token, setToken] = useState<string>('');
+    const [role, setRole] = useState<string>('');
 
     useEffect(() => {
         const localStorage = getTokenLocalStorage();
 
-        localStorage == null ? setToken("") : setToken(localStorage.token);
-        localStorage == null ? setRole("") : setToken(localStorage.role);
+        setToken(localStorage.token);
+        setRole(localStorage.role);
+
+        console.log(localStorage, token, role);
     }, []);
 
     async function loginAuthentication(email: string, senha: string) {
@@ -28,7 +30,6 @@ export const AuthProvider = ({ children }: typeAuthProps) => {
             setTokenLocalStorage(response);
             return true;
         }
-
         return false;
     }
 
