@@ -27,6 +27,8 @@ import {useAuth} from '../hooks/useAuth';
 import { AdmDashboard } from '../pages/AdmDashboard';
 import { AdmUsers } from '../pages/AdmUsers';
 import { ROLES } from "../utils/roles";
+import { AdmUsersAdms } from '../pages/AdmUsersAdms';
+import { AdmUsersPunter } from '../pages/AdmUsersPunter';
 
 interface RouteProps {
     allowedRoles?: string[];
@@ -69,16 +71,18 @@ export const RoutesBase = () => {
                     <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
                     <Route path="/perfil/settings" element={<PerfilSettings/>}/>
                     <Route path="/bet" element={<Bet/>}/>
+
                 </Route>
 
                 {/* ADMIN ROUTES */}
                 <Route element={<ProtectRoute allowedRoles={[ROLES.Admin]}/> }>
+                    <Route path={"adm/settings"} element={<PerfilAdmSettings/>}/>
                     <Route path={"/adm/logs"} element={<SystemLogs/>}/>
                     <Route path={"/adm/dashboard"} element={<AdmDashboard/>}/>
                     <Route path={"/adm/users"} element={<AdmUsers/>}/>
-                    <Route path="/user/create" element={<CreateUser/>}/>
-                    <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
-                    <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
+                    <Route path={"/adm/users/adms"} element={<AdmUsersAdms/>}/>
+                    <Route path={"/adm/users/punter"} element={<AdmUsersPunter/>}/>
+                    <Route path="/adm/users/create" element={<CreateUser/>}/>
                     <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                 </Route>
 
@@ -90,9 +94,9 @@ export const RoutesBase = () => {
                     <Route path={"/dashboard/time"} element={<EmployeeDashboardTime/>}/>
                     <Route path={"/dashboard/finish"} element={<EmployeeDashboardFinish/>}/>
                     <Route path={"/test"} element={<Test/>}/>
-                    <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
                     <Route path={"games"} element={<Allgames/>}/>
                     <Route path={"profit"} element={<DefineProfit/>}/>
+                    <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
                 </Route>
             </Routes>
         </BrowserRouter>
