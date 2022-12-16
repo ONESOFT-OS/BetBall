@@ -27,6 +27,8 @@ import {useAuth} from '../hooks/useAuth';
 import { AdmDashboard } from '../pages/AdmDashboard';
 import { AdmUsers } from '../pages/AdmUsers';
 import { ROLES } from "../utils/roles";
+import { UserDashboard } from '../pages/UserDashboard';
+import { UserDashboardScheduled } from '../pages/UserDashboardScheduled';
 
 interface RouteProps {
     allowedRoles?: string[];
@@ -62,15 +64,17 @@ export const RoutesBase = () => {
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/" element={<Home />}/>
                 <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
+                <Route path="/bet" element={<Bet/>}/>
+                <Route path={"games"} element={<Allgames/>}/>
 
                 {/* USER ROUTES */}
                 <Route element={<ProtectRoute allowedRoles={[ROLES.User]}/> }>
+                    <Route path="/user/dashboard" element={<UserDashboard/>}/>
+                    <Route path="/user/dashboard/scheduled" element={<UserDashboardScheduled/>}/>
                     <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
                     <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
                     <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
                     <Route path="/perfil/settings" element={<PerfilSettings/>}/>
-                    <Route path="/bet" element={<Bet/>}/>
-                    <Route path={"games"} element={<Allgames/>}/>
                 </Route>
 
                 {/* ADMIN ROUTES */}
