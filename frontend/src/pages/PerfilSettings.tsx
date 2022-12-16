@@ -54,17 +54,18 @@ export function PerfilSettings() {
     getEmail()
 
     return(
-        <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">
-          <header className="flex flex-row justify-between pt-12 px-10">
-              <div className="flex flex-row justify-start items-baseline">
-                  <Heading size="xlg">Perfil</Heading>
-              </div>
-              <Link to="/user/dashboard">
-                        <Button mode="closer" onClick={close} className=" px-[19px]">
-                                X
-                        </Button>
+        <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center justify-center">
+        <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70  mt-10 mb-10">
+            <header className="flex flex-row justify-between pt-12 px-10">
+                <div className="flex flex-row justify-start items-baseline">
+                    <Heading size="xlg">Perfil</Heading>
+                </div>
+                <Link to="/user/dashboard">
+                    <Button mode="closer" onClick={close} className=" px-[19px]">
+                            X
+                    </Button>
                 </Link>
-          </header>
+            </header>
 
           <div className="flex flex-row pt-2 px-12 space-x-8">
               <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/settings'}>Configurações</Link></Text>
@@ -141,6 +142,7 @@ export function PerfilSettings() {
               </div>
             </div>
           </div>
+      </div>
       </div>
     )
 }
