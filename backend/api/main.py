@@ -113,7 +113,6 @@ async def match():
 async def getGame(id):
     auxGame = list_game_by_id(id)
     endDate = str(auxGame['date']).split(" ")
-    print(endDate)
     game = {
         'idGame'            : auxGame['idGame'],
         'nickColaborador'   : auxGame['nickColaborador'],
@@ -133,11 +132,11 @@ async def updateGame(game : EditGame):
     response = edit_datetime_game(game.idGame, game.end_datetime)
     if (not response):
         return response
-
+    
     response = updateParticipationGoals(game.idGame, game.idTeam1, game.goalTeam1)
     if (not response):
         return response
-    
+
     response = updateParticipationGoals(game.idGame, game.idTeam2, game.goalTeam2)
     if (not response):
         return response

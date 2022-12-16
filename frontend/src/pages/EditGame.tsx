@@ -7,6 +7,7 @@ import { useGameById } from "../hooks/useGameById";
 import axios from "axios";
 import { InputDate } from "../components/InputDate";
 import { useTeamByGame } from "../hooks/useTeamByGame";
+import { GameController } from "phosphor-react";
 
 export interface NewGame{
     dataFimAposta : string;
@@ -16,11 +17,16 @@ export interface NewGame{
 }
 
 export function EditGame() {
-    const id = 30;
+    const id = 2;
     const game = useGameById(id);
     const teams = useTeamByGame(id);
+    const date = new Date();
+    const today : string = date.getFullYear().toString() + "-" + (date.getMonth() + 1).toString() + "-" + date.getDate().toString();
+    const currentTime = date.getHours + ":" + date.getMinutes() + ":00";
+    const timeBetOver = today > game.endDate && currentTime > game.endTime; 
+    console.log(game);
+    console.log(timeBetOver);
 
-    
     const [editGame, setEditGame] = useState<NewGame>({
         dataFimAposta : "",
         horaFimAposta : "",
@@ -60,12 +66,23 @@ export function EditGame() {
         event.preventDefault();
         var time:string = game.endTime;
         var date:string = game.endDate;
+        var goalTeamLeft = teams[0].goal;
+        var goalTeamRight = teams[1].goal;
+
         if (editGame.dataFimAposta != ""){
             date = editGame.dataFimAposta;
         }
 
         if (editGame.horaFimAposta != ""){
             time = editGame.horaFimAposta;
+        }
+
+        if (editGame.goalTeamLeft != -1){
+            goalTeamLeft = editGame.goalTeamLeft
+        }
+
+        if (editGame.goalTeamRight != -1){
+            goalTeamLeft = editGame.goalTeamRight
         }
 
         if (editGame.dataFimAposta == game.endDate){
@@ -82,6 +99,10 @@ export function EditGame() {
             data: {
                 idGame: id,
                 end_datetime: (date + " " + time),
+                idTeam1: teams[0].club_id,
+                goalTeam1: goalTeamLeft,
+                idTeam2: teams[1].club_id,
+                goalTeam2: goalTeamRight,
             }
         })
           
@@ -134,18 +155,28 @@ export function EditGame() {
                                    type="Number" 
                                    name="goalLeftTeam" 
                                    id="goalLeftTeam" 
+                                   value={golsTeamLeftPlacehold()}
                                    min={0}
-                                   disabled={():boolean => {
-                                        
-                                   }}/>
+                                   disabled={!timeBetOver}
+                                   onChange={(event) => 
+                                    setEditGame({
+                                        ...editGame,
+                                        goalTeamLeft : parseInt(event.target.value)
+                                    })} />
                         </div>
                         <div  className="flex gap-1">
                             <input className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 max-w-[32px]"
                                    type="Number" 
                                    name="goalRightTeam" 
                                    id="goalRightTeam" 
+                                   value={golsTeamRightPlacehold()}
                                    min={0}
-                                   disabled={true}/>
+                                   disabled={!timeBetOver}
+                                   onChange={(event) => 
+                                        setEditGame({
+                                            ...editGame,
+                                            goalTeamRight : parseInt(event.target.value)
+                                        })} />
                             <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-80 sele" 
                                     name="TimeDireita" 
                                     value = {teams[1].club_id}
@@ -168,6 +199,7 @@ export function EditGame() {
                                     id="dateGame"
                                     min = {game.endDate}
                                     value = {datePlacehold()}
+                                    disabled={timeBetOver}
                                     onChange={(event) => 
                                         setEditGame({
                                             ...editGame,
@@ -183,6 +215,7 @@ export function EditGame() {
                                     id="timeGame" 
                                     mode="time"
                                     value = {timePlacehold()}
+                                    disabled={timeBetOver}
                                     onChange={(event) => 
                                         setEditGame({
                                             ...editGame,

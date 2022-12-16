@@ -15,7 +15,7 @@ def addParticipation(id_team, id_game):
 def updateParticipationGoals(idGame, idTeam, newGoal):
     queryParticipation = f"""
         UPDATE participacao
-        SET gols = '{newGoal}'
+        SET participacao.gols = {newGoal}
         WHERE participacao.id_jogo = {idGame} AND participacao.id_time = '{idTeam}'
     """
     return executeQuery(connection, queryParticipation)

@@ -91,5 +91,4 @@ def edit_datetime_game(id, new_end_datetime):
         SET data_fim_aposta = '{new_end_datetime}'
         WHERE jogos.id_jogo = {id}
     """
-    print(query)
     return executeQuery(connection, query)
