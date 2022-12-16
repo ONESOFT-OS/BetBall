@@ -18,7 +18,6 @@ export async function loginRequestToken(email: string, password: string) {
             data: bodyFormData,
             headers: { "Content-Type": "multipart/form-data" },
         });
-        console.log(auth.data);
         return auth.data;
     } catch (error) {
         return null;

@@ -1,7 +1,7 @@
 import { createStandaloneToast } from "@chakra-ui/react";
 import { MenuItem } from "@mui/material";
 import axios from "axios";
-import { User } from "phosphor-react";
+import { Eye, EyeClosed, User } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 import { Button } from "../components/Button";
@@ -18,6 +18,16 @@ export function PerfilWithdraw(){
     const saldo = 100
     const {toast} = createStandaloneToast();
     const  nick = localStorage.getItem("nickname");
+    const [carteira,setCarteira] = useState('');
+
+    
+    const [visible, setVisibility] = useState(false)
+    const toggle = () =>{
+        visible ? setVisibility(false)  : setVisibility(true)
+    }
+
+    let Icon = visible ? <Eye/>: <EyeClosed/>
+    let dado =  visible ? carteira: "***" 
 
     function maskCoin() {
 
@@ -25,6 +35,31 @@ export function PerfilWithdraw(){
         const dinheiro = i.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         console.log(dinheiro)
         
+    }
+
+    const balance = async() =>{
+        axios({
+           method: 'post',
+           url: 'http://127.0.0.1:8000/getbalance',
+           
+           data: {
+           nickname: nick,
+           }
+       }).then(function(response){
+          const result = response.data
+          setCarteira(result)
+       })
+
+   }
+
+    async function context(){
+        balance()
+        toggle()
+    }
+
+    async function contextWithdraw(){
+        withdraw()
+        balance()
     }
 
     async function withdraw(){
@@ -77,7 +112,14 @@ export function PerfilWithdraw(){
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/settings'}>Configurações</Link></Text>
                     <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/withdraw'}>Carteira</Link></Text>
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/historic'}>Histórico</Link></Text>
+                    <Text size="lg"   className="font-semibold pl-[19rem]" >Betballs: {dado}</Text>
+                    <div onClick={context}>
+                                        {<TextInput.Icon >
+                                            {Icon}
+                                        </TextInput.Icon>}
+                    </div>
                 </div>
+               
 
 
                 <div className="flex flex-row mt-5 justify-between">
@@ -130,7 +172,7 @@ export function PerfilWithdraw(){
                                 <TextInput.Input className="text-black" type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
-                        <Button onClick={withdraw} className="w-fit ">Confirmar</Button>
+                        <Button onClick={contextWithdraw} className="w-fit ">Confirmar</Button>
                     </div>
                 </div>
 

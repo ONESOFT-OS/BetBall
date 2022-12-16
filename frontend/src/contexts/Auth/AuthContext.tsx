@@ -6,7 +6,7 @@ export interface typeUser {
 }
 
 export interface typeAuthContext extends typeUser {
-    loginAuthentication: (email: string, password: string) => Promise<boolean>;
+    loginAuthentication: (email: string, password: string) => Promise<typeUser>;
     logOut: () => void;
 }
 

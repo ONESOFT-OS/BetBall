@@ -7,6 +7,7 @@ import { Button } from "../components/Button";
 
 
 export function PerfilHistoric() {
+    const  nick = localStorage.getItem("nickname");
   return (
     <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center">            
             <div  className="bg-gray-900 w-[1000px] h-[600px] min-h-max min-w-max flex flex-col rounded-2xl bg-opacity-70  mt-10 mb-10">
@@ -30,7 +31,7 @@ export function PerfilHistoric() {
 
                 <div className="flex flex-row mt-5 justify-between">
                     <div className="flex flex-col items-center justify-center gap-4 ml-8">
-                        <Heading size="lg"><h2>Fulano</h2></Heading>
+                        <Heading size="lg"><h2>{nick}</h2></Heading>
 
                         <User className="bg-green-500 rounded-full w-40 h-40"></User>
 

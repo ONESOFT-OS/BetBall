@@ -12,6 +12,7 @@ import { useNavigate } from "react-router-dom";
 import { useAuth } from "../hooks/useAuth";
 import { createStandaloneToast, useToast } from '@chakra-ui/react';
 import axios from "axios";
+import {redirectPages} from "../utils/roles";
 
 export function SignIn() {
     const [username, setEmail] = useState("");
@@ -26,15 +27,14 @@ export function SignIn() {
             axios({
                     method: 'post',
                     url: 'http://127.0.0.1:8000/getnick',
-                    
                     data: {
                     email: username,
                     }
                 }).then(function (response){
                     localStorage.setItem("nickname", response.data[0][0]);
                 })
-            
-            navigate("/");
+
+            navigate(redirectPages[auth.role]);
         } else{
             setPassword('');
             toast({

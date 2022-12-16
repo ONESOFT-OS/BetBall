@@ -3,6 +3,7 @@ from queries.users import get_user_by_email
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import JSONResponse
 import json
 
 
@@ -12,7 +13,7 @@ from queries.users import type_user
 from queries.credit import user_deposit, get_balance, user_withdraw
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
-from queries.users import login_user
+from queries.users import login_user, get_email
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
 from queries.game import add_game, list_game_by_id, edit_datetime_game
 from queries.team import get_clubs_by_game
@@ -39,6 +40,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 @app.get('/users')
@@ -131,7 +134,7 @@ async def updateGame(game : EditGame):
     response = edit_datetime_game(game.idGame, game.end_datetime)
     if (not response):
         return response
-    
+
     response = updateParticipationGoals(game.idGame, game.idTeam1, game.goalTeam1)
     if (not response):
         return response
@@ -140,7 +143,7 @@ async def updateGame(game : EditGame):
     if (not response):
         return response
 
-    return True 
+    return True
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):
@@ -167,3 +170,13 @@ async def get_balance_by_nick(balance: Balance):
      sale = get_balance(balance.nickname)
      sale = sale[0][0]
      return sale
+
+@app.post('/getemail')
+async def get_email_by_nick(balance: Balance):
+    email = get_email(balance.nickname)
+    return email
+
+
+@app.post('/recover_password')
+async def recover_password(email: Email) -> Response:
+    var = get_user_by_email(email.email)

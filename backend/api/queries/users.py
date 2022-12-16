@@ -76,3 +76,10 @@ def type_user(nickname):
             return "Admin"
         else:
             return "Employee"
+
+def get_email(nickname):
+    query = f"""
+    SELECT email FROM usuario WHERE nickname = '{nickname}'
+    """
+    result = executeSelection(connection, query)
+    return result[0][0]

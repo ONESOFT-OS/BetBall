@@ -15,6 +15,7 @@ export  function PerfilDeposit(){
     
     const [valor, setValor]  = useState('')
     const {toast} = createStandaloneToast();
+    const [carteira,setCarteira] = useState('');
     const  nick = localStorage.getItem("nickname");
 
     const [visible, setVisibility] = useState(false)
@@ -23,7 +24,7 @@ export  function PerfilDeposit(){
     }
 
     let Icon = visible ? <Eye/>: <EyeClosed/>
-    let dado =  visible ? "***" : "teste"
+    let dado =  visible ? carteira: "***" 
 
     function maskCoin() {
 
@@ -32,9 +33,9 @@ export  function PerfilDeposit(){
         console.log(dinheiro)
         
     }
-
-    async function balance(){
-        return axios({
+    
+   const balance = async() =>{
+        axios({
            method: 'post',
            url: 'http://127.0.0.1:8000/getbalance',
            
@@ -42,12 +43,21 @@ export  function PerfilDeposit(){
            nickname: nick,
            }
        }).then(function(response){
-           return response.data
+          const result = response.data
+          setCarteira(result)
        })
 
    }
 
+    async function context(){
+        balance()
+        toggle()
+    }
 
+    async function contextdeposit(){
+        deposit()
+        balance()
+    }
     async function deposit(){
         
         axios({
@@ -95,8 +105,8 @@ export  function PerfilDeposit(){
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={''}>Configurações</Link></Text>
                     <Text size="lg"   className="text-green-500 underline font-bold" ><Link to={'/perfil/deposit'}>Carteira</Link></Text>
                     <Text size="lg"   className="font-semibold hover:text-green-500" ><Link to={'/perfil/historic'}>Histórico</Link></Text>
-                    <Text size="lg"   className="font-semibold pl-[19rem]" >Betballs: </Text>
-                    <div onClick={toggle}>
+                    <Text size="lg"   className="font-semibold pl-[19rem]" >Betballs: {dado}</Text>
+                    <div onClick={context}>
                                         {<TextInput.Icon >
                                             {Icon}
                                         </TextInput.Icon>}
@@ -154,7 +164,7 @@ export  function PerfilDeposit(){
                                 <TextInput.Input className="text-black font-bold" type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
-                        <Button onClick={deposit} className="w-fit">Confirmar</Button>
+                        <Button onClick={contextdeposit} className="w-fit">Confirmar</Button>
                 </div>
                 </div>
 
