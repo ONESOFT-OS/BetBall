@@ -6,12 +6,13 @@ import { Text } from "../components/Text";
 import { useGameById } from "../hooks/useGameById";
 import axios from "axios";
 import { InputDate } from "../components/InputDate";
-import { ITeam, useTeamById } from "../hooks/useTeamById";
 import { useTeamByGame } from "../hooks/useTeamByGame";
 
 export interface NewGame{
     dataFimAposta : string;
     horaFimAposta : string;
+    goalTeamLeft : number;
+    goalTeamRight : number; 
 }
 
 export function EditGame() {
@@ -23,6 +24,8 @@ export function EditGame() {
     const [editGame, setEditGame] = useState<NewGame>({
         dataFimAposta : "",
         horaFimAposta : "",
+        goalTeamLeft : -1,
+        goalTeamRight : -1,
     });
     
     const datePlacehold = ():string => {
@@ -30,15 +33,28 @@ export function EditGame() {
             return game.endDate
         }
         return editGame.dataFimAposta
-    }
+    };
 
     const timePlacehold = ():string => {
         if (editGame.horaFimAposta == ""){
             return game.endTime
         }
         return editGame.horaFimAposta
+    };
+
+    const golsTeamLeftPlacehold = ():string =>{
+        if (editGame.goalTeamLeft == -1){
+            return teams[0].goal.toString();
+        }
+        return editGame.goalTeamLeft.toString();
     }
-    ;
+
+    const golsTeamRightPlacehold = ():string =>{
+        if (editGame.goalTeamRight == -1){
+            return teams[1].goal.toString();
+        }
+        return editGame.goalTeamRight.toString();
+    }
 
     async function sendNewEditGame(event : FormEvent){
         event.preventDefault();

@@ -1,3 +1,4 @@
+from queries.participation import updateParticipationGoals
 from queries.users import get_user_by_email
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
@@ -128,7 +129,19 @@ async def getTeansInGame(gameId):
 
 @app.put('/update/game')
 async def updateGame(game : EditGame):
-    return edit_datetime_game(game.idGame, game.end_datetime)
+    response = edit_datetime_game(game.idGame, game.end_datetime)
+    if (not response):
+        return response
+
+    response = updateParticipationGoals(game.idGame, game.idTeam1, game.goalTeam1)
+    if (not response):
+        return response
+    
+    response = updateParticipationGoals(game.idGame, game.idTeam2, game.goalTeam2)
+    if (not response):
+        return response
+
+    return True 
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):

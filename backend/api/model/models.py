@@ -39,6 +39,10 @@ class Game(BaseModel):
 class EditGame(BaseModel):
     idGame : int
     end_datetime: str
+    idTeam1: str
+    goalTeam1: int
+    idTeam2: str
+    goalTeam2: int
 
 class Match(BaseModel):
     game_id: str

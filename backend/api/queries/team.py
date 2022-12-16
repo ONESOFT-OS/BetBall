@@ -37,7 +37,7 @@ def get_club_by_id(club_id):
 
 def get_clubs_by_game(game_id):
     query = f"""
-        SELECT times.id_time, times.nome, times.brasao
+        SELECT times.id_time, times.nome, times.brasao, participacao.gols
         FROM (participacao JOIN times ON times.id_time = participacao.id_time)
         where participacao.id_jogo = {game_id}
     """

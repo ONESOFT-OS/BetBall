@@ -10,5 +10,12 @@ def addParticipation(id_team, id_game):
         {id_game}
     );
     """
-    executeQuery(connection, queryParticipation)
-    return True
+    return executeQuery(connection, queryParticipation)
+
+def updateParticipationGoals(idGame, idTeam, newGoal):
+    queryParticipation = f"""
+        UPDATE participacao
+        SET gols = '{newGoal}'
+        WHERE participacao.id_jogo = {idGame} AND participacao.id_time = '{idTeam}'
+    """
+    return executeQuery(connection, queryParticipation)
