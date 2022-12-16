@@ -5,7 +5,7 @@ from fastapi.middleware.cors import CORSMiddleware
 import json
 
 
-from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email
+from model.models import Login, User, Cadastro, Game, EditGame, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email
 
 from queries.users import type_user
 from queries.credit import user_deposit, get_balance, user_withdraw
@@ -13,7 +13,7 @@ from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
 from queries.users import login_user
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
-from queries.game import add_game, list_game_by_id
+from queries.game import add_game, list_game_by_id, edit_datetime_game
 from queries.team import get_clubs_by_game
 
 from random import randint
@@ -126,11 +126,9 @@ async def getGame(id):
 async def getTeansInGame(gameId):
     return get_clubs_by_game(gameId)
 
-@app.post('/teste/register/game')
-async def match():
-    #print("passou aqui")
-    add_game('Employee2', '2022-10-22 15:30:00', '8', '7')
-    return
+@app.put('/update/game')
+async def updateGame(game : EditGame):
+    return edit_datetime_game(game.idGame, game.end_datetime)
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):

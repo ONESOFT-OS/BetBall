@@ -13,23 +13,11 @@ export interface NewGame{
     dataFimAposta : string;
     horaFimAposta : string;
 }
-/*
-export function getURL(team : ITeam[], id : string){
-    var url : string = "";
 
-    for (let index = 0; index < team.length; index++) {
-        var element = team[index];
-        if (element.club_id == id) {
-            url = element.photo_link;
-            break;
-        }
-    }
-    return url;
-}
-*/
 export function EditGame() {
-    const game = useGameById(1);
-    const teams = useTeamByGame(1);
+    const id = 30;
+    const game = useGameById(id);
+    const teams = useTeamByGame(id);
 
     
     const [editGame, setEditGame] = useState<NewGame>({
@@ -57,12 +45,10 @@ export function EditGame() {
         var time:string = game.endTime;
         var date:string = game.endDate;
         if (editGame.dataFimAposta != ""){
-            console.log("valor Date");
             date = editGame.dataFimAposta;
         }
 
         if (editGame.horaFimAposta != ""){
-            console.log("valor time");
             time = editGame.horaFimAposta;
         }
 
@@ -72,19 +58,17 @@ export function EditGame() {
                 return
             }
         }
-        /*
+        
         axios({
-            method: 'post',
-            url: 'http://127.0.0.1:8000/register/game',
+            method: 'put',
+            url: 'http://127.0.0.1:8000/update/game',
             
             data: {
-                collaborator_nickname: game.nickColaborador,
-                end_datetime: (game.dataFimAposta + " " + game.horaFimAposta),
-                team1_id: game.idTime1,
-                team2_id: game.idTime2
+                idGame: id,
+                end_datetime: (date + " " + time),
             }
-          })
-          */
+        })
+          
         history.back();
     }
 
