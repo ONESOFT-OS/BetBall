@@ -7,7 +7,7 @@ import * as Dialog from '@radix-ui/react-dialog';
 import '../styles/sideBar.css';
 
 
-export function AdmUsers(){
+export function AdmUsersPunter(){
     return(
         <div className="main bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
@@ -38,13 +38,13 @@ export function AdmUsers(){
                 <div className="flex flex-col gap-4 pt-10 ">
                     <div className="flex flex-row justify-start gap-10 pb-3">
                         <Link to={'/adm/users'}> 
-                            <Text className="font-bold text-xl text-green-500 hover:text-green-700">Funcionários</Text> 
+                            <Text className="font-bold text-xl text-gray-500 hover:text-green-700">Funcionários</Text> 
                         </Link>
                         <Link to={'/adm/users/adms'}>  
                             <Text className="font-bold text-xl text-gray-500 hover:text-green-700" >Administradores</Text>
                         </Link>
                         <Link to={'/adm/users/punter'}>   
-                            <Text className="font-bold text-xl text-gray-500 ">Apostadores</Text>
+                            <Text className="font-bold text-xl text-green-500 ">Apostadores</Text>
                         </Link>
                     </div>                    
                 </div>
@@ -65,7 +65,7 @@ export function AdmUsers(){
                                 1
                             </div>
                             <div className="user-type mx-24">
-                                Funcionário
+                                Apostador
                             </div>
                             <div className="data flex gap-2">
                                 <div className="photo">
@@ -125,7 +125,7 @@ export function AdmUsers(){
                                 2
                             </div>
                             <div className="user-type mx-24">
-                                Funcionário
+                                Apostador
                             </div>
                             <div className="data flex gap-2">
                                 <div className="photo">
@@ -185,7 +185,7 @@ export function AdmUsers(){
                                 3
                             </div>
                             <div className="user-type mx-24">
-                                Funcionário
+                                Apostador
                             </div>
                             <div className="data flex gap-2">
                                 <div className="photo">
@@ -194,126 +194,6 @@ export function AdmUsers(){
                                 <div className="data-text flex flex-col">
                                     <div className="name">Arial Carvalho</div>
                                     <div className="email text-gray-300 font-extralight text-[12px]">ariel.s.carvalho@gmail.com</div>
-                                </div>
-                            </div>
-                            <div className="edit">
-                                <Dialog.Root>
-                                    <Dialog.Trigger>
-                                        <button className="link">
-                                        <ListBulletIcon/>
-                                        </button>
-                                    </Dialog.Trigger>
-                                    <Dialog.Portal>
-                                        <Dialog.Overlay className="DialogOverlay" />
-                                        <Dialog.Content className="DialogContent">
-                                            <Dialog.Title className="DialogTitle">Editar</Dialog.Title>
-                                            <Dialog.Description className="DialogDescription">
-                                                Edite os dados de usuários
-                                            </Dialog.Description>
-                                            <fieldset className="Fieldset">
-                                                <label className="Label" htmlFor="description">
-                                                    Nickname
-                                                </label>
-                                                <input className="Input" id="description" defaultValue="rodrigodamasceno" />
-                                                <label className="Label" htmlFor="password">
-                                                    Senha
-                                                </label>
-                                                <input className="Input" id="password" defaultValue="*******" />
-                                            </fieldset> 
-                                            <div className="flex mt-[25px] justify-end">
-                                                <Dialog.Close asChild>
-                                                    <button className="Button green">Salvar mudanças</button>
-                                                </Dialog.Close>
-                                            </div>
-                                            <Dialog.Close asChild>
-                                                <button className="IconButton" aria-label="Close">
-                                                    <Cross2Icon />
-                                                </button>
-                                            </Dialog.Close>
-                                        </Dialog.Content>    
-                                    </Dialog.Portal>
-                                </Dialog.Root>
-                            </div>
-                        </div>
-                        <div className="separator w-[80vw] h-[.3px] bg-glass-500"></div>
-                    </div>
-
-                    <div className="user-item">
-                        <div className="content p-5 px-10 text-white font-normal flex justify-between items-center">
-                            
-                            <div className="id">
-                                4
-                            </div>
-                            <div className="user-type mx-24">
-                                Funcionário
-                            </div>
-                            <div className="data flex gap-2">
-                                <div className="photo">
-                                    <img className="w-[50px] h-[50px] rounded-[100%]" src="../src/assets/users/user.png"/>
-                                </div>
-                                <div className="data-text flex flex-col">
-                                    <div className="name">Rita Kassiane</div>
-                                    <div className="email text-gray-300 font-extralight text-[12px]">ritakassiane.t.i.@gmail.com</div>
-                                </div>
-                            </div>
-                            <div className="edit">
-                                <Dialog.Root>
-                                    <Dialog.Trigger>
-                                        <button className="link">
-                                        <ListBulletIcon/>
-                                        </button>
-                                    </Dialog.Trigger>
-                                    <Dialog.Portal>
-                                        <Dialog.Overlay className="DialogOverlay" />
-                                        <Dialog.Content className="DialogContent">
-                                            <Dialog.Title className="DialogTitle">Editar</Dialog.Title>
-                                            <Dialog.Description className="DialogDescription">
-                                                Edite os dados de usuários
-                                            </Dialog.Description>
-                                            <fieldset className="Fieldset">
-                                                <label className="Label" htmlFor="description">
-                                                    Nickname
-                                                </label>
-                                                <input className="Input" id="description" defaultValue="rodrigodamasceno" />
-                                                <label className="Label" htmlFor="password">
-                                                    Senha
-                                                </label>
-                                                <input className="Input" id="password" defaultValue="*******" />
-                                            </fieldset> 
-                                            <div className="flex mt-[25px] justify-end">
-                                                <Dialog.Close asChild>
-                                                    <button className="Button green">Salvar mudanças</button>
-                                                </Dialog.Close>
-                                            </div>
-                                            <Dialog.Close asChild>
-                                                <button className="IconButton" aria-label="Close">
-                                                    <Cross2Icon />
-                                                </button>
-                                            </Dialog.Close>
-                                        </Dialog.Content>    
-                                    </Dialog.Portal>
-                                </Dialog.Root>
-                            </div>
-                        </div>
-                        <div className="separator w-[80vw] h-[.3px] bg-glass-500"></div>
-                    </div>
-
-                                        <div className="user-item">
-                        <div className="content p-5 px-10 text-white font-normal flex justify-between items-center">
-                            
-                            <div className="id">
-                                5
-                            </div>
-                            <div className="user-type mx-24">
-                                Funcionário
-                            </div>
-                            <div className="data flex gap-2">
-                                <div className="photo">
-                                    <img className="w-[50px] h-[50px] rounded-[100%]" src="../src/assets/users/user.png"/>
-                                </div>
-                                <div className="data-text flex flex-col">
-                                    <div className="name">Paulo Q.</div>
-                                    <div className="email text-gray-300 font-extralight text-[12px]">pauloqueiroz@gmail.com</div>
                                 </div>
                             </div>
                             <div className="edit">
