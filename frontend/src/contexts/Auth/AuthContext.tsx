@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import {AxiosResponse} from "axios";
 
 export interface typeUser {
     token: string;
@@ -6,7 +7,7 @@ export interface typeUser {
 }
 
 export interface typeAuthContext extends typeUser {
-    loginAuthentication: (email: string, password: string) => Promise<boolean>;
+    loginAuthentication: (email: string, password: string) => Promise<AxiosResponse>;
     logOut: () => void;
 }
 

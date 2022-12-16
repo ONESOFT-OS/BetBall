@@ -8,3 +8,5 @@ backend/api/.api
 .DS_Store
 **.pyc
 .vscode/settings.json
+backend/.env
+*.pyc

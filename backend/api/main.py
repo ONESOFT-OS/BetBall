@@ -12,7 +12,7 @@ from queries.users import type_user
 from queries.credit import user_deposit, get_balance, user_withdraw
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
-from queries.users import login_user
+from queries.users import login_user, get_email
 from queries.register import register_user, register_apostador, register_admin, register_collaborator
 from queries.game import add_game, list_game_by_id, edit_datetime_game
 from queries.team import get_clubs_by_game
@@ -167,3 +167,9 @@ async def get_balance_by_nick(balance: Balance):
      sale = get_balance(balance.nickname)
      sale = sale[0][0]
      return sale
+
+@app.post('/getemail')
+async def get_email_by_nick(balance: Balance):
+    email = get_email(balance.nickname)
+    return email
+    
