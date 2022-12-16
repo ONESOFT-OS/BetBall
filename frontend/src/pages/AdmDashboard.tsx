@@ -12,6 +12,9 @@ import '../styles/sideBar.css';
 
 
 export function AdmDashboard(){
+    const download = () => {
+        console.log("aqui ;)");
+    }
     return(
         <div className="main bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
