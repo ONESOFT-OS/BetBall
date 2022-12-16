@@ -122,20 +122,40 @@ export function EditGame() {
                     </div>
 
                     <div className="flex justify-center pt-11 gap-28">
-                        <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96" 
-                                name="TimeEsquerda"
-                                value = {teams[0].club_id}
-                                id="leftTeamSelect" 
-                                disabled>
-                                <option value="" >{teams[0].club_name}</option>
-                        </select>
-                        <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-96 sele" 
-                                name="TimeDireita" 
-                                value = {teams[1].club_id}
-                                id="rightTeamSelect"
-                                disabled>
-                                <option value="" >{teams[1].club_name}</option>
-                        </select>
+                        <div className="flex gap-1">
+                            <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-80" 
+                                    name="TimeEsquerda"
+                                    value = {teams[0].club_id}
+                                    id="leftTeamSelect" 
+                                    disabled>
+                                    <option value="" >{teams[0].club_name}</option>
+                            </select>
+                            <input className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 max-w-[32px]"
+                                   type="Number" 
+                                   name="goalLeftTeam" 
+                                   id="goalLeftTeam" 
+                                   min={0}
+                                   disabled={():boolean => {
+                                        
+                                   }}/>
+                        </div>
+                        <div  className="flex gap-1">
+                            <input className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 max-w-[32px]"
+                                   type="Number" 
+                                   name="goalRightTeam" 
+                                   id="goalRightTeam" 
+                                   min={0}
+                                   disabled={true}/>
+                            <select className="bg-gray-900 bg-opacity-30 text-white text-sm rounded-lg focus:ring-green-700 focus:bg-opacity-100 focus:ring-[1px] block p-2.5 w-80 sele" 
+                                    name="TimeDireita" 
+                                    value = {teams[1].club_id}
+                                    id="rightTeamSelect"
+                                    disabled>
+                                    <option value="" >{teams[1].club_name}</option>
+                            </select>
+                            
+                        </div>
+                        
                     </div>
 
                     <Text className="pl-2 pt-10">

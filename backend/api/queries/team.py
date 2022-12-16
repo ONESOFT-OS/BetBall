@@ -42,4 +42,4 @@ def get_clubs_by_game(game_id):
         where participacao.id_jogo = {game_id}
     """
     clubs = executeSelection(connection, query)
-    return [tutple_to_dict('club_id', 'club_name', 'photo_link', tupla=time) for time in clubs]
+    return [tutple_to_dict('club_id', 'club_name', 'photo_link', 'goal', tupla=time) for time in clubs]

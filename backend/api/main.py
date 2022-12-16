@@ -125,7 +125,8 @@ async def getGame(id):
 
 @app.get('/team/game/{gameId}')
 async def getTeansInGame(gameId):
-    return get_clubs_by_game(gameId)
+    response = get_clubs_by_game(gameId)
+    return response
 
 @app.put('/update/game')
 async def updateGame(game : EditGame):
