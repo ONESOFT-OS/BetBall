@@ -83,3 +83,15 @@ def get_email(nickname):
     """
     result = executeSelection(connection, query)
     return result[0][0]
+
+
+def update_user(nickname,email, senha):
+    query = f"""
+        UPDATE usuario SET
+        (
+        email = '{email}',
+        senha = '{senha}',
+    )
+    WHERE = '{nickname}'
+    """
+    executeQuery(connection, query)

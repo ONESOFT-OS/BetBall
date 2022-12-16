@@ -9,7 +9,7 @@ import json
 
 from model.models import Login, User, Cadastro, Game, EditGame, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email, Balance
 
-from queries.users import type_user
+from queries.users import type_user, update_user
 from queries.credit import user_deposit, get_balance, user_withdraw
 from queries.queries import get_clubs
 from queries.users import get_users, get_users_by_type
@@ -177,6 +177,7 @@ async def get_email_by_nick(balance: Balance):
     return email
 
 
-@app.post('/recover_password')
-async def recover_password(email: Email) -> Response:
-    var = get_user_by_email(email.email)
+@app.post('/user/update')
+async def update_user(userData :Login):
+    user = update_user(userData.nickname, userData.email, userData.password)
+    return Response(content=f"{json.dumps(user)}" , status_code=200)
