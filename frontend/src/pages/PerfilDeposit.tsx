@@ -21,7 +21,9 @@ export function PerfilDeposit(){
         
     }
 
-
+    function deposit(){
+        
+    }
 
 
     return(

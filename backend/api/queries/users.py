@@ -19,7 +19,6 @@ def get_user_by_email(email):
     WHERE email = '{email}'
     """
     user = executeSelection(connection, query)
-    print(user)
     return user
 
 

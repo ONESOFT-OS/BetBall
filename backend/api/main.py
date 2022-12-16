@@ -1,10 +1,11 @@
+from queries.users import get_user_by_email
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
 import json
 
 
-from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw
+from model.models import Login, User, Cadastro, Game, CadastroColaboratorAdmin, Match, Deposit, Withdraw, Email
 
 from queries.users import type_user
 from queries.credit import user_deposit, get_balance, user_withdraw
@@ -143,3 +144,8 @@ async def deposit(withdraw: Withdraw):
         return user_withdraw(withdraw.nickname, withdraw.value)
     else:
         return False
+
+@app.post('/getnick')
+async def get_nick(email:Email):
+    var = get_user_by_email(email.email)
+    return var
