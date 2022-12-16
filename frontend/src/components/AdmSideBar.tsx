@@ -34,23 +34,23 @@ export function AdmSideBar (){
             <div className="menu">
 
                 <ul className="menu-links">
-                    <li className="nav-link">
-                        <div className="link">
-                            <Link to={"/adm/dashboard"}>
-                                <HomeIcon className="icon"/>
-                                <span className="text nav-text">Dashboard</span>
-                            </Link>
-                        </div>
-                    </li>
+                    <Link to={"/adm/dashboard"}>
+                        <li className="nav-link">
+                            <div className="link">
+                                    <HomeIcon className="icon"/>
+                                    <span className="text nav-text">Dashboard</span>
+                            </div>
+                        </li>
+                    </Link> 
 
-                    <li className="nav-link">
-                        <div className="link">
-                            <Link to={"/adm/users"}>
-                                <PersonIcon className="icon"/>
-                                <span className="text nav-text">Adicionar</span>
-                            </Link>
-                        </div>
-                    </li>
+                    <Link to={"/adm/users"}>
+                        <li className="nav-link">
+                            <div className="link">
+                                    <PersonIcon className="icon"/>
+                                    <span className="text nav-text">Adicionar</span>
+                            </div>
+                        </li>
+                    </Link>
 
                     <li className="nav-link">
                         <div className="link">
@@ -103,23 +103,23 @@ export function AdmSideBar (){
                         </a>
                     </li>
 
-                    <li className="nav-link">
-                        <div className="link">
-                            <Link to={"/adm/logs"}>
-                                <ActivityLogIcon className="icon"/>
-                                <span className="text nav-text">Logs</span>
-                            </Link>
-                        </div>
-                    </li>
+                    <Link to={"/adm/logs"}>
+                        <li className="nav-link">
+                            <div className="link">
+                                    <ActivityLogIcon className="icon"/>
+                                    <span className="text nav-text">Logs</span>
+                            </div>
+                        </li>
+                    </Link>
 
-                    <li className="nav-link">
-                        <div className="link">
-                            <Link to={"/perfil/withdraw"}>
-                                <GearIcon className="icon"/>
-                                <span className="text nav-text">Config</span>
-                            </Link>
-                        </div>
-                    </li>
+                    <Link to={"/admSettings"}>
+                        <li className="nav-link">
+                            <div className="link">
+                                    <GearIcon className="icon"/>
+                                    <span className="text nav-text">Config</span>
+                            </div>
+                        </li>
+                    </Link>
                 </ul>
             </div>
 

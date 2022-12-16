@@ -64,7 +64,7 @@ export const RoutesBase = () => {
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/" element={<Home />}/>
-                <Route path="/ranking" element={<HomeRanking />}/>
+                <Route path="/ranking" element={<HomeRanking/>}/>
                 <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                 <Route path="/bet" element={<Bet/>}/>
                 <Route path={"games"} element={<Allgames/>}/>
@@ -81,12 +81,12 @@ export const RoutesBase = () => {
 
                 {/* ADMIN ROUTES */}
                 <Route element={<ProtectRoute allowedRoles={[ROLES.Admin]}/> }>
-                    <Route path={"/adm/logs"} element={<SystemLogs/>}/>
                     <Route path={"/adm/dashboard"} element={<AdmDashboard/>}/>
+                    <Route path={"/admSettings"} element={<PerfilAdmSettings/>}/>
+                    <Route path={"/adm/logs"} element={<SystemLogs/>}/>
                     <Route path={"/adm/users"} element={<AdmUsers/>}/>
                     <Route path="/user/create" element={<CreateUser/>}/>
-                    <Route path={"perfil/adm"} element={<PerfilAdm/>}/>
-                    <Route path={"admSettings"} element={<PerfilAdmSettings/>}/>
+                    <Route path={"/perfil/adm"} element={<PerfilAdm/>}/>
                     <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                 </Route>
 

@@ -11,14 +11,21 @@ export function PerfilAdmSettings() {
     return(
         <div className="bg-[url('../assets/Gradient.svg')] bg-black min-w-screen min-h-screen  max-h-full max-w-full flex flex-col items-center justify-center ">
           <div className="card bg-glass-300 min-w-[80vw] h-[90vh] m-[60px] rounded-[10px] p-16">
-            <div className="profile-header flex gap-5 text-white font-normal">
-              <div className="photo">
-                  <img className="w-[50px] h-[50px] rounded-[100%]" src="../src/assets/users/user.png"/>
+            <div className="header flex flex-row justify-between">
+              <div className="profile-header flex gap-5 text-white font-normal">
+                <div className="photo">
+                    <img className="w-[50px] h-[50px] rounded-[100%]" src="../src/assets/users/user.png"/>
+                </div>
+                <div className="data-text flex flex-col">
+                    <div className="name font-bold">Rodrigo D.</div>
+                    <div className="email text-gray-300 font-extralight text-[12px]">rodrigosampaio@gmail.com</div>
+                </div>  
               </div>
-              <div className="data-text flex flex-col">
-                  <div className="name font-bold">Rodrigo D.</div>
-                  <div className="email text-gray-300 font-extralight text-[12px]">rodrigosampaio@gmail.com</div>
-              </div>  
+              <Link to="/adm/dashboard">
+                        <Button mode="closer" onClick={close} className=" px-[19px]">
+                                X
+                        </Button>
+                </Link>
             </div>
 
             <div className="title text-white font-extrabold mt-[30px]">
