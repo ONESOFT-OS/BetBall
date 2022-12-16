@@ -73,6 +73,7 @@ export const RoutesBase = () => {
                     <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
                     <Route path="/perfil/settings" element={<PerfilSettings/>}/>
                     <Route path="/bet" element={<Bet/>}/>
+                    <Route path={"games"} element={<Allgames/>}/>
                 </Route>
 
                 {/* ADMIN ROUTES */}
@@ -95,7 +96,6 @@ export const RoutesBase = () => {
                     <Route path={"/dashboard/finish"} element={<EmployeeDashboardFinish/>}/>
                     <Route path={"/test"} element={<Test/>}/>
                     <Route path={"perfil/employee"} element={<PerfilEmployee/>}/>
-                    <Route path={"games"} element={<Allgames/>}/>
                     <Route path={"profit"} element={<DefineProfit/>}/>
                 </Route>
             </Routes>
