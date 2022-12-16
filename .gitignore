@@ -10,3 +10,6 @@ backend/api/.api
 .vscode/settings.json
 backend/.env
 *.pyc
+*.pyc
+*.pyc
+*.pyc

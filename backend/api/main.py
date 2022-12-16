@@ -3,6 +3,7 @@ from queries.users import get_user_by_email
 from fastapi import Depends, FastAPI, HTTPException, Response
 from fastapi.security import OAuth2PasswordBearer, OAuth2PasswordRequestForm
 from fastapi.middleware.cors import CORSMiddleware
+from starlette.responses import JSONResponse
 import json
 
 
@@ -39,6 +40,8 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+
 
 
 @app.get('/users')
@@ -131,7 +134,7 @@ async def updateGame(game : EditGame):
     response = edit_datetime_game(game.idGame, game.end_datetime)
     if (not response):
         return response
-    
+
     response = updateParticipationGoals(game.idGame, game.idTeam1, game.goalTeam1)
     if (not response):
         return response
@@ -140,7 +143,7 @@ async def updateGame(game : EditGame):
     if (not response):
         return response
 
-    return True 
+    return True
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):
@@ -172,4 +175,8 @@ async def get_balance_by_nick(balance: Balance):
 async def get_email_by_nick(balance: Balance):
     email = get_email(balance.nickname)
     return email
-    
+
+
+@app.post('/recover_password')
+async def recover_password(email: Email) -> Response:
+    var = get_user_by_email(email.email)
