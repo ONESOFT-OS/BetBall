@@ -63,7 +63,7 @@ export function NavBar() {
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link
                     to={'/games'}>Jogos</Link></Text></li>
                 <li><Text className="text-white hover:text-green-500 font-semibold" size="lg"><Link
-                    to={'/'}>Sobre</Link></Text></li>
+                    to={'/perfil/settings'}>Perfil</Link></Text></li>
             </ul>
             <div className="w-[193.98px] flex flex-row justify-end gap-3">
                 <ContextNavbar/>

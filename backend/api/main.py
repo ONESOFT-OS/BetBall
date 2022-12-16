@@ -57,7 +57,6 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
     user_dict = login_user(form_data.username, form_data.password)
     dict_reponse ={}
     if not user_dict:
-        print("oi")
         dict_reponse['token'] = "error"
         raise HTTPException(status_code=400, detail=f"{dict_reponse}")
     else:
