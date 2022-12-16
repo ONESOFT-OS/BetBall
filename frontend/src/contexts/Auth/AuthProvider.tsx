@@ -27,7 +27,7 @@ export const AuthProvider = ({ children }: typeAuthProps) => {
             setToken(response.token);
             setRole(response.role);
             setTokenLocalStorage(response);
-            return true;
+            return response;
         }
         return false;
     }
