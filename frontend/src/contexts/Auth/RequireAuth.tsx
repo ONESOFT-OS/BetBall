@@ -1,5 +1,3 @@
-import { AuthContext } from "./AuthContext";
-import {useContext} from "react";
 import { RoutesBase } from "../../routes/RoutesBase";
 import { useAuth } from '../../hooks/useAuth';
 

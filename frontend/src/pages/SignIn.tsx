@@ -31,7 +31,7 @@ export function SignIn() {
                     email: username,
                     }
                 }).then(function (response){
-                    localStorage.setItem("nickname", JSON.stringify(response.data[0][0]));
+                    localStorage.setItem("nickname", response.data[0][0]);
                 })
             
             navigate("/");
