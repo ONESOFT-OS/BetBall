@@ -166,6 +166,6 @@ export function PerfilSettings() {
             </div>
           </div>
       </div>
-      </div>
+      
     )
 }

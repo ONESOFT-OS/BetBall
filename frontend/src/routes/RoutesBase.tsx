@@ -68,6 +68,7 @@ export const RoutesBase = () => {
                 <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                 <Route path="/bet" element={<Bet/>}/>
                 <Route path={"games"} element={<Allgames/>}/>
+                <Route path="/editgame" element={<EditGame/>}/>
 
                 {/* USER ROUTES */}
                 <Route element={<ProtectRoute allowedRoles={[ROLES.User]}/> }>
@@ -85,7 +86,7 @@ export const RoutesBase = () => {
                     <Route path={"/admSettings"} element={<PerfilAdmSettings/>}/>
                     <Route path={"/adm/logs"} element={<SystemLogs/>}/>
                     <Route path={"/adm/users"} element={<AdmUsers/>}/>
-                    <Route path="/user/create" element={<CreateUser/>}/>
+                    <Route path="/adm/users/create" element={<CreateUser/>}/>
                     <Route path={"/perfil/adm"} element={<PerfilAdm/>}/>
                     <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
                 </Route>
