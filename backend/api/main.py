@@ -59,8 +59,9 @@ async def login(form_data: OAuth2PasswordRequestForm = Depends()):
         dict_reponse['token'] = "error"
         raise HTTPException(status_code=400, detail=f"{dict_reponse}")
     else:
+        nickname = get_user_by_email(form_data.username)
         dict_reponse["token"] = "success"
-        dict_reponse["role"] = type_user(form_data.username)
+        dict_reponse["role"] = type_user(nickname[0][0])
         json_string = json.dumps(dict_reponse)
         return Response(content=f"{json_string}", status_code=200, media_type="application/json")
 

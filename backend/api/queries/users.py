@@ -64,9 +64,12 @@ def type_user(nickname):
     SELECT nickname FROM apostador WHERE nickname = '{nickname}'
     """
     valid = executeSelection(connection, query)
+    valid = valid[0][0]
+    print(len(valid))
     if len(valid) != 0:
         return "Punter"
     else:
+        print("admin")
         newQuery = f"""
             SELECT isAdmin FROM colaborador WHERE nickname = '{nickname}'
         """

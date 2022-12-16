@@ -62,7 +62,7 @@ export const RoutesBase = () => {
                 <Route path={"/password_recovery"} element={<PasswordRecovery/>}/>
                 <Route path={"/confirm_recovery"} element={<ConfirmPasswordRecovery/>}/>
                 <Route path="/perfil/deposit" element={<PerfilDeposit/>}/>
-
+                <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
 
                 {/*PROTECTED ROUTES*/}
                 <Route element={<ProtectRoute allowedRoles={[ROLES.Employee]}/>}>
@@ -72,7 +72,7 @@ export const RoutesBase = () => {
                     <Route path="/bet" element={<Bet/>}/>
                     <Route path="/user/create" element={<CreateUser/>}/>
                    
-                    <Route path="/perfil/withdraw" element={<PerfilWithdraw/>}/>
+
                     <Route path="/perfil/historic" element={<PerfilHistoric/>}/>
                     <Route path="/perfil/settings" element={<PerfilSettings/>}/>
                     <Route path="/superuser/password" element={<ChangeUsersPassword/>}/>
