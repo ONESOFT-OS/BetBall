@@ -9,9 +9,17 @@ import { StaticCardDashboard } from "../components/StaticCardDashboard";
 import { Text } from "../components/Text";
 
 import '../styles/sideBar.css';
+import {useAuth} from "../hooks/useAuth";
 
 
 export function AdmDashboard(){
+
+    const {token} = useAuth();
+    const isAuthenticated = token === 'success';
+
+    const nickname = isAuthenticated ? localStorage.getItem('nickname') : null;
+
+
     return(
         <div className="main bg-[url('../assets/Gradient.svg')] bg-no-repeat bg-contain bg-dark-900 min-w-screen h-[100vw]">
             <div className="sideBar">
@@ -21,7 +29,7 @@ export function AdmDashboard(){
                 <div className="header flex items-center justify-between">
                     <div className="col-1 text-white">
                         <h1 className="font-black text-[2.5rem]">Dashboard</h1>
-                        <p className=" text-[1.2rem] text-glass-800">Bem-vindo, João!</p>
+                        <p className=" text-[1.2rem] text-glass-800">Bem-vindo, {nickname}!</p>
                     </div>
 
                     <div className="col-2 flex justify-center items-center gap-6">
