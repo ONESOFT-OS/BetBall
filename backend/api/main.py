@@ -134,8 +134,6 @@ async def match():
 
 @app.post('/perfil/deposit')
 async def deposit(deposit: Deposit):
-    print(deposit.nickname)
-    print(deposit.value)
     if deposit.value > 0:
         return user_deposit(deposit.nickname, deposit.value)
     else:

@@ -1,3 +1,4 @@
+import { createStandaloneToast } from "@chakra-ui/react";
 import { MenuItem } from "@mui/material";
 import axios from "axios";
 import { User } from "phosphor-react";
@@ -13,6 +14,7 @@ import { TextInput } from "../components/TextInput";
 export function PerfilDeposit(){
     
     const [valor, setValor]  = useState('')
+    const {toast} = createStandaloneToast();
 
     function maskCoin() {
 
@@ -31,6 +33,25 @@ export function PerfilDeposit(){
             data: {
             nickname: nick,
             value: valor
+            }
+        }).then(function (response) {
+            if(response.data === false){
+                toast({
+                    title: 'Erro',
+                    description: 'Problema com servidor, tente mais tarde',
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: false
+                });
+            }
+            else{
+                toast({
+                    title: '',
+                    description: 'Depósito de créditos realizado',
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: false
+                });
             }
         })
     }
