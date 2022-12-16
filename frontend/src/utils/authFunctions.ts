@@ -25,12 +25,23 @@ export async function loginRequestToken(email: string, password: string) {
     }
 }
 
+export function logOut() {
+    removeTokenLocalStorage();
+    removeNicknameLocalStorage();
+
+    return true;
+}
+
 export function setTokenLocalStorage(detail: any) {
     localStorage.setItem("authentication", JSON.stringify(detail));
 }
 
 export function removeTokenLocalStorage() {
     localStorage.removeItem("authentication");
+}
+
+export function removeNicknameLocalStorage() {
+    localStorage.removeItem('nickname');
 }
 
 export function getTokenLocalStorage() {

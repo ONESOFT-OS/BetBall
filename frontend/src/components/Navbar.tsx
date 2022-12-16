@@ -1,23 +1,37 @@
-import {Link, Routes} from "react-router-dom";
+import {Link, Routes, useNavigate} from "react-router-dom";
 import {Logo} from "../assets/Logo";
 import {useAuth} from '../hooks/useAuth';
 import {Button} from "./Button";
 import {Text} from './Text';
+import {logOut} from "../utils/authFunctions";
 
 
 export function NavBar() {
 
     const {token} = useAuth();
+    const navigate = useNavigate();
 
     const isAuthenticated = token === 'success';
-    const nickname = isAuthenticated? localStorage.getItem('nickname') : null;
+    const nickname = isAuthenticated ? localStorage.getItem('nickname') : null;
+
+    const handleSignout = async function () {
+
+        console.log('opa');
+
+        const logout = logOut();
+
+        if (logout) {
+            navigate('/signin');
+        }
+    }
 
     const AuthenticatedNavbar = () => {
         return (
             <>
                 <Text className="text-white hover:text-green-500 font-semibold">
                     <Link to={'#'}>Bem-Vindo {nickname}!</Link></Text>
-                <Button type='submit' className='w-fit m bg-transparent px-6 ring-1 ring-green-500'>Sair</Button>
+                <Button onClick={() => handleSignout()}
+                        className='w-fit m bg-transparent px-6 ring-1 ring-green-500'>Sair</Button>
             </>
         )
     }
@@ -33,10 +47,10 @@ export function NavBar() {
     }
 
     const ContextNavbar = () => {
-        if(isAuthenticated){
-            return <AuthenticatedNavbar />
-        }else{
-            return <DefaultContent />
+        if (isAuthenticated) {
+            return <AuthenticatedNavbar/>
+        } else {
+            return <DefaultContent/>
         }
     }
 
@@ -52,7 +66,7 @@ export function NavBar() {
                     to={'/'}>Sobre</Link></Text></li>
             </ul>
             <div className="w-[193.98px] flex flex-row justify-end gap-3">
-                <ContextNavbar />
+                <ContextNavbar/>
             </div>
         </nav>
     )
