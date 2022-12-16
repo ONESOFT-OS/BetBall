@@ -1,4 +1,6 @@
+import { createStandaloneToast } from "@chakra-ui/react";
 import { MenuItem } from "@mui/material";
+import axios from "axios";
 import { User } from "phosphor-react";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -9,10 +11,12 @@ import { SelectM } from "../components/SelectM";
 import { Text } from "../components/Text";
 import { TextInput } from "../components/TextInput";
 
+
 export function PerfilWithdraw(){
     
     const [valor, setValor]  = useState('')
     const saldo = 100
+    const {toast} = createStandaloneToast();
 
     function maskCoin() {
 
@@ -20,6 +24,38 @@ export function PerfilWithdraw(){
         const dinheiro = i.toLocaleString('pt-br',{style: 'currency', currency: 'BRL'});
         console.log(dinheiro)
         
+    }
+
+    async function withdraw(){
+        const  nick = localStorage.getItem("nickname");
+        axios({
+            method: 'post',
+            url: 'http://127.0.0.1:8000/perfil/withdraw',
+            
+            data: {
+            nickname: nick,
+            value: valor
+            }
+        }).then(function (response) {
+            if(response.data === false){
+                toast({
+                    title: 'Erro',
+                    description: 'Saldo insuficiente',
+                    status: 'error',
+                    duration: 3000,
+                    isClosable: false
+                });
+            }
+            else{
+                toast({
+                    title: '',
+                    description: 'Crédito Sacado',
+                    status: 'success',
+                    duration: 3000,
+                    isClosable: false
+                });
+            }
+        })
     }
 
     return(
@@ -79,8 +115,7 @@ export function PerfilWithdraw(){
                             <Text className="ml-2">Forma de saque</Text>
                             <SelectM defaultText="Método" >
                                 <MenuItem value={1}>Pix</MenuItem>
-                                <MenuItem value={2}>Cartão de Crédito</MenuItem>
-                                <MenuItem value={3}>Transferência bancária</MenuItem>
+                                <MenuItem value={2}>Transferência bancária</MenuItem>
                             </SelectM>
                         </div>
 
@@ -90,7 +125,7 @@ export function PerfilWithdraw(){
                                 <TextInput.Input className="text-black" type="number" name="quantity" step="0.01" min="0.01" value={valor} onChange={(e) => setValor(e.target.value)}/>
                             </TextInput.Root>
                         </label>
-                        <Button className="w-fit ">Confirmar</Button>
+                        <Button onClick={withdraw} className="w-fit ">Confirmar</Button>
                     </div>
                 </div>
 

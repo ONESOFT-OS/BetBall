@@ -7,16 +7,14 @@ export interface ITeam{
 }
 
 export const useTeam = () => {
-    const [team, setTeam] = useState<ITeam[]>([{club_name : "Real Madrid", club_id : "1",  photo_link : "/src/assets/team/realMadridIcon.png"},
-                                              {club_name : "Barcelona", club_id : "2",  photo_link : "/src/assets/team/barcelonaIcon.png"}]);
-                                              
+    const [team, setTeam] = useState<ITeam[]>([]);
+    
+
     useEffect(() => {
         fetch("http://127.0.0.1:8000/teams")
             .then((response) => response.json())
             .then((data) => setTeam(data));
     }, [])
-    
-    console.log(team);
     return {
         team
     };
