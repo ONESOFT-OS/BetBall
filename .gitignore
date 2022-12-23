@@ -1,0 +1,15 @@
+node_modules
+backend/api/.fast-api
+backend/api/env
+backend/api/.api
+
+
+.idea
+.DS_Store
+**.pyc
+.vscode/settings.json
+backend/.env
+*.pyc
+*.pyc
+*.pyc
+*.pyc

@@ -1,0 +1,13 @@
+GIT - Tipos de commit:
+	datasync: sincronismo com o database
+	add: nova funcionalidade
+	edit: ajuste de código, mudando lógica
+	remove: remoção, exclusão de funcionalidade ou trechos
+	fix: arrumando bugs
+	docs: documentação
+	style: formatação de código
+	refact: ajuste de código sem mudar funcionalidade
+	test: testes de qualquer grau
+	chore: mudança nas dependências, construção
+	merge: união de branches
+	version X.X.X: avançar versão de projeto
